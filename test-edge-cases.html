@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест крайних кейсов</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #0A0F1E; color: white; }
+        .test-case { margin: 20px 0; padding: 15px; border: 1px solid #333; border-radius: 8px; }
+        .result { color: #FF7A1A; font-weight: bold; }
+        .discount { color: #16C784; font-weight: bold; }
+        .whatsapp { color: #2B8CFF; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Тест крайних кейсов</h1>
+    
+    <div class="test-case">
+        <h3>Кейс 1: 12м, 50k база, 1 филиал, 1 WhatsApp, Base</h3>
+        <div id="case1"></div>
+    </div>
+    
+    <div class="test-case">
+        <h3>Кейс 2: 12м, 25k база, 2 филиала, 3 WhatsApp, Advanced</h3>
+        <div id="case2"></div>
+    </div>
+    
+    <div class="test-case">
+        <h3>Кейс 3: 1м, 1k база, 1 филиал, 1 WhatsApp, Base</h3>
+        <div id="case3"></div>
+    </div>
+
+    <script>
+        // Константы
+        const PATIENT_BASE_PRICES = {
+            1000: 6900,
+            4000: 10900,
+            12000: 14900,
+            24000: 16900,
+            40000: 18900,
+            60000: 20900,
+        };
+        
+        const MARKETING_PRICES = {
+            base: 9900,
+            advanced: 29900,
+            premium: 59900,
+            expert: 119900,
+        };
+        
+        const PERIOD_DISCOUNTS = {
+            1: 0,
+            3: 0.05,
+            6: 0.10,
+            9: 0.15,
+            12: 0.20,
+        };
+        
+        const WHATSAPP_PRICE_PER_NUMBER = 1500;
+        
+        function getPatientBasePrice(patientBase) {
+            if (patientBase <= 4000) return PATIENT_BASE_PRICES[1000];
+            if (patientBase <= 12000) return PATIENT_BASE_PRICES[4000];
+            if (patientBase <= 24000) return PATIENT_BASE_PRICES[12000];
+            if (patientBase <= 40000) return PATIENT_BASE_PRICES[24000];
+            if (patientBase <= 60000) return PATIENT_BASE_PRICES[40000];
+            return PATIENT_BASE_PRICES[60000];
+        }
+        
+        function calculateCase(period, patientBase, branches, whatsappNumbers, marketingLevel) {
+            // Скидки
+            const periodDiscount = PERIOD_DISCOUNTS[period] || 0;
+            const networkDiscount = branches >= 2 ? 0.05 : 0;
+            const totalDiscount = Math.min(periodDiscount + networkDiscount, 0.25);
+            
+            // Компоненты
+            const basePrice = getPatientBasePrice(patientBase);
+            const marketingPrice = MARKETING_PRICES[marketingLevel] * branches;
+            const whatsappPrice = WHATSAPP_PRICE_PER_NUMBER * Math.max(0, (whatsappNumbers - 1));
+            const supportPrice = 0; // будни
+            
+            // Месячная стоимость
+            const monthly = basePrice + marketingPrice + whatsappPrice + supportPrice;
+            
+            // Итого за период
+            const totalBefore = monthly * period;
+            const totalAfter = monthly * period * (1 - totalDiscount);
+            const discountRub = totalBefore - totalAfter;
+            
+            return {
+                monthly,
+                totalBefore,
+                totalAfter,
+                discountRub,
+                discountPercent: Math.round(totalDiscount * 100),
+                whatsappPrice,
+                basePrice,
+                marketingPrice
+            };
+        }
+        
+        function formatRub(value) {
+            return new Intl.NumberFormat('ru-RU').format(Math.max(0, Math.round(value))) + ' ₽';
+        }
+        
+        // Тест кейсов
+        const case1 = calculateCase(12, 50000, 1, 1, 'base');
+        const case2 = calculateCase(12, 25000, 2, 3, 'advanced');
+        const case3 = calculateCase(1, 1000, 1, 1, 'base');
+        
+        // Отображение результатов
+        document.getElementById('case1').innerHTML = `
+            <div>Месячная: <span class="result">${formatRub(case1.monthly)}</span></div>
+            <div>Итого за период: <span class="result">${formatRub(case1.totalAfter)}</span></div>
+            <div>Скидка: <span class="discount">${formatRub(case1.discountRub)}</span> (${case1.discountPercent}%)</div>
+            <div>WhatsApp: <span class="whatsapp">${formatRub(case1.whatsappPrice)}</span> (1 номер включен)</div>
+            <div>База: ${formatRub(case1.basePrice)}, ММ: ${formatRub(case1.marketingPrice)}</div>
+        `;
+        
+        document.getElementById('case2').innerHTML = `
+            <div>Месячная: <span class="result">${formatRub(case2.monthly)}</span></div>
+            <div>Итого за период: <span class="result">${formatRub(case2.totalAfter)}</span></div>
+            <div>Скидка: <span class="discount">${formatRub(case2.discountRub)}</span> (${case2.discountPercent}%)</div>
+            <div>WhatsApp: <span class="whatsapp">${formatRub(case2.whatsappPrice)}</span> (2 доп. номера)</div>
+            <div>База: ${formatRub(case2.basePrice)}, ММ: ${formatRub(case2.marketingPrice)}</div>
+        `;
+        
+        document.getElementById('case3').innerHTML = `
+            <div>Месячная: <span class="result">${formatRub(case3.monthly)}</span></div>
+            <div>Итого за период: <span class="result">${formatRub(case3.totalAfter)}</span></div>
+            <div>Скидка: <span class="discount">${formatRub(case3.discountRub)}</span> (${case3.discountPercent}%)</div>
+            <div>WhatsApp: <span class="whatsapp">${formatRub(case3.whatsappPrice)}</span> (1 номер включен)</div>
+            <div>База: ${formatRub(case3.basePrice)}, ММ: ${formatRub(case3.marketingPrice)}</div>
+        `;
+    </script>
+</body>
+</html>

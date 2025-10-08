@@ -1,0 +1,239 @@
+/* Layout primitives */
+.container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  margin: 24px 0;
+}
+
+/* Card components */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: background-color 0.15s ease;
+}
+
+.card:hover {
+  background: var(--card-hover);
+}
+
+/* КНОПКИ - ОБНОВЛЕННЫЕ СТИЛИ С WCAG AA */
+.btn {
+  height: 44px;
+  padding: 0 18px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 16px; /* Минимум для WCAG AA */
+}
+
+.buttonPrimary { 
+  background: var(--brand); 
+  color: #FFFFFF; 
+  font-weight: 600; 
+}
+
+.buttonPrimary:hover { 
+  background: var(--brand-press); 
+}
+
+.btn-primary {
+  background: var(--brand);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: var(--brand-press);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+}
+
+.btn-secondary:hover {
+  background: var(--neutral-100);
+}
+
+/* ССЫЛКИ - ОРАНЖЕВЫЕ (НЕ СИНИЕ) С WCAG AA */
+.link {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.link:hover {
+  color: var(--link-hover);
+  text-decoration-thickness: 2px;
+}
+
+/* Глобальные стили ссылок */
+a { 
+  color: var(--link); 
+  text-decoration: underline; 
+  text-underline-offset: 2px; 
+}
+
+a:hover { 
+  color: var(--link-hover); 
+  text-decoration-thickness: 2px; 
+}
+
+/* Chip components */
+.chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.chip.is-active {
+  background: var(--chip-active-bg);
+  color: var(--chip-active-text);
+  border-color: var(--chip-active-border);
+}
+
+/* БЕЙДЖИ - ОБНОВЛЕННЫЕ СТИЛИ С WCAG AAA */
+.badge { 
+  background: var(--badge-bg); 
+  border: 1px solid var(--badge-border); 
+  color: var(--badge-text); 
+}
+
+/* Key-value rows */
+.kv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--divider);
+}
+
+.kv:last-child {
+  border-bottom: 0;
+}
+
+/* Theme switch */
+.theme-switch {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.theme-switch button {
+  padding: 8px 12px;
+  border: 0;
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.theme-switch button.is-active {
+  background: var(--cta);
+  color: var(--text-on-orange);
+}
+
+/* Header styles */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.15s ease;
+}
+
+/* Header overrides for light theme */
+.site-header {
+  background: #FFFFFF;
+  border-bottom: 1px solid #DDE3EA;
+}
+
+/* Ensure all header text is readable */
+.site-header h1,
+.site-header h2,
+.site-header h3,
+.site-header p,
+.site-header span,
+.site-header div {
+  color: #0F1115 !important;
+}
+
+/* Keep animated elements untouched */
+.site-header .gradient-title,
+.site-header .hero-title-accent {
+  color: inherit;
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+}
+
+/* Дополнительные стили для текста */
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-hint {
+  color: var(--text-hint);
+}
+
+/* Фокусы */
+.btn:focus,
+.chip:focus,
+.theme-switch button:focus {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+  
+  .section {
+    margin: 16px 0;
+  }
+  
+  .card {
+    padding: 16px;
+  }
+  
+  .btn {
+    height: 40px;
+    padding: 0 16px;
+  }
+}

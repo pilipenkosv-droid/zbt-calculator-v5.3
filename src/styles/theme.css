@@ -1,0 +1,406 @@
+:root {
+  color-scheme: light;
+  
+  /* ФИРМЕННАЯ ПАЛИТРА ZABOTA 2.0 - БЕЗ СИНИХ ЦВЕТОВ */
+  /* Проверена на соответствие WCAG AA/AAA */
+
+  /* ОСНОВНЫЕ ПОВЕРХНОСТИ */
+  --surface: #FFFFFF;
+  --text-primary: #1A1A1A;
+  --text-secondary: #4A4A4A;
+  --border-light: rgba(0, 0, 0, 0.06);
+  --neutral-100: #F2F2F2;
+
+  /* БРЕНДОВЫЕ ЦВЕТА - ОРАНЖЕВАЯ ПАЛИТРА */
+  --brand: #FF6A00;
+  --brand-press: #F55E00;
+  --brand-amber: #FF8C3A;
+
+  /* БЕЙДЖИ И ЧИПЫ */
+  --badge-bg: #FFF3E6;
+  --badge-border: #FFCFA7;
+  --badge-text: #B23A00;
+
+  /* ССЫЛКИ - ТЕПЛЫЙ ОРАНЖЕВЫЙ (НЕ СИНИЙ) */
+  --link: #B23A00;       /* заменили синий */
+  --link-hover: #FF6A00; /* фирменный оранжевый */
+
+  /* УСТАРЕВШИЕ ПЕРЕМЕННЫЕ (для совместимости) */
+  --bg: var(--surface);
+  --header-bg: var(--surface);
+  --card: var(--surface);
+  --card-hover: var(--neutral-100);
+  --text: var(--text-primary);
+  --text-muted: var(--text-secondary);
+  --text-hint: var(--text-secondary);
+  --text-on-orange: #FFFFFF;
+  --border: var(--border-light);
+  --divider: var(--border-light);
+  --cta: var(--brand);
+  --cta-hover: var(--brand-press);
+  --chip-active-bg: var(--badge-bg);
+  --chip-active-border: var(--badge-border);
+  --chip-active-text: var(--badge-text);
+
+  /* ОСТАЛЬНЫЕ ПЕРЕМЕННЫЕ */
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(0,0,0,0.06);  /* Мягкая тень для карточек */
+}
+
+/* ОСНОВНЫЕ СТИЛИ СТРАНИЦЫ */
+html, body {
+  background: #FFFFFF !important;
+  color: #1A1A1A !important;
+}
+
+/* ОСНОВНОЙ КОНТЕЙНЕР СТРАНИЦЫ */
+.pageRoot {
+  background: #FFFFFF !important;
+  color: #1A1A1A !important;
+  min-height: 100vh;
+}
+
+/* КАРТОЧКИ - БЕЛЫЙ ФОН С МЯГКИМИ ТЕНЯМИ */
+.card { 
+  background: #FFFFFF !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  color: #1A1A1A !important;
+}
+
+.card:hover { 
+  background: #F2F2F2 !important;
+}
+
+/* ХЕДЕР - БЕЛЫЙ ФОН */
+.site-header {
+  background: #FFFFFF !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  color: #1A1A1A !important;
+}
+
+/* ТЕКСТ В ХЕДЕРЕ - ЧЕРНЫЙ НА БЕЛОМ */
+.site-header h1,
+.site-header h2,
+.site-header h3,
+.site-header p,
+.site-header span,
+.site-header div,
+.site-header .nav,
+.site-header .actions,
+.site-header .btn {
+  color: #1A1A1A !important;
+}
+
+/* Анимированные элементы */
+.site-header .gradient-title,
+.site-header .hero-title-accent {
+  color: inherit;
+}
+
+/* Вторичный текст в хедере */
+.site-header .muted { 
+  color: #4A4A4A !important; 
+}
+
+/* ССЫЛКИ В ХЕДЕРЕ - ОРАНЖЕВЫЕ (НЕ СИНИЕ) */
+.site-header a,
+.site-header a.link,
+.site-header .icon-link {
+  color: #B23A00 !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.site-header a:hover,
+.site-header a.link:hover,
+.site-header .icon-link:hover {
+  color: #FF6A00 !important;
+  text-decoration-thickness: 2px;
+}
+
+/* CTA КНОПКИ В ХЕДЕРЕ - ОРАНЖЕВЫЕ */
+.site-header .btn-primary {
+  background: #FF6A00 !important;
+  color: #FFFFFF !important;
+  font-weight: 600;
+}
+
+.site-header .btn-primary:hover {
+  background: #F55E00 !important;
+}
+
+.site-header .btn-secondary {
+  background: #FFFFFF !important;
+  color: #1A1A1A !important;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.site-header .btn-secondary:hover {
+  background: #F2F2F2 !important;
+}
+
+/* Убираем text-shadow */
+.site-header * { 
+  text-shadow: none; 
+}
+
+/* ГЛОБАЛЬНЫЕ СТИЛИ ТЕКСТА */
+h1, h2, h3, h4, h5, h6 {
+  color: #1A1A1A !important;
+}
+
+p, span, div {
+  color: #1A1A1A !important;
+}
+
+/* Вторичный текст */
+.text-muted,
+.text-secondary {
+  color: #4A4A4A !important;
+}
+
+/* ССЫЛКИ - ГЛОБАЛЬНЫЕ СТИЛИ */
+a {
+  color: #B23A00 !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: #FF6A00 !important;
+  text-decoration-thickness: 2px;
+}
+
+/* КНОПКИ */
+.btn-primary {
+  background: #FF6A00 !important;
+  color: #FFFFFF !important;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: #F55E00 !important;
+}
+
+.btn-secondary {
+  background: #FFFFFF !important;
+  color: #1A1A1A !important;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.btn-secondary:hover {
+  background: #F2F2F2 !important;
+}
+
+/* БЕЙДЖИ */
+.badge {
+  background: #FFF3E6 !important;
+  color: #B23A00 !important;
+  border: 1px solid #FFCFA7;
+}
+
+/* ЧИПЫ */
+.chip {
+  background: #FFFFFF !important;
+  color: #1A1A1A !important;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.chip.is-active {
+  background: #FFF3E6 !important;
+  color: #B23A00 !important;
+  border-color: #FFCFA7;
+}
+
+/* ДОПОЛНИТЕЛЬНЫЕ ПАРАМЕТРЫ - ИСПРАВЛЕНИЕ ЦВЕТОВ */
+.extra-section {
+  color: #1A1A1A !important;
+}
+
+.extra-section h2,
+.extra-section .section-title {
+  color: #1A1A1A !important;
+}
+
+.extra-section .range-value,
+.extra-section .support-note {
+  color: #4A4A4A !important;
+}
+
+.extra-section .discount {
+  color: #B23A00 !important;
+}
+
+/* КНОПКИ ТЕХПОДДЕРЖКИ */
+.support-pill {
+  background: #FFFFFF !important;
+  color: #1A1A1A !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.support-pill:hover {
+  background: #F2F2F2 !important;
+}
+
+.support-pill.active {
+  background: #FF6A00 !important;
+  color: #FFFFFF !important;
+  border-color: #FF6A00 !important;
+}
+
+/* ПОДВАЛ - СВЕТЛО-СЕРЫЙ ФОН */
+footer {
+  background: #F2F2F2 !important;
+  color: #1A1A1A !important;
+}
+
+footer h3,
+footer p,
+footer a {
+  color: #1A1A1A !important;
+}
+
+footer a:hover {
+  color: #B23A00 !important;
+}
+
+/* УРОВНИ ПОДДЕРЖКИ - ОДИНАКОВАЯ ШИРИНА */
+.mm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  max-width: 100%;
+}
+
+@media (min-width: 640px) {
+  .mm-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .mm-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.mm-card {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mm-card-header {
+  flex-shrink: 0;
+}
+
+.mm-card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mm-list {
+  flex-grow: 1;
+}
+
+/* СЛАЙДЕРЫ - ИСПРАВЛЕНИЕ ЦВЕТОВ */
+input[type="range"],
+input[type="range"].w-full {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background: transparent !important;
+  cursor: pointer !important;
+}
+
+input[type="range"]::-webkit-slider-track,
+input[type="range"].w-full::-webkit-slider-track {
+  background: #E5E5E5 !important;
+  height: 6px !important;
+  border-radius: 3px !important;
+}
+
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"].w-full::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background: #FF6A00 !important;
+  height: 20px !important;
+  width: 20px !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  border: 2px solid #FFFFFF !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover,
+input[type="range"].w-full::-webkit-slider-thumb:hover {
+  background: #F55E00 !important;
+  transform: scale(1.1) !important;
+}
+
+input[type="range"]::-moz-range-track,
+input[type="range"].w-full::-moz-range-track {
+  background: #E5E5E5 !important;
+  height: 6px !important;
+  border-radius: 3px !important;
+  border: none !important;
+}
+
+input[type="range"]::-moz-range-thumb,
+input[type="range"].w-full::-moz-range-thumb {
+  background: #FF6A00 !important;
+  height: 20px !important;
+  width: 20px !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  border: 2px solid #FFFFFF !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+input[type="range"]::-moz-range-thumb:hover,
+input[type="range"].w-full::-moz-range-thumb:hover {
+  background: #F55E00 !important;
+  transform: scale(1.1) !important;
+}
+
+/* ЗАГОЛОВКИ СЕКЦИЙ - ТЕМНЫЙ ЦВЕТ */
+.section-title,
+h2.section-title {
+  color: #1A1A1A !important;
+  font-weight: 600 !important;
+  font-size: 18px !important;
+  margin-bottom: 16px !important;
+}
+
+/* ЗНАЧЕНИЯ СЛАЙДЕРОВ - ТЕМНЫЙ ЦВЕТ */
+.range-value,
+.period-summary {
+  color: #1A1A1A !important;
+  font-weight: 500 !important;
+  margin-top: 8px !important;
+}
+
+.range-value .discount,
+.period-discount {
+  color: #B23A00 !important;
+  font-weight: 600 !important;
+}
+
+/* ПОДПИСИ СЛАЙДЕРОВ - ТЕМНЫЙ ЦВЕТ */
+.slider-wrap .text-xs,
+.slider-wrap .text-gray-600 {
+  color: #4A4A4A !important;
+}
+
+/* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ПЕРИОДА */
+.period-months {
+  color: #1A1A1A !important;
+  font-weight: 500 !important;
+}
+
+.period-sep {
+  color: #4A4A4A !important;
+}

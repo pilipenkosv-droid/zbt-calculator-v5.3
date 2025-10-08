@@ -1,0 +1,61 @@
+/* Глобальный токен для удобной подгонки размера под «как на текущем сайте» */
+:root {
+  --logo-size: clamp(24px, 2.4vw, 32px); /* подправьте при необходимости */
+  
+  --surface: #FFFFFF;
+  --text-primary: #1A1A1A;
+  --border-light: rgba(0, 0, 0, 0.06);
+
+  /* бренд */
+  --brand: #FF6A00;
+  --brand-press: #F55E00;
+  --brand-amber: #FF8C3A;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.8); /* полупрозрачный белый фон */
+  backdrop-filter: blur(10px); /* размытие фона */
+  -webkit-backdrop-filter: blur(10px); /* для Safari */
+  border-bottom: 1px solid var(--border-light);
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo {
+  height: var(--logo-size);
+  width: auto;
+  object-fit: contain;
+  /* Для SVG с тонкими линиями — лёгкая резкость */
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Типографика для логотипа (если будет текст) */
+.brand {
+  font-family: 'Navigo', 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Состояние при скролле - более интенсивное размытие */
+.header.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}

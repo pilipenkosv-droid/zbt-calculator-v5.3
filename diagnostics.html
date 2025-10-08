@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Диагностика слайдеров</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background: #1a1a1a; 
+            color: white; 
+        }
+        .diagnostic-section { 
+            margin: 20px 0; 
+            padding: 15px; 
+            border: 1px solid #333; 
+            border-radius: 8px; 
+        }
+        .slider-test { 
+            margin: 10px 0; 
+        }
+        .slider-test input[type="range"] { 
+            width: 100%; 
+            margin: 10px 0; 
+        }
+        .results { 
+            background: #2a2a2a; 
+            padding: 10px; 
+            border-radius: 4px; 
+            font-family: monospace; 
+            white-space: pre-wrap; 
+        }
+        button { 
+            background: #007bff; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            margin: 5px; 
+        }
+        button:hover { 
+            background: #0056b3; 
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Диагностика слайдеров ZBT Calculator</h1>
+    
+    <div class="diagnostic-section">
+        <h2>Тестовые слайдеры</h2>
+        <div class="slider-test">
+            <label>База пациентов (1k-100k):</label>
+            <input type="range" id="patients" min="1000" max="100000" step="1000" value="35000">
+        </div>
+        <div class="slider-test">
+            <label>Период (1-12 мес):</label>
+            <input type="range" id="period" min="1" max="12" step="1" value="6">
+        </div>
+        <div class="slider-test">
+            <label>Филиалы (1-5):</label>
+            <input type="range" id="branches" min="1" max="5" step="1" value="2">
+        </div>
+        <div class="slider-test">
+            <label>WhatsApp (0-10):</label>
+            <input type="range" id="whatsapp" min="0" max="10" step="1" value="5">
+        </div>
+    </div>
+
+    <div class="diagnostic-section">
+        <h2>Диагностические действия</h2>
+        <button onclick="runDiagnostics()">🔍 Запустить диагностику</button>
+        <button onclick="clearResults()">🗑️ Очистить результаты</button>
+        <button onclick="testFillUpdate()">🎨 Тест обновления заливки</button>
+    </div>
+
+    <div class="diagnostic-section">
+        <h2>Результаты диагностики</h2>
+        <div id="results" class="results">Нажмите "Запустить диагностику" для начала проверки...</div>
+    </div>
+
+    <script>
+        // Подключаем CSS стили слайдеров из основного проекта
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = './src/index.css';
+        document.head.appendChild(link);
+        
+        // Встроенная JS логика слайдеров (копия из sliderUtils.ts)
+        (function(){
+            function clamp(n, min, max) { n = Number(n); return Math.max(min, Math.min(max, n)); }
+            function setFill(el) {
+                const min = Number(el.min || 0);
+                const max = Number(el.max || 100);
+                const val = clamp(el.value, min, max);
+                const percentage = ((val - min) / (max - min)) * 100;
+                el.style.setProperty('--fill-pct', percentage + '%');
+                console.log(`Слайдер ${el.id}: значение=${val}, процент=${percentage}%, CSS переменная=${el.style.getPropertyValue('--fill-pct')}`);
+            }
+            
+            function initSliders() {
+                const ranges = Array.from(document.querySelectorAll('input[type="range"]'));
+                console.log('Инициализация слайдеров:', ranges.length);
+                ranges.forEach(el => { 
+                    setFill(el); 
+                    el.addEventListener('input', () => setFill(el)); 
+                    el.addEventListener('change', () => setFill(el)); 
+                });
+            }
+            
+            // Инициализация
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initSliders);
+            } else {
+                initSliders();
+            }
+            
+            // Повторная инициализация
+            setTimeout(initSliders, 100);
+            setTimeout(initSliders, 500);
+            
+            // Принудительная инициализация при загрузке страницы
+            window.addEventListener('load', () => {
+                setTimeout(initSliders, 100);
+                setTimeout(initSliders, 300);
+                setTimeout(initSliders, 600);
+            });
+        })();
+
+        // Диагностическая функция
+        function runDiagnostics() {
+            const results = document.getElementById('results');
+            results.innerHTML = '🔄 Выполняется диагностика...\n\n';
+            
+            setTimeout(() => {
+                const ranges = Array.from(document.querySelectorAll('input[type="range"]'));
+                let report = '=== ДИАГНОСТИКА СЛАЙДЕРОВ ===\n\n';
+                report += `Найдено слайдеров: ${ranges.length}\n\n`;
+                
+                const problems = [];
+                
+                ranges.forEach((el, i) => {
+                    const s = getComputedStyle(el);
+                    const b = getComputedStyle(el, '::before');
+                    const a = getComputedStyle(el, '::after');
+                    const track = getComputedStyle(el, '::-webkit-slider-runnable-track');
+                    
+                    report += `--- Слайдер ${i + 1} (${el.id || 'без ID'}) ---\n`;
+                    report += `Значение: ${el.value} (min: ${el.min}, max: ${el.max})\n`;
+                    report += `CSS переменная --fill-pct: ${el.style.getPropertyValue('--fill-pct')}\n`;
+                    report += `Фон элемента: ${s.backgroundImage}\n`;
+                    report += `::before content: ${b.content}\n`;
+                    report += `::before width: ${b.width}\n`;
+                    report += `::before background: ${b.backgroundImage}\n`;
+                    report += `::after content: ${a.content}\n`;
+                    report += `::after background: ${a.backgroundImage}\n`;
+                    report += `Трек height: ${track.height}\n`;
+                    report += `Трек margin: ${track.margin}\n`;
+                    report += `Трек margin-top: ${track.marginTop}\n`;
+                    report += `Трек margin-bottom: ${track.marginBottom}\n`;
+                    report += `Трек borderWidth: ${track.borderWidth}\n`;
+                    report += `Трек background: ${track.backgroundImage}\n`;
+                    
+                    // Проверка на проблемы
+                    if (s.backgroundImage !== 'none') {
+                        problems.push(`⚠️ ${el.id}: Фон элемента не пустой - возможна двойная заливка!`);
+                    }
+                    if (a.content !== 'none') {
+                        problems.push(`⚠️ ${el.id}: ::after имеет content - возможен второй слой!`);
+                    }
+                    if (track.margin !== '9px 0px') {
+                        problems.push(`⚠️ ${el.id}: Неправильный margin трека: ${track.margin}`);
+                    }
+                    if (!el.style.getPropertyValue('--fill-pct')) {
+                        problems.push(`⚠️ ${el.id}: CSS переменная --fill-pct не установлена!`);
+                    }
+                    
+                    report += '\n';
+                });
+                
+                report += '\n=== ПРОВЕРКА КАЧЕСТВА ===\n';
+                if (problems.length === 0) {
+                    report += '✅ Все слайдеры в порядке!\n';
+                } else {
+                    report += '❌ Найдены проблемы:\n';
+                    problems.forEach(p => report += `${p}\n`);
+                }
+                
+                report += '\n=== ВИЗУАЛЬНАЯ ПРОВЕРКА ===\n';
+                report += 'Проверьте в браузере:\n';
+                report += '1. Заливка начинается от внутренней кромки трека\n';
+                report += '2. Заливка не касается внешней рамки\n';
+                report += '3. При max значении заливка не выходит за правую внутреннюю кромку\n';
+                report += '4. Все слайдеры выглядят одинаково\n';
+                report += '5. Нет двойных слоев заливки\n';
+                
+                results.innerHTML = report;
+            }, 100);
+        }
+        
+        function clearResults() {
+            document.getElementById('results').innerHTML = 'Результаты очищены. Нажмите "Запустить диагностику" для новой проверки...';
+        }
+        
+        function testFillUpdate() {
+            const ranges = Array.from(document.querySelectorAll('input[type="range"]'));
+            ranges.forEach(el => {
+                const min = Number(el.min || 0);
+                const max = Number(el.max || 100);
+                const val = Number(el.value);
+                const pct = ((val - min) / (max - min)) * 100;
+                el.style.setProperty('--fill-pct', pct + '%');
+            });
+            
+            document.getElementById('results').innerHTML = '🎨 CSS переменные --fill-pct обновлены для всех слайдеров!\n\nТеперь запустите диагностику для проверки.';
+        }
+        
+        // Автоматически запускаем диагностику при загрузке
+        window.addEventListener('load', () => {
+            // Сначала инициализируем CSS переменные
+            testFillUpdate();
+            // Принудительно обновляем все слайдеры
+            setTimeout(() => {
+                const ranges = Array.from(document.querySelectorAll('input[type="range"]'));
+                ranges.forEach(el => {
+                    const min = Number(el.min || 0);
+                    const max = Number(el.max || 100);
+                    const val = Number(el.value);
+                    const percentage = ((val - min) / (max - min)) * 100;
+                    el.style.setProperty('--fill-pct', percentage + '%');
+                    console.log(`Принудительное обновление ${el.id}: ${percentage}%`);
+                });
+            }, 200);
+            // Затем запускаем диагностику
+            setTimeout(runDiagnostics, 500);
+        });
+    </script>
+</body>
+</html>

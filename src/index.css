@@ -1,0 +1,2714 @@
+/* Шрифты Navigo с Inter как fallback */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Глобальные шрифты - Navigo */
+* {
+  font-family: 'Navigo', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+body {
+  font-family: 'Navigo', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-weight: 400;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Типографика для заголовков калькулятора */
+h1, h2, h3, .section-title, .mm-section-subtitle {
+  font-family: 'Navigo', 'Inter', sans-serif;
+  font-weight: 700; /* Bold для заголовков */
+  letter-spacing: -0.02em;
+}
+
+/* Типографика для кнопок и интерактивных элементов */
+button, .btn, .cta-button {
+  font-family: 'Navigo', 'Inter', sans-serif;
+  font-weight: 600; /* SemiBold для кнопок */
+  letter-spacing: -0.01em;
+}
+
+/* Типографика для цен и чисел */
+.price-value, .mm-price, .range-value {
+  font-family: 'Navigo', 'Inter', sans-serif;
+  font-weight: 800; /* ExtraBold для акцентных чисел */
+  letter-spacing: -0.02em;
+}
+
+/* Типографика для описаний */
+p, .desc, .support-note {
+  font-family: 'Navigo', 'Inter', sans-serif;
+  font-weight: 400; /* Regular для основного текста */
+  letter-spacing: -0.01em;
+}
+
+:root {
+  /* Оптимизированные цветовые токены для тёмной темы */
+  --bg: #0b0b0d;
+  --surface: rgba(255,255,255,0.08);
+  --surface-strong: rgba(255,255,255,0.12);
+  --border: rgba(255,255,255,0.18);
+  --text: #ffffff;
+  --text-muted: rgba(255,255,255,0.72);
+  --text-subtle: rgba(255,255,255,0.56);
+  --accent: #ff7a00;
+  --accent-hover: #ff8a1a;
+  --success: #34c759;
+  --warning: #ff9500;
+  
+  /* CSS переменные для слайдеров */
+  --track-h: 6px;
+  --track-border: 1px;
+  --fill-pct: 0%;
+  --track-margin: 9px 0;
+  --error: #ff3b30;
+  --shadow-1: 0 6px 24px rgba(0,0,0,0.35);
+  --shadow-2: 0 2px 8px rgba(0,0,0,0.25);
+  --shadow-3: 0 1px 3px rgba(0,0,0,0.15);
+  --radius: 16px;
+  --radius-sm: 8px;
+  --radius-lg: 24px;
+  --gap-1: 8px;
+  --gap-2: 12px;
+  --gap-3: 16px;
+  --gap-4: 24px;
+  --gap-5: 32px;
+  
+  /* Контрастные значения для WCAG AA */
+  --contrast-high: #ffffff;
+  --contrast-medium: rgba(255,255,255,0.87);
+  --contrast-low: rgba(255,255,255,0.6);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Оптимизированная типографика с контрастом */
+h1 {
+  font-size: 32px;
+  line-height: 1.125;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--contrast-high);
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--contrast-high);
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 1.33;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--contrast-high);
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--contrast-medium);
+}
+
+/* Улучшенные цвета для лучшего контраста */
+.mm-tier {
+  color: var(--contrast-medium);
+}
+
+.mm-price {
+  color: var(--contrast-high);
+}
+
+.mm-list li {
+  color: var(--contrast-medium);
+}
+
+.price-label {
+  color: var(--contrast-medium);
+}
+
+.price-value {
+  color: var(--contrast-high);
+}
+
+/* Apple-style containers */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--gap-3);
+}
+
+.container-wide {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--gap-3);
+}
+
+/* Grid system */
+.grid-main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap-4);
+}
+
+@media (min-width: 1024px) {
+  .grid-main {
+    grid-template-columns: 1fr 400px;
+    gap: var(--gap-5);
+  }
+}
+
+/* Sticky панель расчёта */
+.calc-sticky {
+  position: sticky;
+  top: 24px;
+  width: 380px;
+  max-width: 420px;
+  padding: var(--gap-4);
+}
+
+.calc-title {
+  font-size: 18px;
+  color: var(--text-muted);
+  margin-bottom: var(--gap-3);
+}
+
+.calc-monthly {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: var(--gap-2);
+}
+
+.calc-monthly-suffix {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-left: 6px;
+}
+
+.calc-total {
+  font-size: 20px;
+  color: var(--text);
+  opacity: 0.9;
+  margin-bottom: var(--gap-2);
+}
+
+.calc-discount-rub {
+  color: var(--success) !important;
+  font-weight: 600;
+  margin-bottom: var(--gap-4);
+}
+
+/* Принудительный зеленый цвет для скидки */
+.calc-card .calc-discount-rub {
+  color: #34c759 !important;
+}
+
+/* Скидка в процентах - зеленый цвет, над основной ценой */
+.calc-discount-percent {
+  color: #34c759 !important;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+/* Разложение цены - flex layout */
+.price-breakdown {
+  margin-bottom: var(--gap-4);
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--gap-1) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.price-row:last-child {
+  border-bottom: none;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.price-label {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.price-value {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* MM Grid - ровные доли */
+.mm-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /* ровные доли */
+  gap: 20px;
+}
+
+/* Стили заголовка секции уровней ММ */
+.mm-section-title {
+  /* визуальная иерархия */
+  font-size: 24px;          /* при необходимости 22–24px */
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--text);
+  /* строго левый край */
+  text-align: left !important;
+  /* одна строка + безопасное обрезание */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* минимальные отступы */
+  margin: 0 0 12px 0;
+}
+
+/* Подзаголовок/описание под ним — обычный текст, без переноса заголовка на две строки */
+.mm-section-subtitle {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  text-align: left;
+  margin: 0 0 16px 0;
+}
+
+/* Адаптивные правила — сохраняем левое выравнивание, слегка уменьшаем размер, если экран узкий */
+@media (max-width: 640px) {
+  .mm-section-subtitle {
+    font-size: 13px; /* на мобильном чуть меньше */
+  }
+}
+
+/* Защититься от сторонних центровок: если есть глобальные стили, добавляем класс к заголовку */
+.mm-section-subtitle, .mm-section-subtitle * {
+  text-align: left !important;
+}
+
+/* Если заголовок содержит эмодзи/иконки — оставляем inline, не даём переноса */
+.mm-section-subtitle .icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* В тёмной теме контраст не меняем, типографику оставляем прежней */
+.theme-dark .mm-section-subtitle {
+  color: var(--text);
+}
+
+/* При повышенной контрастности */
+@media (prefers-contrast: more) {
+  .mm-section-subtitle {
+    text-shadow: none;
+  }
+}
+
+/* Стили секции "База пациентов" */
+.slider-section-title {
+  text-align: left !important;
+  font-weight: 500;                 /* было 600–700 → делаем тоньше */
+  font-size: clamp(18px, 1.8vw, 22px); /* чуть меньше кегль */
+  line-height: 1.25;
+  letter-spacing: -0.1px;
+  margin: 0 0 8px 0;                /* ближе к контролу */
+  color: var(--text);
+}
+
+/* Подпись «XX XXX пациентов» — тот же белый стиль, что у "X месяцев" */
+.range-value {
+  text-align: left !important;   /* левый край */
+  font-weight: 600;              /* как у "месяцев" для визуальной консистентности */
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--text);            /* белый, как у блока "Период подписки" */
+  margin-top: 6px;
+}
+
+/* Если где-то остался оранжевый/акцентный класс — переопределяем на белый */
+.range-value.accent {
+  color: var(--text) !important;
+  font-weight: 600 !important;
+}
+
+/* Защититься от наследованных центровок */
+.slider-section-title, .range-value, .range-value * {
+  text-align: left !important;
+}
+
+/* Защита от наследованных центровок */
+.range-value, .range-value * {
+  text-align: left !important;
+}
+
+/* Стили для периода подписки */
+.period-summary {
+  display: inline-flex;
+  align-items: baseline;           /* ключевой момент: выравниваем по базовой линии */
+  gap: 8px;                        /* небольшой отступ между элементами */
+  margin: 8px 0 0;                 /* близко к слайдеру/лейблу */
+  font-size: 14px;                 /* единый базовый размер */
+  line-height: 1.4;
+  color: var(--text);
+}
+
+/* Элементы лейбла */
+.period-months {
+  font-weight: 600;                /* слегка акцентируем выбранный период */
+  white-space: nowrap;
+}
+
+.period-sep {
+  font-weight: 500;                /* тире «—» как отдельный элемент, чтобы не прыгал */
+  color: var(--text-muted);
+}
+
+.period-discount {
+  font-weight: 600;
+  color: #34c759;                  /* зелёный Apple; при желании используйте var(--success) */
+  white-space: nowrap;
+}
+
+/* Если хотите чуть меньшую доминанту — снизьте вес у периода и скидки */
+@media (prefers-contrast: more) {
+  .period-discount { 
+    text-decoration: underline; 
+  }
+}
+
+/* Адаптив: при очень узкой ширине переносим скидку на следующую строку, сохранив визуальную связь */
+@media (max-width: 420px) {
+  .period-summary {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .period-sep { 
+    display: none;          /* на узких экранах тире можно скрыть */
+  }
+  /* Альтернатива: оставить тире и перенести его вместе со скидкой */
+}
+
+/* Защита от конфликтов глобальных стилей */
+.period-summary, .period-summary * {
+  vertical-align: baseline;               /* закрепляем базовую линию для всех элементов */
+  text-align: left !important;
+}
+
+/* Контейнер секции −20% визуально */
+.slider-section {
+  transform: scale(0.9);         /* быстрый способ уменьшить на ~10%…20% */
+  transform-origin: top left;
+}
+
+/* Секция ползунков: минимальный отступ для удобства восприятия */
+.sliders-section { 
+  margin-bottom: 8px; 
+}    /* минимальное расстояние для удобства восприятия */
+
+.slider-block { 
+  margin-bottom: 6px; 
+}     /* внутри каждого ползунка: еще компактнее */
+
+/* Заголовки секций — компактные отступы */
+.section-title { 
+  margin: 0 0 8px 0; 
+}
+
+.section-subtitle { 
+  margin: 4px 0 12px 0; 
+}
+
+/* Блок уровней ММ — минимальный верхний отступ от ползунков */
+.mm-section { 
+  margin-top: 4px; 
+}             /* минимальное расстояние для удобства восприятия */
+
+/* Сетка карточек ММ — выше и одинаковая высота */
+.mm-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px; 
+}
+
+.mm-card {
+  min-height: 380px;                         /* увеличили высоту для лучшего восприятия */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px;                             /* немного больше padding */
+}
+
+.mm-card-header { 
+  min-height: 100px; 
+}       /* зарезервировать место под заголовок + цену + «в мес» */
+
+.mm-card-body { 
+  flex: 1; 
+}                  /* список фич ровно распределён */
+
+.mm-card-footer { 
+  margin-top: 12px; 
+}
+
+/* Компактные отступы между блоками */
+.section-spacer-small { 
+  margin-top: 8px; 
+}
+
+.section-spacer-medium { 
+  margin-top: 12px; 
+}
+
+/* Уточнение вертикальных ритмов: */
+.sliders-section .slider-block:last-child { 
+  margin-bottom: 0; 
+}
+
+.mm-section .mm-grid { 
+  margin-top: 6px; 
+}    /* минимальный просвет для дыхания */
+
+/* Контейнер страницы и контентная область */
+.header-wrap { 
+  max-width: 1280px; 
+  margin: 0 auto; 
+  padding: 0 24px; 
+}
+
+.page-wrap { 
+  max-width: 1250px; 
+  margin: 0 auto; 
+  padding: 0 24px; 
+} /* расширили область, но оставили чуть уже хедера для визуального нависания */
+
+/* Сетка двухколоночная: слева контент, справа sticky итог */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;          /* контент ~ шире, итог ~380 px */
+  gap: 24px;
+  align-items: start;                        /* верхняя граница по одной линии */
+}
+
+/* Sticky итог — выравниваем верх по ползункам, низ по высоте карточек ММ */
+.calc-sticky {
+  position: sticky;
+  top: 24px;                                 /* старт вровень с верхними ползунками */
+  align-self: start;                         /* выравнивание по верхней границе */
+  height: fit-content;                       /* высота по содержимому */
+  max-height: calc(100vh - 48px);           /* ограничение высоты для удобства */
+}
+
+/* Визуально ограничить высоту до низа блока уровней ММ: */
+.mm-and-calc-row { 
+  display: grid; 
+  grid-template-columns: 1fr 380px; 
+  gap: 24px; 
+}
+
+.mm-block { 
+  /* левый столбец с карточками */ 
+}
+
+.calc-sticky { 
+  /* правый столбец */ 
+}
+
+/* Если нужно визуально «подрезать» низ sticky ровно по низу карточек — добавьте matched-height: */
+.matched-row { 
+  display: grid; 
+  grid-template-columns: 1fr 380px; 
+}
+
+.matched-row .mm-section { 
+  align-self: stretch; 
+}
+
+.matched-row .calc-sticky { 
+  align-self: stretch; 
+}
+
+/* Адаптив: на узких экранах — sticky снимаем, ширины 100% */
+@media (max-width: 1100px) {
+  .layout, .mm-and-calc-row { 
+    grid-template-columns: 1fr; 
+  }
+  
+  .calc-sticky { 
+    position: static; 
+    top: auto; 
+    width: 100%; 
+    margin-bottom: 16px; 
+  }
+  
+  .mm-grid { 
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 640px) {
+  .slider-section { 
+    transform: none; /* на мобиле без скейла для читаемости */
+  }
+  
+  .slider-section-title { 
+    font-size: 18px; 
+  }
+  
+  .range-value { 
+    font-size: 13px; 
+  }
+  
+  .mm-grid { 
+    grid-template-columns: 1fr; 
+  }
+}
+
+/* Стеклянный стиль дорожки и «тонкий» незаполненный трек */
+.range-wrap {
+  display: grid;
+  gap: 8px;
+}
+
+/* Старые правила удалены - используется единый стиль input[type="range"] ниже */
+
+.mm-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.mm-card {
+  box-sizing: border-box;                 /* ширина с учётом паддингов */
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 340px;                      /* единая высота ряда */
+  padding: 16px;
+  backdrop-filter: blur(12px) saturate(120%);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 16px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 180ms ease;
+}
+
+.mm-card:hover {
+  transform: translateY(-2px);
+}
+
+.mm-card.selected {
+  outline: 2px solid var(--accent);
+  box-shadow: 0 0 0 6px rgba(255, 122, 0, 0.12);
+}
+
+.mm-card.advanced {
+  position: relative;
+}
+
+/* Бейдж «Рекомендуем» — не влияет на измерения */
+.mm-card.recommend { 
+  position: relative; 
+}
+
+.mm-badge {
+  position: absolute;
+  top: 10px; 
+  left: 12px;
+  transform: translateY(-60%);            /* слегка «нависает» */
+  padding: 4px 10px;
+  font-size: 12px; 
+  line-height: 1;
+  border-radius: 999px;
+  background: #1c1c1f;
+  color: #34c759;
+  border: 1px solid rgba(255,255,255,0.18);
+  pointer-events: none;
+}
+
+.mm-card-header {
+  display: grid;
+  grid-template-rows: auto auto auto;     /* title, price, sub */
+  gap: 6px;
+  min-height: 96px;                       /* резерв под разную длину заголовка */
+}
+
+.mm-title {
+  text-align: left;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  white-space: nowrap;                    /* не переносим */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;                  /* 1 строка */
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+    .mm-title.gradient-premium {
+      /* Альтернативный подход с псевдоэлементом */
+      position: relative;
+      color: #FF6A00; /* оранжевый fallback цвет */
+      font-weight: 700;
+      display: inline-block;
+      /* Улучшение рендеринга текста */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    .mm-title.gradient-premium::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(
+        35deg,
+        #FF6A00 0%,
+        #FF8C3A 60%,
+        #FF6A00 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-fill-color: transparent;
+      z-index: 1;
+      /* Улучшение рендеринга */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      /* Активация аппаратного ускорения */
+      transform: translateZ(0);
+      will-change: transform;
+      /* Улучшение четкости */
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .mm-title.gradient-premium { 
+        filter: saturate(150%) brightness(120%); 
+        background-image: linear-gradient(
+          35deg,
+          #FF6A00 0%,
+          #FF8C3A 60%,
+          #FF6A00 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+    }
+
+@media (prefers-contrast: more) {
+  .mm-title.gradient-premium {
+    background: none; 
+    color: var(--accent); 
+    text-shadow: none; /* доступный fallback */
+  }
+}
+
+
+@media (max-width: 360px) {
+  .mm-title.gradient-premium { 
+    font-size: 15px; 
+  }
+}
+
+    /* На очень тёмных подложках - яркий градиент */
+    .theme-dark .mm-title.gradient-premium {
+      background-image: linear-gradient(
+        35deg,
+        #FF6A00 0%,
+        #FF8C3A 60%,
+        #FF6A00 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      filter: saturate(160%) brightness(130%);
+      text-shadow: 
+        0 0 15px rgba(255, 106, 0, 0.7),
+        0 0 25px rgba(255, 140, 58, 0.5),
+        0 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
+/* Металлическая платина — только для Expert */
+.mm-title.metal {
+  /* Слой 1: основной платиновый линейный градиент (холодные серые) */
+  background:
+    linear-gradient(90deg,
+      #6f747a 0%,
+      #c0c4c9 20%,
+      #eef0f3 38%,
+      #b5bac0 55%,
+      #f5f7fa 72%,
+      #9aa0a6 100%
+    ),
+    /* Слой 2: вертикальный бликовый слой (узкая светлая «полоса») */
+    linear-gradient(180deg,
+      rgba(255,255,255,0.65) 0%,
+      rgba(255,255,255,0.00) 28%,
+      rgba(255,255,255,0.00) 72%,
+      rgba(255,255,255,0.35) 100%
+    ),
+    /* Слой 3: мягкий радиальный блик для объёма */
+    radial-gradient(120% 120% at 15% 85%,
+      rgba(255,255,255,0.25) 0%,
+      rgba(255,255,255,0.00) 45%
+    );
+  background-blend-mode: normal, overlay, overlay;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  /* Объём через тени (имитация фаски) */
+  text-shadow:
+    0 1px 1px rgba(0,0,0,0.25),
+    0 2px 6px rgba(0,0,0,0.20);
+
+  /* Небольшая «искра» при ховере — смещение блика */
+  transition: background-position 240ms ease, filter 240ms ease;
+  background-size: 100% 100%;
+  background-position: 0% 0%;
+}
+.mm-title.metal:hover {
+  background-position: 2% 0%; /* лёгкое движение блика */
+  filter: saturate(108%) contrast(104%);
+}
+
+/* Тёмная тема — чуть более холодные тона и контрастный блик */
+.theme-dark .mm-title.metal {
+  background:
+    linear-gradient(90deg,
+      #5f656b 0%,
+      #b2b7bd 20%,
+      #e6e9ed 38%,
+      #a5abb1 55%,
+      #f1f3f6 72%,
+      #8b9197 100%
+    ),
+    linear-gradient(180deg,
+      rgba(255,255,255,0.60) 0%,
+      rgba(255,255,255,0.00) 30%,
+      rgba(255,255,255,0.00) 70%,
+      rgba(255,255,255,0.30) 100%
+    ),
+    radial-gradient(120% 120% at 15% 85%,
+      rgba(255,255,255,0.22) 0%,
+      rgba(255,255,255,0.00) 45%
+    );
+  background-blend-mode: normal, overlay, overlay;
+}
+
+/* Повышенная контрастность — безопасный однотонный платиновый */
+@media (prefers-contrast: more) {
+  .mm-title.metal {
+    background: none;
+    color: #e6e9ed;        /* платиновый однотон */
+    text-shadow: none;
+  }
+}
+
+.mm-price {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.mm-price-sub {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.mm-card-body { 
+  margin-top: 8px; 
+}
+
+.mm-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mm-list li {
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.mm-list li:last-child {
+  margin-bottom: 0;
+}
+
+.mm-card-footer { 
+  margin-top: 12px; 
+}
+
+/* Кнопка не растягивает карточку */
+.mm-action {
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 600;
+  background: var(--accent);
+  color: #1a1a1a;
+  box-shadow: 0 6px 18px rgba(255,122,0,0.35);
+  width: max-content;
+}
+
+/* Защита: любые внутренние элементы не должны иметь width:auto, который ломает сетку */
+.mm-card * { 
+  max-width: 100%; 
+}
+
+/* Пасхалка "Рекомендуем" - зеленая точка как верхний индекс */
+.mm-easter-egg {
+  position: relative;
+  display: inline-block;
+  margin-left: 4px;
+  z-index: 10;
+  cursor: pointer;
+  vertical-align: super;           /* верхний индекс */
+  font-size: 0.7em;               /* уменьшенный размер */
+}
+
+.mm-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34c759;
+  box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.7);
+  animation: pulse 2s infinite;
+  transition: all 0.2s ease;      /* быстрее анимация */
+  vertical-align: middle;
+}
+
+.mm-easter-egg:hover .mm-dot {
+  transform: scale(1.1);
+  /* Убираем зеленое свечение - оно мешает тултипу */
+}
+
+/* Пасхалка "Рекомендуем" - зеленая точка как верхний индекс */
+.mm-easter-egg {
+  position: relative;
+  display: inline-block;
+  margin-left: 4px;
+  z-index: 10;
+  cursor: pointer;
+  vertical-align: super;           /* верхний индекс */
+  font-size: 0.7em;               /* уменьшенный размер */
+}
+
+.mm-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34c759;
+  box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.7);
+  animation: pulse 2s infinite;
+  transition: all 0.2s ease;      /* быстрее анимация */
+  vertical-align: middle;
+}
+
+.mm-easter-egg:hover .mm-dot {
+  transform: scale(1.1);
+  /* Убираем зеленое свечение - оно мешает тултипу */
+}
+
+/* МАКСИМАЛЬНО ПРОСТОЙ СТИЛЬ для пасхалки */
+.mm-easter-tooltip {
+  position: absolute !important;
+  bottom: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) translateY(-8px) !important;
+  background: #34c759 !important;
+  background-color: #34c759 !important;
+  color: #ffffff !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.1s ease !important;
+  pointer-events: none !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: 0 4px 12px rgba(52, 199, 89, 0.4) !important;
+  z-index: 9999 !important;
+}
+
+.mm-easter-tooltip::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  border: 4px solid transparent !important;
+  border-top-color: #34c759 !important;
+}
+
+.mm-easter-egg:hover .mm-easter-tooltip {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+
+/* Пульсация точки */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(52, 199, 89, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 199, 89, 0);
+  }
+}
+
+/* Адаптив — фиксированные колонки сохраняют консистентность */
+@media (max-width: 1100px) { 
+  .mm-grid { 
+    grid-template-columns: repeat(2, 1fr); 
+  } 
+}
+
+@media (max-width: 640px)  { 
+  .mm-grid { 
+    grid-template-columns: 1fr; 
+  } 
+}
+
+/* Адаптивные брейки */
+@media (max-width: 1100px) {
+  .mm-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .calc-sticky {
+    position: static;
+    width: auto;
+    margin-bottom: var(--gap-4);
+  }
+  
+  .grid-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mm-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-3);
+  }
+  
+  .mm-card {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 640px) {
+  .mm-grid {
+    grid-template-columns: 1fr;
+    gap: var(--gap-3);
+  }
+  
+  .mm-card {
+    min-height: 260px;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+  
+  .container {
+    padding: 0 var(--gap-2);
+  }
+  
+  .container-wide {
+    padding: 0 var(--gap-2);
+  }
+}
+
+/* Оптимизированные анимации */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Apple-style UI элементы */
+.btn {
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: transform 180ms ease, opacity 180ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+  outline: none;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #1a1a1a;
+  box-shadow: 0 6px 18px rgba(255, 122, 0, 0.35);
+}
+
+.btn-primary:hover {
+  background: #ff8a1a;
+  box-shadow: 0 8px 24px rgba(255, 122, 0, 0.4);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.btn-lg {
+  padding: 14px 24px;
+  font-size: 16px;
+}
+
+/* Поля ввода - Apple style */
+.input {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-size: 14px;
+  transition: all 180ms ease;
+  outline: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.15);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.select {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-size: 14px;
+  transition: all 180ms ease;
+  outline: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.15);
+}
+
+/* Тултипы - Apple style */
+.tooltip {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(50, 50, 54, 0.78);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: var(--shadow-2);
+  max-width: 320px;
+  font-size: 13px;
+  line-height: 1.4;
+  z-index: 50;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 200ms ease;
+  pointer-events: none;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--border);
+}
+
+.tooltip.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip-title {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.tooltip-text {
+  color: var(--text-muted);
+}
+
+/* Сегментированные контролы */
+.segmented {
+  display: flex;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 4px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.segment {
+  flex: 1;
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 180ms ease;
+  border: none;
+  background: transparent;
+}
+
+.segment:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.segment.active {
+  background: var(--accent);
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+
+/* Анимация градиента */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Пикселизация в виде кружков */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(255, 122, 26, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, rgba(255, 122, 26, 0.08) 2px, transparent 2px),
+    radial-gradient(circle at 40% 40%, rgba(255, 122, 26, 0.06) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 60% 60%, rgba(255, 122, 26, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 10% 80%, rgba(255, 122, 26, 0.05) 2px, transparent 2px),
+    radial-gradient(circle at 90% 90%, rgba(255, 122, 26, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 30% 70%, rgba(255, 122, 26, 0.06) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 70% 30%, rgba(255, 122, 26, 0.09) 1px, transparent 1px);
+  background-size: 200px 200px, 150px 150px, 180px 180px, 160px 160px, 220px 220px, 140px 140px, 190px 190px, 170px 170px;
+  background-position: 0 0, 50px 50px, 100px 100px, 150px 150px, 200px 200px, 250px 250px, 300px 300px, 350px 350px;
+  animation: pixelFloat 15s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Анимация пикселизации */
+@keyframes pixelFloat {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-20px, -10px) rotate(1deg); }
+  50% { transform: translate(-10px, -20px) rotate(-1deg); }
+  75% { transform: translate(10px, -15px) rotate(0.5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Дополнительный слой с темными кружками */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(10, 15, 30, 0.3) 1px, transparent 1px),
+    radial-gradient(circle at 85% 15%, rgba(10, 15, 30, 0.2) 2px, transparent 2px),
+    radial-gradient(circle at 35% 35%, rgba(10, 15, 30, 0.25) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 65% 65%, rgba(10, 15, 30, 0.3) 1px, transparent 1px),
+    radial-gradient(circle at 5% 85%, rgba(10, 15, 30, 0.2) 2px, transparent 2px),
+    radial-gradient(circle at 95% 95%, rgba(10, 15, 30, 0.25) 1px, transparent 1px);
+  background-size: 300px 300px, 250px 250px, 280px 280px, 260px 260px, 320px 320px, 240px 240px;
+  background-position: 0 0, 100px 100px, 200px 200px, 300px 300px, 400px 400px, 500px 500px;
+  animation: pixelFloat 25s linear infinite reverse;
+  pointer-events: none;
+  z-index: -1;
+}
+
+:root {
+  --color-bg: #0A0F1E;
+  --color-glass: rgba(255,255,255,0.08);
+  --color-glass-strong: rgba(255,255,255,0.12);
+  --color-text-strong: rgba(255,255,255,0.92);
+  --color-text: rgba(255,255,255,0.85);
+  --color-text-muted: rgba(255,255,255,0.72);
+  --color-border: rgba(255,255,255,0.20);
+  --color-inner-border: rgba(255,255,255,0.35);
+  --color-accent: #FF7A1A;
+  --color-accent-2: #2B8CFF;
+  --color-success: #16C784;
+  --color-warning: #F59E0B;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Navigo', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #0A0F1E 0%, #1A2332 50%, #0F1419 100%);
+  color: var(--color-text-strong);
+  min-height: 100vh;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 1024px) {
+  .lg\\:sticky {
+    position: static !important;
+  }
+  
+  .lg\\:top-6 {
+    top: auto !important;
+  }
+}
+
+/* Sticky контейнер */
+.sticky-container {
+  position: sticky;
+  top: 24px;
+  z-index: 10;
+}
+
+/* Предотвращение перекрытия тултипов */
+.tooltiptext {
+  z-index: 50;
+}
+
+/* Адаптивная ширина sticky блока */
+@media (min-width: 1024px) {
+  .sticky-calc {
+    width: 380px; /* 23.75rem = 380px */
+    max-width: 420px;
+  }
+}
+
+.glass-card {
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+  position: relative;
+}
+
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  outline: 1px solid var(--color-inner-border);
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+@media (max-width: 768px) {
+  .glass-card {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 6px 16px rgba(10,15,30,0.22);
+  }
+}
+
+.no-backdrop .glass-card {
+  background: rgba(20,28,44,0.65);
+}
+
+/* Glass карточки для уровней ММ - Chatfuel стиль */
+.glass-mm-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  min-height: 320px;
+  color: rgba(255, 255, 255, 0.95);
+  cursor: pointer;
+}
+
+.glass-mm-card h3 {
+  color: rgba(255, 255, 255, 1);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.glass-mm-card .price {
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+.glass-mm-card .features {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.glass-mm-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.glass-mm-card:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.glass-mm-card.selected {
+  background: rgba(255, 122, 26, 0.15);
+  border: 2px solid rgba(255, 122, 26, 0.4);
+  box-shadow: 0 8px 32px rgba(255, 122, 26, 0.2);
+}
+
+/* Платиновая окантовка для Expert */
+.glass.mm-card.expert {
+  border: 3px solid rgba(150, 160, 170, 1) !important; /* более контрастная платиновая окантовка */
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 0 25px rgba(150, 160, 170, 0.8) !important; /* более заметное платиновое свечение */
+  position: relative;
+}
+
+/* Дополнительное платиновое свечение для Expert */
+.glass.mm-card.expert::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, rgba(192, 196, 201, 0.3), rgba(192, 196, 201, 0.1));
+  border-radius: 14px;
+  z-index: -1;
+}
+
+/* При выборе Expert - оранжевая окантовка как у остальных */
+.glass.mm-card.expert.selected {
+  background: rgba(255, 122, 26, 0.15) !important;
+  border: 3px solid rgba(255, 122, 26, 0.6) !important;
+  box-shadow: 0 8px 32px rgba(255, 122, 26, 0.3) !important;
+}
+
+/* Убираем платиновое свечение при выборе */
+.glass.mm-card.expert.selected::before {
+  display: none;
+}
+
+/* Доступность - контраст текста */
+.glass-mm-card * {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Овальные стеклянные блоки для услуг */
+.feature-oval {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.feature-oval:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.feature-oval .icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.feature-oval .text {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Оптимизированные стеклянные панели */
+.glass {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+  color: var(--text);
+}
+
+.glass-strong {
+  background: var(--surface-strong);
+}
+
+/* Backdrop-filter только для ключевых элементов */
+.glass-card,
+.glass-header,
+.calc-sticky {
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+}
+
+/* Fallback для браузеров без backdrop-filter */
+@supports not (backdrop-filter: blur(20px)) {
+  .glass-card,
+  .glass-header,
+  .calc-sticky {
+    background: rgba(20, 28, 44, 0.85);
+  }
+}
+
+/* Стеклянный хедер - Apple style */
+.glass-header {
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  background: var(--surface-strong);
+  border: 2px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow-1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+}
+
+.glass-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 122, 26, 0.05) 100%);
+  pointer-events: none;
+}
+
+.glass-calculation h3 {
+  color: rgba(255, 255, 255, 1);
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.glass-calculation .text-brand-orange {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.glass-calculation .text-green-400 {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 280px;
+  background-color: rgba(0,0,0,0.9);
+  color: #fff;
+  text-align: left;
+  border-radius: 8px;
+  padding: 12px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -140px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--color-glass);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 400px;
+  width: 90%;
+}
+
+/* ФИНАЛЬНЫЕ СТИЛИ ПАСХАЛКИ - МАКСИМАЛЬНЫЙ ПРИОРИТЕТ */
+.mm-easter-tooltip {
+  position: absolute !important;
+  bottom: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) translateY(-8px) !important;
+  background: #34c759 !important;
+  background-color: #34c759 !important;
+  color: #ffffff !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.1s ease !important;
+  pointer-events: none !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: 0 4px 12px rgba(52, 199, 89, 0.4) !important;
+  z-index: 9999 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.mm-easter-tooltip::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  border: 4px solid transparent !important;
+  border-top-color: #34c759 !important;
+}
+
+.mm-easter-egg:hover .mm-easter-tooltip {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Убираем зеленое свечение с точки при hover */
+.mm-easter-egg:hover .mm-dot {
+  transform: scale(1.1) !important;
+  box-shadow: 0 0 0 0 rgba(52, 199, 89, 0) !important;
+}
+
+/* НОВЫЕ СТИЛИ ДЛЯ БЛОКА РАСЧЕТА */
+.calc-card {
+  backdrop-filter: blur(18px) saturate(120%);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+  padding: 16px 18px;
+  transition: all 0.3s ease;
+}
+
+/* Зеленое свечение при наличии скидки - только окантовка */
+.calc-card.has-discount {
+  border: 2px solid rgba(52, 199, 89, 0.4); /* зеленоватая граница как у mm-card */
+  box-shadow: 
+    0 6px 24px rgba(0,0,0,0.35),
+    0 8px 32px rgba(52, 199, 89, 0.2); /* внешнее зеленое свечение */
+}
+
+.calc-title {
+  font-weight: 500; /* тоньше */
+  font-size: 16px;
+  color: var(--text-muted);
+  margin: 0 0 8px 0;
+}
+
+.calc-monthly {
+  font-size: 28px; /* главный акцент */
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 6px 0;
+}
+
+.calc-discount-rub {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--success); /* зелёный успех */
+  margin: 0 0 4px 0;
+}
+
+.calc-total {
+  font-size: 18px; /* второстепенный акцент */
+  font-weight: 600;
+  color: var(--text);
+  margin: 4px 0 8px 0;
+}
+
+.calc-total-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: -2px 0 10px 0; /* ближе к total */
+}
+
+.calc-breakdown {
+  display: grid;
+  grid-template-columns: 1fr auto; /* название | сумма */
+  gap: 6px 12px;
+  margin: 8px 0 10px 0;
+}
+
+.calc-breakdown .label {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.calc-breakdown .value {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.calc-mini-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.calc-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn-primary {
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 600;
+  background: var(--accent);
+  color: #1a1a1a;
+  box-shadow: 0 6px 18px rgba(255,122,0,0.35);
+}
+
+.btn-secondary.hidden { 
+  display: none !important; 
+} /* временно скрыть PDF/Email */
+
+/* НОВЫЕ СТИЛИ ДЛЯ ХЭДЕРА */
+.hero {
+  max-width: 1200px;             /* чуть уже, чем хедер-обёртка страницы */
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Заголовок — тоньше и левый край */
+.hero-title {
+  text-align: left !important;
+  font-weight: 600;               /* было 700–800 → спокойнее */
+  font-size: clamp(22px, 3.0vw, 32px);
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+  color: var(--text);
+  margin: 0 0 8px 0;              /* ближе к подзаголовку */
+}
+.hero-title-accent {
+  color: var(--accent);           /* оранжевый акцент для «Калькулятор» */
+}
+
+/* Подзаголовок — левый край, компактный */
+.hero-subtitle {
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0 0 12px 0;
+}
+
+/* Метрики — одна строка слева, равные интервалы */
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 16px;
+  align-items: center;
+  justify-content: start;         /* левый край */
+  margin: 0 0 14px 0;
+}
+.metric {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.metric-icon { font-size: 14px; }
+.metric-text {
+  font-size: 14px;
+  color: var(--text);
+}
+
+/* CTA — на одной линии слева */
+.hero-actions {
+  display: inline-flex;
+  gap: 10px;
+  justify-content: start;         /* левый край */
+  margin: 0 0 16px 0;
+}
+.btn {
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 600;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #1a1a1a;
+  box-shadow: 0 6px 18px rgba(255,122,0,0.35);
+}
+.btn-secondary {
+  background: rgba(255,255,255,0.12);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+/* Отступы хедера — компактный вертикальный ритм */
+.hero + .sliders-section { margin-top: 12px; }  /* минимальный зазор до следующих блоков */
+
+/* Адаптив: на мобиле — колонка, 100% ширина CTA */
+@media (max-width: 640px) {
+  .hero-metrics { grid-template-columns: 1fr 1fr; }
+  .hero-actions { display: grid; grid-template-columns: 1fr; gap: 8px; }
+  .btn { width: 100%; }
+}
+
+/* СТИЛИ ДЛЯ ПЕРВЫХ ЭЛЕМЕНТОВ КАЛЬКУЛЯТОРА */
+.section-group { 
+  margin-bottom: 12px; 
+}                 /* общий компактный низ секции */
+
+.section-title {
+  text-align: left !important;
+  font-weight: 500; 
+  font-size: 18px; 
+  line-height: 1.25;
+  margin: 0 0 6px 0; 
+  color: var(--text);
+}
+
+.slider-wrap { 
+  margin: 0 0 6px 0; 
+}                     /* отступ между треком и подписью */
+
+.range-value, .period-summary {
+  text-align: left !important; 
+  color: var(--text);
+  font-weight: 600; 
+  font-size: 14px; 
+  line-height: 1.4;
+  margin: 0;
+}
+
+.period-summary { 
+  display: inline-flex; 
+  align-items: baseline; 
+  gap: 8px; 
+}
+
+.period-summary .discount { 
+  color: var(--success); 
+}     /* зелёный для скидки */
+
+.period-summary .sep { 
+  color: var(--text-muted); 
+}       /* «—» как отдельный элемент */
+
+/* Стили для range слайдеров */
+
+
+
+/* Сократить лишние «воздухи» сверху/снизу у блока-калькулятора */
+.calc-intro { 
+  margin-bottom: 12px; 
+}    /* блок над слайдерами (если есть) */
+
+.sliders-row { 
+  display:grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 16px; 
+  align-items:start; 
+}
+
+/* СТИЛИ ДЛЯ ДОПОЛНИТЕЛЬНЫХ ПАРАМЕТРОВ */
+.extra-section {
+  margin-top: 12px; /* минимальный отступ от предыдущих блоков */
+}
+
+/* 1) Заголовок секции — такой же как mm-section-subtitle */
+.extra-title {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  text-align: left;
+  margin: 0 0 16px 0;
+  font-weight: 400;
+}
+
+/* Адаптивные правила — как у mm-section-subtitle */
+@media (max-width: 640px) {
+  .extra-title {
+    font-size: 13px; /* на мобильном чуть меньше */
+  }
+}
+
+/* Защититься от сторонних центровок */
+.extra-title, .extra-title * {
+  text-align: left !important;
+}
+
+/* Сетка трёх модулей в ряд */
+.extra-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.8fr; /* филиалы | WhatsApp | техподдержка */
+  gap: 16px;
+  align-items: start;
+  margin-top: 8px;
+}
+
+/* Заголовки мини-секций */
+.section-title {
+  text-align: left;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.25;
+  color: var(--text);
+  margin: 0 0 6px 0;
+}
+
+/* Обёртка слайдера */
+.slider-wrap { 
+  position: relative; 
+  margin: 0 0 6px 0; 
+}
+
+/* Специфичная обёртка для нижних слайдеров */
+.extra-row-3 .slider-wrap {
+  position: relative !important;
+  margin: 0 0 6px 0 !important;
+  height: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Трек и пин — одинаковые для обоих слайдеров */
+
+
+
+
+
+
+/* Дополнительные стили для выравнивания */
+.extra-row-3 .extra-col {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+}
+
+/* Обеспечиваем одинаковое выравнивание для всех колонок */
+.extra-row-3 .extra-col > * {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.extra-row-3 .extra-col .section-title {
+  margin-bottom: 6px !important;
+}
+
+/* Выравниваем слайдеры по одной линии */
+.extra-row-3 .extra-col .slider-wrap {
+  margin-top: 0 !important; /* убираем все отступы */
+  margin-bottom: 6px !important;
+  height: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Выравниваем заголовки блоков по одной линии */
+.extra-row-3 .extra-col .section-title {
+  margin-bottom: 6px !important;
+  height: 16px !important; /* уменьшаем высоту под меньший шрифт */
+  display: flex !important;
+  align-items: center !important;
+  line-height: 1.25 !important;
+  font-size: 14px !important; /* уменьшаем размер шрифта */
+  font-weight: 500 !important;
+  color: var(--text) !important;
+}
+
+.extra-row-3 .extra-col .range-value {
+  margin-top: 6px !important;
+}
+
+/* Подписи под слайдерами: белые, акцент скидки зелёным с тире */
+.range-value {
+  text-align: left;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.range-value .discount {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.extra-col {
+  /* Контейнер для каждого слайдера */
+}
+
+.extra-group {
+  margin-bottom: 12px;
+}
+
+/* Пояснения под селекторами */
+.helper-note {
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.helper-note.success { 
+  color: var(--success); 
+}
+
+/* Техподдержка — компактные радиокнопки */
+.support-block { 
+  display: grid; 
+  gap: 8px; 
+  margin-top: 0 !important; /* убираем отступ сверху */
+}
+
+.support-options { 
+  display: grid; 
+  gap: 6px; 
+}
+
+/* Радиокнопки «Техподдержка»: принудительно слева, текст видим */
+.support-radio {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8px;
+  padding: 8px 12px; height: 32px; border-radius: 999px;
+  backdrop-filter: blur(12px); background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18); color: var(--text);
+  text-align: left !important; white-space: nowrap;
+}
+
+.support-radio input { accent-color: var(--accent); }
+.support-radio.active { outline: 2px solid var(--accent); box-shadow: 0 0 0 6px rgba(255,122,0,0.12); }
+
+/* Дополнительные стили для компактности */
+.support-radio {
+  min-width: 0; /* позволяем сжиматься */
+  overflow: hidden; /* скрываем переполнение */
+}
+
+.support-note { 
+  font-size: 12px; 
+  color: var(--text-muted); 
+}
+
+/* Убрать PDF и КП в итогах */
+.calc-actions .btn-secondary { 
+  display: none !important; 
+}
+
+/* Адаптив */
+@media (max-width: 1100px) { 
+  .extra-row-3 { grid-template-columns: 1fr 1fr; } 
+}
+
+@media (max-width: 780px)  { 
+  .extra-row-3 { grid-template-columns: 1fr; } 
+}
+
+/* Тонкие отступы между группами */
+.extra-group .group-title {
+  font-size: 14px; 
+  font-weight: 600; 
+  color: var(--text);
+  margin: 0 0 6px 0; 
+  text-align: left;
+}
+
+/* Градиентный заголовок */
+.gradient-title {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 122, 0, 1) 0%,           /* var(--accent) */
+    rgba(255, 166, 77, 1) 20%,
+    rgba(255, 255, 255, 0.95) 40%,     /* стеклянная белая */
+    rgba(52, 199, 89, 1) 60%,          /* var(--success) */
+    rgba(255, 122, 0, 1) 80%,
+    rgba(255, 180, 90, 1) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+/* Анимация градиента */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-title {
+  background-size: 200% 200%;
+}
+
+/* 3) Модалка: фиксированная, поверх всего, по центру */
+.modal.hidden { display: none; }
+.modal {
+  position: fixed; 
+  inset: 0; 
+  z-index: 10000; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  padding: 20px;
+}
+.modal-backdrop {
+  position: absolute; 
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(6px);
+  transition: all 200ms ease;
+}
+.modal-card {
+  position: relative;
+  width: 50vw; 
+  max-width: 700px;
+  min-width: 500px;
+  height: auto;
+  max-height: 80vh;
+  min-height: 500px;
+  border-radius: 16px;
+  padding: 32px 36px;
+  backdrop-filter: blur(20px) saturate(120%);
+  background: rgba(0,0,0,0.85);
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+}
+.modal-header { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  margin-bottom: 16px; 
+  flex-shrink: 0;
+}
+.modal-title { 
+  font-size: 20px; 
+  font-weight: 700; 
+  color: #FFFFFF !important; 
+  margin: 0; 
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+.modal-close {
+  border: 0; 
+  background: rgba(255,255,255,0.12); 
+  color: var(--text);
+  border-radius: 999px; 
+  width: 32px; 
+  height: 32px; 
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+.modal-close:hover {
+  background: rgba(255,255,255,0.18);
+  transform: scale(1.05);
+}
+
+/* Форма занимает оставшееся пространство */
+.modal form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.form-row { 
+  display: grid; 
+  gap: 6px; 
+  margin: 8px 0; 
+}
+label { 
+  font-size: 14px; 
+  color: #ffffff; 
+  font-weight: 500;
+}
+input, select {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(0,0,0,0.4);
+  color: #ffffff;
+  padding: 10px 12px;
+  outline: none;
+  font-size: 14px;
+  transition: all 160ms ease;
+}
+input:focus, select:focus { 
+  border-color: var(--accent); 
+  box-shadow: 0 0 0 4px rgba(255,122,0,0.3); 
+  background: rgba(0,0,0,0.6);
+}
+.field-note { 
+  font-size: 12px; 
+  color: rgba(255,255,255,0.7); 
+  margin-top: 4px;
+}
+
+.modal-actions { 
+  display: flex; 
+  gap: 12px; 
+  margin-top: 20px; 
+  flex-shrink: 0;
+}
+.btn { border-radius: 999px; padding: 10px 18px; font-weight: 600; }
+.btn-primary { background: var(--accent); color: #1a1a1a; box-shadow: 0 6px 18px rgba(255,122,0,0.35); border: 0; }
+.btn-secondary { background: rgba(255,255,255,0.12); color: var(--text); border: 1px solid rgba(255,255,255,0.18); }
+
+/* Ошибки */
+input.error, select.error { border-color: #ff4d4f; box-shadow: 0 0 0 4px rgba(255,77,79,0.18); }
+
+/* Дополнительные стили для лучшей читаемости */
+.modal-title {
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.modal-close {
+  color: #ffffff;
+  background: rgba(255,255,255,0.15);
+}
+
+.modal-close:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* Дополнительные варианты затемнения */
+.modal-backdrop.light {
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(4px);
+}
+
+.modal-backdrop.medium {
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(6px);
+}
+
+/* Адаптивность модали для мобильных устройств */
+@media (max-width: 768px) {
+  .modal {
+    padding: 10px;
+  }
+  
+  .modal-card {
+    width: 95vw;
+    height: 85vh;
+    min-width: 300px;
+    min-height: 300px;
+    padding: 20px 24px;
+  }
+  
+  .modal-title {
+    font-size: 18px;
+  }
+  
+  .form-row {
+    margin: 10px 0;
+  }
+  
+  input, select {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  
+  /* На мобильных делаем еще светлее */
+  .modal-backdrop {
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+  }
+}
+
+
+/* Единые токены */
+:root { 
+  --track-h: 6px; 
+  --track-border: 1px; 
+  --fill-pct: 0%;
+  --track-margin: 9px 0;
+}
+
+/* Переключатель темы */
+.theme-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.theme-label {
+  font-weight: 500;
+  color: var(--muted);
+}
+
+#theme-toggle {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+#theme-toggle:hover {
+  background: var(--accent);
+  color: #FFF;
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+#theme-toggle:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Слайдер универсально */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 24px;
+  background: transparent !important;       /* нейтрализуем фон темы */
+  position: relative;
+  --fill-pct: 0%;
+}
+
+/* Трек — единые параметры */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: var(--track-h) !important;
+  margin: 9px 0 !important; /* возвращаем margin, но с !important */
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.16), rgba(255,255,255,0.10)) !important;
+  border: var(--track-border) solid rgba(255,255,255,0.18);
+  position: relative;
+}
+input[type="range"]::-moz-range-track {
+  height: var(--track-h);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12) !important;
+  border: var(--track-border) solid rgba(255,255,255,0.18);
+}
+
+/* Пин — центр по линии */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid rgba(255,255,255,0.85);
+  margin-top: calc(-1 * var(--track-h));
+  box-shadow: 0 4px 12px rgba(255,122,0,0.35);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.12); box-shadow: 0 6px 16px rgba(255,122,0,0.45); }
+input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: var(--accent); border: 2px solid rgba(255,255,255,0.85); }
+
+/* Жёстко отключаем заливку */
+input[type="range"]::before, 
+input[type="range"]::after { 
+  content: none !important; 
+  background: none !important; 
+}
+
+/* Жёстко отключаем любые альтернативные слои */
+.range-bar, .range-filled, .range-track, .range-container { 
+  display: none !important; 
+}
+
+/* Дублирующие правила удалены - используются основные правила выше */
+
+/* Удалить старые слои заливки: */
+.range-bar, .range-filled { 
+  display: none !important; 
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+}
+
+/* Обертка для слайдеров */
+.slider-wrap { position: relative; margin: 0 0 6px 0; }
+
+/* Техподдержка - pill кнопки без radio, вертикально */
+.support-row { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 8px; 
+  width: 100%;
+}
+
+.support-pill {
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-start;
+  padding: 6px 10px; 
+  height: 32px; 
+  width: 100%; 
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: var(--text); 
+  font-weight: 600; 
+  text-align: left;
+  cursor: pointer;
+  transition: all 160ms ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.support-pill.active {
+  outline: 2px solid var(--accent);
+  background: rgba(255,122,0,0.18);
+  box-shadow: 0 0 0 6px rgba(255,122,0,0.12);
+}
+
+.support-note { 
+  margin-top: 6px; 
+  font-size: 12px; 
+  color: var(--text-muted); 
+}
+
+/* Дополнительные стили для лучшего отображения */
+.support-block {
+  width: 100%;
+}
+
+.support-pill:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-1px);
+}
+
+.support-pill:active {
+  transform: translateY(0);
+}
+
+/* Дополнительные стили для компактности */
+.support-pill {
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .support-pill {
+    padding: 8px 10px;
+    height: 30px;
+    font-size: 12px;
+  }
+  
+  .support-row {
+    gap: 6px;
+  }
+}
+
+/* ПЕРЕОПРЕДЕЛЕНИЕ СТИЛЕЙ ДЛЯ СВЕТЛОЙ ТЕМЫ */
+/* Принудительно переопределяем темные стили для светлой темы */
+
+/* Основной фон страницы - белый */
+body {
+  background: #FFFFFF !important;
+  color: #1A1A1A !important;
+}
+
+/* Заголовки секций - темный цвет */
+.section-title,
+h2.section-title {
+  color: #1A1A1A !important;
+  font-weight: 600 !important;
+  font-size: 18px !important;
+  margin-bottom: 16px !important;
+}
+
+/* Значения слайдеров - темный цвет */
+.range-value,
+.period-summary {
+  color: #1A1A1A !important;
+  font-weight: 500 !important;
+  margin-top: 8px !important;
+}
+
+.range-value .discount,
+.period-discount {
+  color: #B23A00 !important;
+  font-weight: 600 !important;
+}
+
+/* Подписи слайдеров - темный цвет */
+.slider-wrap .text-xs {
+  color: #4A4A4A !important;
+}
+
+/* Слайдеры - серый трек, оранжевый ползунок */
+input[type="range"] {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background: transparent !important;
+  cursor: pointer !important;
+}
+
+input[type="range"]::-webkit-slider-track,
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #E5E5E5 !important;
+  height: 6px !important;
+  border-radius: 3px !important;
+  border: none !important;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background: #FF6A00 !important;
+  height: 20px !important;
+  width: 20px !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  border: 2px solid #FFFFFF !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: #F55E00 !important;
+  transform: scale(1.1) !important;
+}
+
+input[type="range"]::-moz-range-track {
+  background: #E5E5E5 !important;
+  height: 6px !important;
+  border-radius: 3px !important;
+  border: none !important;
+}
+
+input[type="range"]::-moz-range-thumb {
+  background: #FF6A00 !important;
+  height: 20px !important;
+  width: 20px !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  border: 2px solid #FFFFFF !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  background: #F55E00 !important;
+  transform: scale(1.1) !important;
+}
+
+/* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ЗАГОЛОВКОВ ПОДБЛОКОВ */
+/* Принудительно переопределяем белые заголовки в дополнительных параметрах */
+.extra-section .section-title,
+.extra-col .section-title,
+.extra-row-3 .section-title {
+  color: #1A1A1A !important;
+  font-weight: 600 !important;
+  font-size: 18px !important;
+  margin-bottom: 16px !important;
+}
+
+/* Специфично для каждого подблока */
+.extra-col.branches .section-title,
+.extra-col.whatsapp .section-title,
+.extra-col.support .section-title {
+  color: #1A1A1A !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  margin-bottom: 12px !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Также переопределяем значения слайдеров в дополнительных параметрах */
+.extra-section .range-value,
+.extra-col .range-value {
+  color: #1A1A1A !important;
+  font-weight: 500 !important;
+  margin-top: 8px !important;
+}
+
+.extra-section .range-value .discount {
+  color: #B23A00 !important;
+  font-weight: 600 !important;
+}
+
+/* Стили для кнопок техподдержки */
+.support-pill {
+  background: #FFFFFF !important;
+  color: #1A1A1A !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.support-pill:hover {
+  background: #F2F2F2 !important;
+}
+
+.support-pill.active {
+  background: #FF6A00 !important;
+  color: #FFFFFF !important;
+  border-color: #FF6A00 !important;
+}
+
+/* Примечания техподдержки */
+.support-note {
+  color: #4A4A4A !important;
+}
+
+/* BANNER TEXT FORCE WHITE */
+.banner .banner-title,
+.banner .banner-desc,
+.banner h1,
+.banner p {
+  color: #FFFFFF !important;
+}
+
+
+
+

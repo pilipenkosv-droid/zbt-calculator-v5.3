@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест WhatsApp логики</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #0A0F1E; color: white; }
+        .test-case { margin: 20px 0; padding: 15px; border: 1px solid #333; border-radius: 8px; }
+        .result { color: #FF7A1A; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Тест WhatsApp логики</h1>
+    
+    <div class="test-case">
+        <h3>0 номеров (включен 1-й)</h3>
+        <div id="test0"></div>
+    </div>
+    
+    <div class="test-case">
+        <h3>1 номер (включен 1-й)</h3>
+        <div id="test1"></div>
+    </div>
+    
+    <div class="test-case">
+        <h3>2 номера (1 включен + 1 доп)</h3>
+        <div id="test2"></div>
+    </div>
+    
+    <div class="test-case">
+        <h3>3 номера (1 включен + 2 доп)</h3>
+        <div id="test3"></div>
+    </div>
+
+    <script>
+        const WHATSAPP_PRICE_PER_NUMBER = 1500;
+        
+        function calculateWhatsAppComponent(whatsappNumbers) {
+            return WHATSAPP_PRICE_PER_NUMBER * Math.max(0, (whatsappNumbers - 1));
+        }
+        
+        function formatRub(value) {
+            return new Intl.NumberFormat('ru-RU').format(Math.max(0, Math.round(value))) + ' ₽';
+        }
+        
+        // Обновляем результаты
+        document.getElementById('test0').innerHTML = 
+            `<span class="result">${formatRub(calculateWhatsAppComponent(0))}</span> (0 доп. номеров)`;
+        
+        document.getElementById('test1').innerHTML = 
+            `<span class="result">${formatRub(calculateWhatsAppComponent(1))}</span> (0 доп. номеров)`;
+        
+        document.getElementById('test2').innerHTML = 
+            `<span class="result">${formatRub(calculateWhatsAppComponent(2))}</span> (1 доп. номер × 1 500 ₽)`;
+        
+        document.getElementById('test3').innerHTML = 
+            `<span class="result">${formatRub(calculateWhatsAppComponent(3))}</span> (2 доп. номера × 1 500 ₽)`;
+    </script>
+</body>
+</html>
