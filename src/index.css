@@ -2257,9 +2257,9 @@ body {
   cursor: pointer;
   transition: all 200ms ease;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  font-size: 0;
+  line-height: 0;
 }
 .modal-close:hover {
   background: rgba(0,0,0,0.12);
@@ -2270,12 +2270,17 @@ body {
 /* Специальное позиционирование для символа × */
 .modal-close::before {
   content: '×';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 18px;
   font-weight: 600;
   line-height: 1;
   color: #4A4A4A;
   transition: color 200ms ease;
   font-family: 'Navigo', 'Inter', sans-serif;
+  display: block;
 }
 
 .modal-close:hover::before {
