@@ -85,7 +85,7 @@ const CalculatorParams: React.FC<CalculatorParamsProps> = ({ state, onParamChang
     <section className="extra-section py-6 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="mb-4">
-          <h2 className="extra-title">Дополнительные параметры</h2>
+          <p className="mm-section-subtitle">Дополнительные параметры</p>
         </div>
       
       <div className="extra-row-3">

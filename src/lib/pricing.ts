@@ -66,7 +66,7 @@ export function calculatePrice(state: CalculatorState): PriceBreakdown {
   const basePricePerBranch = getPatientBasePrice(state.patientBase);
   const mmPricePerBranch = MARKETING_PRICES[state.marketingLevel];
   const supportPricePerBranch = state.techSupport === 'daily' ? TECH_SUPPORT_DAILY_PRICE : 0;
-  const whatsappPrice = WHATSAPP_PRICE_PER_NUMBER * Math.max(0, (state.whatsappNumbers - 1));
+  const whatsappPrice = WHATSAPP_PRICE_PER_NUMBER * state.whatsappNumbers;
   
   // Стоимость на один филиал в месяц (с учетом скидок)
   const monthlyPerBranch = (basePricePerBranch + mmPricePerBranch + supportPricePerBranch) * (1 - totalDiscount);
