@@ -13,8 +13,8 @@ export default function IntegrationsSection() {
   return (
     <section aria-labelledby="integrations-title" className="integrations">
       <div className="header">
-        <h2 id="integrations-title">Интеграции</h2>
-        <p className="subtitle">130+ МИС и CRM. Каналы: SMS, WhatsApp*, Telegram, Email, Push.</p>
+        <h2 id="integrations-title">35+ готовых интеграций</h2>
+        <p className="subtitle">Подключение к сервисам и услугам, которые вы используете каждый день.</p>
       </div>
 
       <div className="badges" role="list">

@@ -55,7 +55,7 @@ export default function Banner({
       
       <div className={styles.container}>
         <div className={styles.left}>
-          <h1 id="banner-title" className={styles.title}>{title}</h1>
+          <h1 id="banner-title" className={styles.title}>Рассчитайте, сколько вы заработаете с Zabota 2.0</h1>
           <p className={styles.desc}>
             С заботой о ваших пациентах,<br />
             улучшаем доходимость, возвращаем "спящих" и защищаем от спама.
@@ -68,51 +68,51 @@ export default function Banner({
                   onClick={onLearnMore}
                   aria-label="Рассчитать тариф Zabota 2.0"
                 >
-                  Рассчитать тариф
+                  Рассчитать
                 </button>
           </div>
 
           <div className={styles.meta}>
               <div className={styles.benefits}>
                 <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>📈</span>
-                  <span className={styles.benefitText}>+14-20% конверсия в повторный прием</span>
+                  <span className={styles.benefitIcon}>📊</span>
+                  <span className={styles.benefitText}>Комплексный подход: более 10 сервисов и 270 сценариев</span>
                 </div>
                 <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>🛡️</span>
-                  <span className={styles.benefitText}>Защита от спама</span>
+                  <span className={styles.benefitIcon}>🧠</span>
+                  <span className={styles.benefitText}>Умная автоматизация: учитывает 86 параметров пациента из вашей МИС</span>
+                </div>
+                <div className={styles.benefit}>
+                  <span className={styles.benefitIcon}>📈</span>
+                  <span className={styles.benefitText}>Доходимость: интерактивные напоминания и подтверждения приемов</span>
                 </div>
                 <div className={styles.benefit}>
                   <span className={styles.benefitIcon}>💤</span>
-                  <span className={styles.benefitText}>Возвращаем "спящих" пациентов</span>
-                </div>
-                <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>📱</span>
-                  <span className={styles.benefitText}>Автоматизация напоминаний</span>
-                </div>
-                <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>🎯</span>
-                  <span className={styles.benefitText}>Персонализированные акции</span>
-                </div>
-                <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>⭐️</span>
-                  <span className={styles.benefitText}>Рост рейтинга клиники</span>
-                </div>
-                <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>🔗</span>
-                  <span className={styles.benefitText}>Интеграции с 35+ МИС</span>
+                  <span className={styles.benefitText}>Возвращение "спящих" пациентов: персональные сценарии приглашений</span>
                 </div>
                 <div className={styles.benefit}>
                   <span className={styles.benefitIcon}>⚡</span>
-                  <span className={styles.benefitText}>Запуск от 7 дней</span>
+                  <span className={styles.benefitText}>Эффективность: рост конверсий на всех этапах пути пациента</span>
                 </div>
                 <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>😌</span>
-                  <span className={styles.benefitText}>Перехват негатива до публикации</span>
+                  <span className={styles.benefitIcon}>⭐️</span>
+                  <span className={styles.benefitText}>Рейтинг на геосервисах: больше положительных отзывов клинике и врачам</span>
                 </div>
                 <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>🔒</span>
-                  <span className={styles.benefitText}>Оператор ПДн</span>
+                  <span className={styles.benefitIcon}>⏰</span>
+                  <span className={styles.benefitText}>Экономия времени: администраторы экономят до 3 часов в день</span>
+                </div>
+                <div className={styles.benefit}>
+                  <span className={styles.benefitIcon}>💬</span>
+                  <span className={styles.benefitText}>Качество сервиса: оперативная обратная связь от пациентов</span>
+                </div>
+                <div className={styles.benefit}>
+                  <span className={styles.benefitIcon}>📋</span>
+                  <span className={styles.benefitText}>Полная загруженность: система обеспечивает высокий КПД врачей</span>
+                </div>
+                <div className={styles.benefit}>
+                  <span className={styles.benefitIcon}>💰</span>
+                  <span className={styles.benefitText}>Снижение расходов: оптимизация рекламных и маркетинговых бюджетов</span>
                 </div>
               </div>
           </div>
