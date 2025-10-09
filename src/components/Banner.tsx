@@ -2,12 +2,14 @@ import { useRef, useEffect, useState } from "react";
 import styles from "./Banner.module.scss";
 
 type BannerProps = {
+  title?: string;
   imageSrc: string; // вставите прозрачное PNG/WebP как на скрине
   imageAlt?: string;
   onLearnMore?: () => void;
 };
 
 export default function Banner({
+  title = "Zabota 2.0",
   imageSrc,
   imageAlt = "Интерфейсы Забота 2.0 на ноутбуке и смартфоне",
   onLearnMore,
@@ -53,7 +55,7 @@ export default function Banner({
       
       <div className={styles.container}>
         <div className={styles.left}>
-          <h1 id="banner-title" className={styles.title}>Рассчитайте, сколько вы заработаете с Zabota 2.0</h1>
+          <h1 id="banner-title" className={styles.title}>{title}</h1>
           <p className={styles.desc}>
             С заботой о ваших пациентах,<br />
             улучшаем доходимость, возвращаем "спящих" и защищаем от спама.
@@ -66,7 +68,7 @@ export default function Banner({
                   onClick={onLearnMore}
                   aria-label="Рассчитать тариф Zabota 2.0"
                 >
-                  Рассчитать
+                  Рассчитать тариф
                 </button>
           </div>
 
