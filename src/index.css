@@ -2251,24 +2251,44 @@ body {
 .modal-close {
   border: 0; 
   background: rgba(0,0,0,0.08); 
-  color: #4A4A4A;
+  color: transparent;
   border-radius: 12px; 
   width: 36px; 
   height: 36px; 
   cursor: pointer;
   transition: all 200ms ease;
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   font-family: 'Navigo', 'Inter', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
+  text-align: center;
+  position: relative;
 }
 .modal-close:hover {
   background: rgba(0,0,0,0.12);
   color: #1A1A1A;
   transform: scale(1.05);
+}
+
+/* Специальное позиционирование для символа × */
+.modal-close::before {
+  content: '×';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1;
+  color: #4A4A4A;
+  transition: color 200ms ease;
+}
+
+.modal-close:hover::before {
+  color: #1A1A1A;
 }
 
 /* Форма занимает оставшееся пространство */
@@ -2361,7 +2381,8 @@ input:focus, select:focus {
 input.error, select.error { 
   border-color: #ff4d4f; 
   box-shadow: 0 0 0 4px rgba(255,77,79,0.18); 
-  background: rgba(255,245,245,0.9);
+  background: rgba(0,0,0,0.3);
+  color: #FFFFFF;
 }
 
 /* Placeholder стили */
