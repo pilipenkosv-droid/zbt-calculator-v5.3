@@ -77,6 +77,28 @@
 .demo-form-submit {
   width: 100%;
   min-height: 44px;
+  padding: 16px 32px;
+  font-weight: 600;
+  font-size: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.demo-form-submit:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.demo-form-submit:disabled {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 /* Side-by-side consent and button on wider screens */
