@@ -2260,6 +2260,7 @@ body {
   display: block;
   font-size: 0;
   line-height: 0;
+  color: transparent;
 }
 .modal-close:hover {
   background: rgba(0,0,0,0.12);
@@ -2281,6 +2282,9 @@ body {
   transition: color 200ms ease;
   font-family: 'Navigo', 'Inter', sans-serif;
   display: block;
+  width: 18px;
+  height: 18px;
+  text-align: center;
 }
 
 .modal-close:hover::before {
