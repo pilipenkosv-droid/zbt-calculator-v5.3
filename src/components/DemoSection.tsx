@@ -200,7 +200,8 @@ export default function DemoSection({ onSubmit, policyUrl = '#' }: DemoSectionPr
                 onChange={(e) => handleChange('baseSize', e.target.value)}
                 placeholder="Напр. 12000"
                 required
-                min={1}
+                min={1000}
+                step={1000}
                 max={9999999}
                 aria-describedby={form.baseSize.length > 0 && !/^\d{1,7}$/.test(form.baseSize) ? 'base-error' : undefined}
               />
