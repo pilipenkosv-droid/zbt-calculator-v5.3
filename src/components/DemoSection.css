@@ -9,11 +9,97 @@
   --scroll-progress: 0;
 }
 
-.container {
+.demo-form-container {
   position: relative;
   z-index: 2;
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
+  padding: 0 16px;
+}
+
+.demo-form {
+  width: 100%;
+}
+
+.demo-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.demo-form-field {
+  min-width: 0;
+}
+
+.demo-form-field label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.demo-form-field input {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+
+/* Responsive: two columns on >=768px */
+@media (min-width: 768px) {
+  .demo-form-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+/* Actions (consent + submit) */
+.demo-form-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.demo-form-consent {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.demo-form-consent-note {
+  display: block;
+  font-size: 0.9em;
+  opacity: 0.8;
+  margin-top: 4px;
+  grid-column: 1 / -1;
+}
+
+.demo-form-submit {
+  width: 100%;
+  min-height: 44px;
+}
+
+/* Side-by-side consent and button on wider screens */
+@media (min-width: 768px) {
+  .demo-form-actions {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+  .demo-form-submit {
+    width: auto;
+    justify-self: end;
+  }
+}
+
+/* Note below the form */
+.demo-form-note {
+  margin-top: 12px;
+  line-height: 1.4;
+}
+
+/* Prevent overflow in grid items */
+.demo-form-field, .demo-form-actions {
+  min-width: 0;
 }
 
 /* Контейнер для декоративных фигур */

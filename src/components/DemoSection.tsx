@@ -102,17 +102,18 @@ export default function DemoSection({ onSubmit, policyUrl = '#' }: DemoSectionPr
         <div className="star3"></div>
       </div>
 
-      <div className="container">
+      <div className="demo-form-container">
         <div className="header">
           <h2 id="demo-title">Оставьте заявку на демо</h2>
           <p className="subtitle">Демо с вашим расчётом: доходимость, повторные визиты, ROI.</p>
         </div>
 
-        <form className="form" onSubmit={handleSubmit} noValidate>
-          <div className="grid">
-            <label className="field">
-              <span className="label">Имя</span>
+        <form className="demo-form" onSubmit={handleSubmit} noValidate>
+          <div className="demo-form-grid">
+            <div className="demo-form-field">
+              <label htmlFor="demo-name">Имя</label>
               <input
+                id="demo-name"
                 type="text"
                 value={form.name}
                 onChange={(e) => handleChange('name', e.target.value)}
@@ -123,11 +124,12 @@ export default function DemoSection({ onSubmit, policyUrl = '#' }: DemoSectionPr
               {form.name.length > 0 && form.name.trim().length < 2 && (
                 <span id="name-error" className="hint">Минимум 2 символа</span>
               )}
-            </label>
+            </div>
 
-            <label className="field">
-              <span className="label">Телефон</span>
+            <div className="demo-form-field">
+              <label htmlFor="demo-phone">Телефон</label>
               <input
+                id="demo-phone"
                 type="tel"
                 value={form.phone}
                 onChange={(e) => handleChange('phone', e.target.value)}
@@ -138,11 +140,12 @@ export default function DemoSection({ onSubmit, policyUrl = '#' }: DemoSectionPr
               {!validatePhone(form.phone) && form.phone.length > 0 && (
                 <span id="phone-error" className="hint">Формат: +7XXXXXXXXXX или 8XXXXXXXXXX</span>
               )}
-            </label>
+            </div>
 
-            <label className="field">
-              <span className="label">Email</span>
+            <div className="demo-form-field">
+              <label htmlFor="demo-email">Email</label>
               <input
+                id="demo-email"
                 type="email"
                 value={form.email}
                 onChange={(e) => handleChange('email', e.target.value)}
@@ -153,11 +156,12 @@ export default function DemoSection({ onSubmit, policyUrl = '#' }: DemoSectionPr
               {!validateEmail(form.email) && form.email.length > 0 && (
                 <span id="email-error" className="hint">Проверьте формат email</span>
               )}
-            </label>
+            </div>
 
-            <label className="field">
-              <span className="label">Клиника</span>
+            <div className="demo-form-field">
+              <label htmlFor="demo-clinic">Клиника</label>
               <input
+                id="demo-clinic"
                 type="text"
                 value={form.clinic}
                 onChange={(e) => handleChange('clinic', e.target.value)}
@@ -168,11 +172,12 @@ export default function DemoSection({ onSubmit, policyUrl = '#' }: DemoSectionPr
               {form.clinic.length > 0 && form.clinic.trim().length < 2 && (
                 <span id="clinic-error" className="hint">Минимум 2 символа</span>
               )}
-            </label>
+            </div>
 
-            <label className="field">
-              <span className="label">Медицинская ИС (МИС)</span>
+            <div className="demo-form-field">
+              <label htmlFor="demo-mis">Медицинская ИС (МИС)</label>
               <input
+                id="demo-mis"
                 type="text"
                 value={form.mis}
                 onChange={(e) => handleChange('mis', e.target.value)}
@@ -183,11 +188,12 @@ export default function DemoSection({ onSubmit, policyUrl = '#' }: DemoSectionPr
               {form.mis.length > 0 && form.mis.trim().length < 2 && (
                 <span id="mis-error" className="hint">Минимум 2 символа</span>
               )}
-            </label>
+            </div>
 
-            <label className="field">
-              <span className="label">Размер базы пациентов</span>
+            <div className="demo-form-field">
+              <label htmlFor="demo-base-size">Размер базы пациентов</label>
               <input
+                id="demo-base-size"
                 type="number"
                 inputMode="numeric"
                 value={form.baseSize}
@@ -201,25 +207,28 @@ export default function DemoSection({ onSubmit, policyUrl = '#' }: DemoSectionPr
               {form.baseSize.length > 0 && !/^\d{1,7}$/.test(form.baseSize) && (
                 <span id="base-error" className="hint">Введите число от 1 до 9,999,999</span>
               )}
-            </label>
+            </div>
           </div>
 
-          <label className="consent">
-            <input
-              type="checkbox"
-              checked={form.consent}
-              onChange={(e) => handleChange('consent', e.target.checked)}
-              required
-              aria-describedby="consent-error"
-            />
-            <span>Согласен(на) на обработку персональных данных</span>
-            {!form.consent && (
-              <span id="consent-error" className="hint">Обязательно для отправки</span>
-            )}
-          </label>
+          <div className="demo-form-actions">
+            <label className="demo-form-consent">
+              <input
+                id="demo-consent"
+                type="checkbox"
+                checked={form.consent}
+                onChange={(e) => handleChange('consent', e.target.checked)}
+                required
+                aria-required="true"
+                aria-describedby="consent-error"
+              />
+              <span>Согласен(на) на обработку персональных данных</span>
+              {!form.consent && (
+                <span id="consent-error" className="demo-form-consent-note">Обязательно для отправки</span>
+              )}
+            </label>
 
-          <div className="actions">
             <button 
+              className="demo-form-submit"
               type="submit" 
               disabled={!canSubmit || status === 'sending'}
               aria-describedby={status === 'ok' ? 'success-message' : status === 'error' ? 'error-message' : undefined}
@@ -230,7 +239,7 @@ export default function DemoSection({ onSubmit, policyUrl = '#' }: DemoSectionPr
             {status === 'error' && <span id="error-message" className="err">Ошибка отправки. Попробуйте ещё раз.</span>}
           </div>
 
-          <p className="legal">
+          <p className="demo-form-note">
             Нажимая кнопку, вы подтверждаете согласие на{' '}
             <a href={policyUrl} target="_blank" rel="noopener noreferrer">обработку персональных данных</a>
             {' '}и получение информационных сообщений.
