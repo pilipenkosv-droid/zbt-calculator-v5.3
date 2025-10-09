@@ -2251,21 +2251,15 @@ body {
 .modal-close {
   border: 0; 
   background: rgba(0,0,0,0.08); 
-  color: transparent;
-  border-radius: 12px; 
+  border-radius: 50%; 
   width: 36px; 
   height: 36px; 
   cursor: pointer;
   transition: all 200ms ease;
-  font-size: 16px;
-  font-weight: 600;
-  font-family: 'Navigo', 'Inter', sans-serif;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
-  text-align: center;
-  position: relative;
 }
 .modal-close:hover {
   background: rgba(0,0,0,0.12);
@@ -2276,15 +2270,12 @@ body {
 /* Специальное позиционирование для символа × */
 .modal-close::before {
   content: '×';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 1;
   color: #4A4A4A;
   transition: color 200ms ease;
+  font-family: 'Navigo', 'Inter', sans-serif;
 }
 
 .modal-close:hover::before {
