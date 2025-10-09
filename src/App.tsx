@@ -376,7 +376,7 @@ const App: React.FC = () => {
             console.log('Demo form submitted:', payload);
             // Здесь можно добавить отправку данных на сервер
           }}
-          policyUrl="/privacy-policy"
+          policyUrl="https://zabota.tech/personal"
         />
       </div>
 
@@ -428,7 +428,7 @@ const App: React.FC = () => {
                 </a>
               </div>
               <div>
-                <a href="https://zabota.tech/privacypolicy" target="_blank" rel="noopener noreferrer" className="footer-link">
+                <a href="https://zabota.tech/personal" target="_blank" rel="noopener noreferrer" className="footer-link">
                   Политика обработки персональных данных
                 </a>
               </div>
