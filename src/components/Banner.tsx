@@ -2,14 +2,12 @@ import { useRef, useEffect, useState } from "react";
 import styles from "./Banner.module.scss";
 
 type BannerProps = {
-  title?: string;
   imageSrc: string; // вставите прозрачное PNG/WebP как на скрине
   imageAlt?: string;
   onLearnMore?: () => void;
 };
 
 export default function Banner({
-  title = "Zabota 2.0",
   imageSrc,
   imageAlt = "Интерфейсы Забота 2.0 на ноутбуке и смартфоне",
   onLearnMore,
