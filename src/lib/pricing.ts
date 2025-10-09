@@ -20,12 +20,12 @@ const PERIOD_DISCOUNTS = {
 };
 
 // Скидки за количество филиалов
-const NETWORK_DISCOUNTS = {
-  1: 0,
-  2: 0.05,
-  3: 0.10,
-  5: 0.15,
-};
+// const NETWORK_DISCOUNTS = {
+//   1: 0,
+//   2: 0.05,
+//   3: 0.10,
+//   5: 0.15,
+// } as const;
 
 // Цены за уровни маркетинга
 const MARKETING_PRICES = {

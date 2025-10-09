@@ -1,9 +1,8 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import styles from "./Banner.module.scss";
 
 type BannerProps = {
   title?: string;
-  description?: string;
   imageSrc: string; // вставите прозрачное PNG/WebP как на скрине
   imageAlt?: string;
   onLearnMore?: () => void;
@@ -11,7 +10,6 @@ type BannerProps = {
 
 export default function Banner({
   title = "Zabota 2.0",
-  description = "С заботой о ваших пациентах, улучшаем доходимость, возвращаем \"спящих\" и защищаем от спама.",
   imageSrc,
   imageAlt = "Интерфейсы Забота 2.0 на ноутбуке и смартфоне",
   onLearnMore,

@@ -19,21 +19,21 @@ import {
   WrenchIcon 
 } from './MMIcons';
 
-interface TooltipProps {
-  content: string;
-  children: React.ReactNode;
-}
+// interface TooltipProps {
+//   content: string;
+//   children: React.ReactNode;
+// }
 
-const Tooltip: React.FC<TooltipProps> = ({ content, children }) => {
-  return (
-    <div className="relative group">
-      {children}
-      <div className="tooltip">
-        <div className="tooltip-text">{content}</div>
-      </div>
-    </div>
-  );
-};
+// const Tooltip: React.FC<TooltipProps> = ({ content, children }) => {
+//   return (
+//     <div className="relative group">
+//       {children}
+//       <div className="tooltip">
+//         <div className="tooltip-text">{content}</div>
+//       </div>
+//     </div>
+//   );
+// };
 
 interface MMLevelsSectionProps {
   state: CalculatorState;
@@ -130,8 +130,11 @@ const MMLevelsSection: React.FC<MMLevelsSectionProps> = ({ state, onLevelChange 
                       <div className="mm-easter-tooltip">Рекомендуем</div>
                     </div>
                   )}
-                  {level.id === 'premium' && typeof window !== 'undefined' && window.track && 
-                    window.track('ui_premium_gradient_applied', { method: 'two-layer', overlay: true })
+                  {level.id === 'premium' && 
+                    (() => {
+                      track('ui_premium_gradient_applied', { method: 'two-layer', overlay: true });
+                      return null;
+                    })()
                   }
                 </div>
                 <div className="mm-price">{formatPrice(level.price)}</div>

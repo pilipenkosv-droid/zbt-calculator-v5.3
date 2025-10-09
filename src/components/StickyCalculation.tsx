@@ -2,23 +2,20 @@ import React from 'react';
 import { CalculatorState } from '../types';
 import { calculatePrice } from '../lib/pricing';
 import { formatPrice } from '../utils/formatCurrency';
-import { track } from '../utils/analytics';
+// import { track } from '../utils/analytics';
 import EmailModal from './EmailModal';
 // ApplyModal импортируется в App.tsx
 
 interface StickyCalculationProps {
   state: CalculatorState;
-  onParamChange: (param: keyof CalculatorState, value: any) => void;
-  onSubmit: () => void;
-  onSavePDF: () => void;
+  onParamChange?: (param: keyof CalculatorState, value: any) => void;
+  onSubmit?: () => void;
+  onSavePDF?: () => void;
   onRequestQuote: (payload: any) => void;
 }
 
 const StickyCalculation: React.FC<StickyCalculationProps> = ({
   state,
-  onParamChange,
-  onSubmit,
-  onSavePDF,
   onRequestQuote
 }) => {
   const [isEmailModalOpen, setIsEmailModalOpen] = React.useState(false);
@@ -114,7 +111,7 @@ const StickyCalculation: React.FC<StickyCalculationProps> = ({
               support: state.techSupport
             },
             breakdown: priceBreakdown,
-            monthly: monthlyTotal,
+            monthly: priceBreakdown.monthlyPerBranch,
             total: priceBreakdown.total,
             discountPercent: discountPercent
           };
