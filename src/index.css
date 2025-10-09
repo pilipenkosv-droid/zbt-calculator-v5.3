@@ -2274,16 +2274,16 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 18px;
+  transform: translate(-50%, -50%) translateY(-1px);
+  font-size: 16px;
   font-weight: 600;
   line-height: 1;
   color: #4A4A4A;
   transition: color 200ms ease;
   font-family: 'Navigo', 'Inter', sans-serif;
   display: block;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   text-align: center;
 }
 
