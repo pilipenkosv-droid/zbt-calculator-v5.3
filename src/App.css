@@ -1,0 +1,152 @@
+/* Footer styles */
+.footer {
+  width: 100%;
+}
+
+.footer-top {
+  background: #F5F5F5;
+  padding: 32px 0;
+}
+
+.footer-bottom {
+  background: #FFFFFF;
+  padding: 32px 0;
+  border-top: 1px solid #E5E5E5;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.phone {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1A1A1A;
+  font-family: 'Navigo', 'Inter', sans-serif;
+}
+
+.email-link {
+  font-size: 16px;
+  color: #FF6A00;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.email-link:hover {
+  color: #F55E00;
+  text-decoration: underline;
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.social-link:hover .social-icon {
+  filter: brightness(0) saturate(100%) invert(50%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(118%) contrast(119%);
+}
+
+.social-icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%);
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.company-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: #1A1A1A;
+}
+
+.footer-center {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: #666666;
+  text-align: left;
+  flex: 1;
+  max-width: 400px;
+  margin: 0 24px;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: #666666;
+  text-align: right;
+}
+
+.footer-link {
+  color: #666666;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #FF6A00;
+  text-decoration: underline;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+  
+  .footer-top .footer-container {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .footer-bottom .footer-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .footer-center {
+    margin: 0;
+    max-width: none;
+  }
+  
+  .footer-right {
+    text-align: center;
+  }
+  
+  .footer-left {
+    justify-content: center;
+  }
+}

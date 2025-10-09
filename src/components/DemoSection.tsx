@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import './DemoSection.css';
 
 type DemoSectionProps = {
   onSubmit?: (payload: Record<string, string | number | boolean>) => Promise<void> | void;
@@ -237,16 +238,6 @@ export default function DemoSection({ onSubmit, policyUrl = '#' }: DemoSectionPr
       </form>
       </div>
 
-      <style jsx>{`
-        .demo { 
-          position: relative;
-          color: #FFFFFF;
-          background: linear-gradient(135deg, #FF6A00 0%, #FF8C3A 50%, #FF6A00 100%);
-          border-radius: 24px 24px 0 0; /* закругление только сверху */
-          margin: 40px auto 0 auto; /* отступ сверху, без отступа снизу */
-          max-width: 1200px;
-          --scroll-progress: 0;
-        }
         
         /* Контейнер для декоративных фигур */
         .decorativeShapes {

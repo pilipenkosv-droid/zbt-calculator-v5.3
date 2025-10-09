@@ -1,0 +1,137 @@
+.cases { 
+  padding: 48px 24px; 
+  background: #ffffff !important; 
+  color: var(--fg, #1a1a1a); 
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h2 {
+  color: #1a1a1a !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-family: 'Navigo', 'Inter', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+
+.subtitle {
+  color: #666666;
+  font-size: 18px;
+  margin: 0;
+}
+
+.grid {
+  display: flex !important;
+  gap: 24px !important;
+  overflow-x: auto !important;
+  padding: 0 0 16px 0 !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: #FF6A00 #F2F2F2 !important;
+  flex-wrap: nowrap !important;
+}
+
+.grid::-webkit-scrollbar {
+  height: 8px !important;
+}
+
+.grid::-webkit-scrollbar-track {
+  background: #F2F2F2 !important;
+  border-radius: 4px !important;
+}
+
+.grid::-webkit-scrollbar-thumb {
+  background: #FF6A00 !important;
+  border-radius: 4px !important;
+}
+
+.grid::-webkit-scrollbar-thumb:hover {
+  background: #F55E00 !important;
+}
+
+.card {
+  flex: 0 0 380px !important;
+  min-width: 380px !important;
+  max-width: 380px !important;
+  flex-shrink: 0 !important;
+  background: #ffffff !important;
+  border: 1px solid #E5E5E5;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin: 0 0 8px 0;
+}
+
+.card-meta {
+  font-size: 14px;
+  color: #666666;
+  margin: 0;
+}
+
+.card-body p {
+  margin: 0 0 12px 0;
+  line-height: 1.5;
+}
+
+.card-body strong {
+  color: #1A1A1A;
+  font-weight: 600;
+}
+
+.kpis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kpi {
+  background: #F8F9FA;
+  color: #1A1A1A;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.kpi-value {
+  font-weight: 600;
+  color: #FF6A00;
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex: 0 0 320px !important;
+    min-width: 320px !important;
+    max-width: 320px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex: 0 0 280px !important;
+    min-width: 280px !important;
+    max-width: 280px !important;
+  }
+}
