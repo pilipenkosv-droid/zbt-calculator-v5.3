@@ -556,6 +556,11 @@ p {
     top: auto; 
     width: 100%; 
     margin-bottom: 16px; 
+    order: 999; /* Блок итогов будет последним на мобильных */
+  }
+  
+  .order-2.lg\\:order-1 {
+    order: 1; /* Основной контент калькулятора будет первым */
   }
   
   .mm-grid { 
@@ -1014,6 +1019,11 @@ p {
     position: static;
     width: auto;
     margin-bottom: var(--gap-4);
+    order: 999; /* Блок итогов будет последним на мобильных */
+  }
+  
+  .order-2.lg\\:order-1 {
+    order: 1; /* Основной контент калькулятора будет первым */
   }
   
   .grid-main {
