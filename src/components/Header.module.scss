@@ -29,6 +29,13 @@
   padding: 12px 20px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.leftGroup {
+  display: flex;
+  align-items: center;
+  gap: 32px;
 }
 
 .brand {
@@ -41,15 +48,57 @@
   height: var(--logo-size);
   width: auto;
   object-fit: contain;
-  /* Для SVG с тонкими линиями — лёгкая резкость */
   image-rendering: -webkit-optimize-contrast;
 }
 
-/* Типографика для логотипа (если будет текст) */
-.brand {
+/* Навигация */
+.nav {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.navLink {
+  color: #666666 !important;
+  text-decoration: none;
+  font-family: 'Navigo', 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: var(--brand);
+}
+
+/* Телефон */
+.phone {
+  display: flex;
+  align-items: center;
+}
+
+.phoneLink {
+  color: var(--brand);
+  text-decoration: none;
   font-family: 'Navigo', 'Inter', sans-serif;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.phoneLink:hover {
+  color: var(--brand-press);
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+  
+  .leftGroup {
+    gap: 0;
+  }
 }
 
 /* Состояние при скролле - более интенсивное размытие */

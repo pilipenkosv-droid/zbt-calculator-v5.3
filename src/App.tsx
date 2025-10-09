@@ -13,6 +13,10 @@ import PeriodSection from './components/PeriodSection';
 import MMLevelsSection from './components/MMLevelsSection';
 import StickyCalculation from './components/StickyCalculation';
 import CalculatorParams from './components/CalculatorParams';
+import CasesSection from './components/CasesSection';
+import IntegrationsSection from './components/IntegrationsSection';
+import FAQSection from './components/FAQSection';
+import DemoSection from './components/DemoSection';
 import ApplyModal from './components/ApplyModal';
 
 const App: React.FC = () => {
@@ -100,25 +104,27 @@ const App: React.FC = () => {
       <div className="min-h-screen">
         <Header />
         
-        <Banner
-          imageSrc="/images/Group_9206.png.webp"
-          imageAlt="Zabota 2.0 — интерфейсы на ноутбуке и смартфоне"
-          onLearnMore={() => {
-            // Скролл к блоку "База пациентов" с учетом высоты шапки
-            const el = document.getElementById("patient-base-section");
-            if (el) {
-              const headerHeight = 80; // примерная высота шапки
-              const elementPosition = el.offsetTop - headerHeight;
-              window.scrollTo({
-                top: elementPosition,
-                behavior: "smooth"
-              });
-            }
-          }}
-        />
+        <div id="features">
+          <Banner
+            imageSrc="/images/Group_9206.png.webp"
+            imageAlt="Zabota 2.0 — интерфейсы на ноутбуке и смартфоне"
+            onLearnMore={() => {
+              // Скролл к блоку "Калькулятор" с учетом высоты шапки
+              const el = document.getElementById("pricing");
+              if (el) {
+                const headerHeight = 80; // примерная высота шапки
+                const elementPosition = el.offsetTop - headerHeight;
+                window.scrollTo({
+                  top: elementPosition,
+                  behavior: "smooth"
+                });
+              }
+            }}
+          />
+        </div>
 
       {/* Основной калькулятор с приоритетными блоками */}
-      <div id="calculator-root" className="container" style={{ marginTop: '60px' }}>
+      <div id="pricing" className="container" style={{ marginTop: '60px' }}>
         <div className="grid-main">
           {/* Левая часть - приоритетные блоки и параметры */}
           <div className="order-2 lg:order-1">
@@ -347,25 +353,242 @@ const App: React.FC = () => {
       </section>
       )}
 
-      {/* Футер - ПРОСТОЙ ЧЕРНЫЙ */}
-      <footer className="bg-black py-8 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-lg font-semibold mb-3 text-white">Zabota 2.0</h3>
-          <p className="text-gray-400 mb-4 text-sm">
-            Единая платформа для управления клиниками
-          </p>
-          <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <a href="#" className="text-gray-500 hover:text-white transition-colors">
-              Политика конфиденциальности
-            </a>
-            <a href="#" className="text-gray-500 hover:text-white transition-colors">
-              Публичная оферта
-            </a>
-            <a href="#" className="text-gray-500 hover:text-white transition-colors">
-              Контакты
-            </a>
+      {/* Секция кейсов клиентов */}
+      <div id="cases">
+        <CasesSection />
+      </div>
+
+      {/* Секция интеграций */}
+      <div id="integrations">
+        <IntegrationsSection />
+      </div>
+
+      {/* Секция FAQ */}
+      <div id="faq">
+        <FAQSection />
+      </div>
+
+      {/* Секция демо */}
+      <div id="contacts">
+        <DemoSection 
+          onSubmit={(payload) => {
+            console.log('Demo form submitted:', payload);
+            // Здесь можно добавить отправку данных на сервер
+          }}
+          policyUrl="/privacy-policy"
+        />
+      </div>
+
+      {/* Футер */}
+      <footer className="footer">
+        {/* Верхняя часть - контакты */}
+        <div className="footer-top">
+          <div className="footer-container">
+            <div className="footer-contacts">
+              <div className="phone">8 800 555 38 62</div>
+              <a href="mailto:info@zabota.tech" className="email-link">info@zabota.tech</a>
+            </div>
+            <div className="footer-social">
+              <a href="#" className="social-link" aria-label="ВКонтакте">
+                <img src="/images/3.svg" alt="VK" className="social-icon" />
+              </a>
+              <a href="#" className="social-link" aria-label="Telegram">
+                <img src="/images/4.svg" alt="Telegram" className="social-icon" />
+              </a>
+              <a href="#" className="social-link" aria-label="YouTube">
+                <img src="/images/5.svg" alt="YouTube" className="social-icon" />
+              </a>
+            </div>
           </div>
         </div>
+
+        {/* Нижняя часть - юридическая информация */}
+        <div className="footer-bottom">
+          <div className="footer-container">
+            <div className="footer-left">
+              <div className="company-info">
+                <div>ООО «Медицина»</div>
+                <div>ИНН: 7721479230</div>
+              </div>
+            </div>
+            <div className="footer-center">
+              <div>Является оператором персональных данных</div>
+              <div>под регистрационным номером: 77-17-005444</div>
+              <div>
+                <a href="https://zabota.tech/terms_of_use" target="_blank" rel="noopener noreferrer" className="footer-link">
+                  Правила использования сервиса ZABOTA 2.0
+                </a>
+              </div>
+            </div>
+            <div className="footer-right">
+              <div>
+                <a href="https://zabota.tech/#:~:text=%D0%AE%D1%80%D0%B8%D0%B4%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%0A%D0%98%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F" target="_blank" rel="noopener noreferrer" className="footer-link">
+                  Юридическая информация
+                </a>
+              </div>
+              <div>
+                <a href="https://zabota.tech/privacypolicy" target="_blank" rel="noopener noreferrer" className="footer-link">
+                  Политика обработки персональных данных
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <style jsx>{`
+          .footer {
+            width: 100%;
+          }
+          
+          .footer-top {
+            background: #F5F5F5;
+            padding: 32px 0;
+          }
+          
+          .footer-bottom {
+            background: #FFFFFF;
+            padding: 32px 0;
+            border-top: 1px solid #E5E5E5;
+          }
+          
+          .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          
+          .footer-contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+          }
+          
+          .phone {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1A1A1A;
+            font-family: 'Navigo', 'Inter', sans-serif;
+          }
+          
+          .email-link {
+            font-size: 16px;
+            color: #FF6A00;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+          }
+          
+          .email-link:hover {
+            color: #F55E00;
+            text-decoration: underline;
+          }
+          
+          .footer-social {
+            display: flex;
+            gap: 12px;
+          }
+          
+          .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+          }
+          
+          .social-link:hover .social-icon {
+            filter: brightness(0) saturate(100%) invert(50%) sepia(79%) saturate(2476%) hue-rotate(346deg) brightness(118%) contrast(119%);
+          }
+          
+          .social-icon {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            filter: brightness(0) saturate(100%);
+          }
+          
+          .footer-left {
+            display: flex;
+            align-items: center;
+          }
+          
+          .company-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 14px;
+            color: #1A1A1A;
+          }
+          
+          .footer-center {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 13px;
+            color: #666666;
+            text-align: left;
+            flex: 1;
+            max-width: 400px;
+            margin: 0 24px;
+          }
+          
+          .footer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 13px;
+            color: #666666;
+            text-align: right;
+          }
+          
+          .footer-link {
+            color: #666666;
+            text-decoration: none;
+            transition: color 0.2s ease;
+          }
+          
+          .footer-link:hover {
+            color: #FF6A00;
+            text-decoration: underline;
+          }
+          
+          
+          /* Мобильная адаптация */
+          @media (max-width: 768px) {
+            .footer-container {
+              flex-direction: column;
+              gap: 24px;
+              text-align: center;
+            }
+            
+            .footer-top .footer-container {
+              flex-direction: column;
+              gap: 16px;
+            }
+            
+            .footer-bottom .footer-container {
+              flex-direction: column;
+              gap: 20px;
+            }
+            
+            .footer-center {
+              margin: 0;
+              max-width: none;
+            }
+            
+            .footer-right {
+              text-align: center;
+            }
+            
+            .footer-left {
+              justify-content: center;
+            }
+          }
+        `}</style>
       </footer>
 
       {/* Apply Modal */}

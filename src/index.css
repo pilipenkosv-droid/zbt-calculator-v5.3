@@ -1764,9 +1764,12 @@ body {
   margin: 8px 0 10px 0;
 }
 
-.calc-breakdown .label {
-  color: var(--text-muted);
+.calc-breakdown .label,
+.calc-card .calc-breakdown .label {
+  color: #666666 !important;
   font-size: 14px;
+  font-weight: 300;
+  font-family: 'Navigo', 'Inter', sans-serif;
 }
 
 .calc-breakdown .value {
