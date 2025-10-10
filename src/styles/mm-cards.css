@@ -1,0 +1,196 @@
+/* Сетка карточек ММ */
+.mm-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Карточка — glassmorphism */
+.mm-card {
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px;
+  box-sizing: border-box;
+  backdrop-filter: blur(12px) saturate(120%);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 180ms ease;
+}
+
+.mm-card:hover {
+  transform: translateY(-2px);
+}
+
+.mm-card.selected {
+  outline: 2px solid var(--accent, #FF7A1A);
+  box-shadow: 0 0 0 6px rgba(255, 122, 26, 0.12);
+}
+
+.mm-card-header {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 6px;
+  min-height: 96px;
+}
+
+.mm-title {
+  text-align: left;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text, #111);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+/* Premium — градиентный текст */
+.mm-title.gradient-premium {
+  position: relative;
+  color: #ff6a00;
+  font-weight: 700;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.mm-title.gradient-premium::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(35deg, #ff6a00 0%, #ff8c3a 60%, #ff6a00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Expert — «металлический» текст */
+.mm-title.metal {
+  background:
+    linear-gradient(90deg, #6f747a 0%, #c0c4c9 20%, #eef0f3 38%, #b5bac0 55%, #f5f7fa 72%, #9aa0a6 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 28%, rgba(255, 255, 255, 0) 72%, rgba(255, 255, 255, 0.35) 100%),
+    radial-gradient(120% 120% at 15% 85%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 45%);
+  background-blend-mode: normal, overlay, overlay;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background-position 240ms ease, filter 240ms ease;
+  background-size: 100% 100%;
+  background-position: 0% 0%;
+}
+.mm-title.metal:hover {
+  background-position: 2% 0%;
+  filter: saturate(108%) contrast(104%);
+}
+
+.mm-price {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text, #111);
+}
+.mm-price-sub {
+  font-size: 14px;
+  color: var(--text-muted, #333);
+}
+
+.mm-card-body {
+  margin-top: 8px;
+}
+.mm-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.mm-list li {
+  color: var(--text-muted, #333);
+  margin-bottom: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.mm-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Пасхалка «Рекомендуем» */
+.mm-easter-egg {
+  position: relative;
+  display: inline-block;
+  margin-left: 4px;
+  z-index: 10;
+  cursor: pointer;
+  vertical-align: super;
+  font-size: 0.7em;
+}
+.mm-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34c759;
+  box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.7);
+  animation: pulse 2s infinite;
+  transition: all 0.2s ease;
+  vertical-align: middle;
+}
+.mm-easter-egg:hover .mm-dot {
+  transform: scale(1.1);
+}
+.mm-easter-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background: #34c759;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.1s ease;
+  pointer-events: none;
+  border: 2px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(52, 199, 89, 0.4);
+  z-index: 9999;
+}
+.mm-easter-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: #34c759;
+}
+.mm-easter-egg:hover .mm-easter-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Пульсация */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(52, 199, 89, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 199, 89, 0); }
+}
+
+/* Адаптив */
+@media (max-width: 1100px) {
+  .mm-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .mm-grid { grid-template-columns: 1fr; }
+}

@@ -150,3 +150,76 @@
     justify-content: center;
   }
 }
+
+/* Стили для кнопки "Подробнее" в калькуляторе */
+.calc-details-trigger {
+  margin: 16px 0 0 0;
+}
+
+.calc-details-button {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 150ms ease;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.calc-details-button:hover,
+.calc-details-button:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  outline: none;
+}
+
+.calc-details-button-text {
+  text-align: left;
+}
+
+.calc-details-button-icon {
+  font-size: 12px;
+  transition: transform 200ms cubic-bezier(0.2, 0, 0, 1);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.calc-details-button-icon.open {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+  .calc-details-button {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}
+
+/* Стили для кликабельной метки в breakdown */
+.clickable-label {
+  cursor: pointer;
+  transition: all 150ms ease;
+  position: relative;
+}
+
+.clickable-label:hover,
+.clickable-label:focus {
+  color: rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.05);
+  outline: none;
+  border-radius: 4px;
+}
+
+.clickable-label:focus {
+  box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.3);
+}
+
+/* Позиционирование для SummaryDetailsPanel */
+.calc-card {
+  position: relative;
+}
