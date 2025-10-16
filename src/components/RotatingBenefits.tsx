@@ -21,7 +21,7 @@ const BENEFITS: Benefit[] = [
 const DISPLAY_MOBILE = 4;
 const DISPLAY_DESKTOP = 4; // Always 4 items to prevent layout shift
 const INTERVAL_MS = 3750; // 50% slower (was 2500ms)
-const TRANSITION_MS = 800;
+// const TRANSITION_MS = 800; // Removed unused constant
 
 // Utility: detect reduced motion
 const usePrefersReducedMotion = (): boolean => {
@@ -191,7 +191,7 @@ const RotatingBenefits: React.FC = () => {
             const isEntering = enteringIndex === idx;
             return (
               <div
-                key={`${b.text}`}
+                key={`${b?.text || idx}`}
                 className={`${baseItemClass} ${getItemAnimationClass(idx)} shrink-0`}
                 style={{
                   transitionDuration: prefersReducedMotion ? "0ms" : "700ms",
@@ -202,8 +202,8 @@ const RotatingBenefits: React.FC = () => {
                     : 'translateX(0)',
                 }}
               >
-                <span className={emojiClass} aria-hidden="true">{b.emoji}</span>
-                <span className={textClass}>{b.text}</span>
+                <span className={emojiClass} aria-hidden="true">{b?.emoji}</span>
+                <span className={textClass}>{b?.text}</span>
               </div>
             );
           })}
@@ -215,7 +215,7 @@ const RotatingBenefits: React.FC = () => {
             const isEntering = enteringIndex === logicalIndex;
             return (
               <div
-                key={`${b.text}`}
+                key={`${b?.text || idx}`}
                 className={`${baseItemClass} ${getItemAnimationClass(logicalIndex)} shrink-0`}
                 style={{
                   transitionDuration: prefersReducedMotion ? "0ms" : "700ms",
@@ -226,8 +226,8 @@ const RotatingBenefits: React.FC = () => {
                     : 'translateX(0)',
                 }}
               >
-                <span className={emojiClass} aria-hidden="true">{b.emoji}</span>
-                <span className={textClass}>{b.text}</span>
+                <span className={emojiClass} aria-hidden="true">{b?.emoji}</span>
+                <span className={textClass}>{b?.text}</span>
               </div>
             );
           })}
