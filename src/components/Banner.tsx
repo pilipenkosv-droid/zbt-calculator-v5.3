@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import styles from "./Banner.module.scss";
+import RotatingBenefits from "./RotatingBenefits";
 
 type BannerProps = {
   title?: string;
@@ -10,8 +11,8 @@ type BannerProps = {
 
 export default function Banner({
   title = "Zabota 2.0",
-  imageSrc,
-  imageAlt = "Интерфейсы Забота 2.0 на ноутбуке и смартфоне",
+  imageSrc: _imageSrc,
+  imageAlt: _imageAlt = "Интерфейсы Забота 2.0 на ноутбуке и смартфоне",
   onLearnMore,
 }: BannerProps) {
   const bannerRef = useRef<HTMLElement>(null);
@@ -66,66 +67,17 @@ export default function Banner({
                   type="button"
                   className={styles.cta}
                   onClick={onLearnMore}
-                  aria-label="Рассчитать тариф Zabota 2.0"
+                  aria-label="Посчитать стоимость Zabota 2.0"
                 >
-                  Рассчитать тариф
+                  Посчитать стоимость
                 </button>
           </div>
 
           <div className={styles.meta}>
-              <div className={styles.benefits}>
-                <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>📈</span>
-                  <span className={styles.benefitText}>+14-20% конверсия в повторный прием</span>
-                </div>
-                <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>🛡️</span>
-                  <span className={styles.benefitText}>Защита от спама</span>
-                </div>
-                <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>💤</span>
-                  <span className={styles.benefitText}>Возвращаем "спящих" пациентов</span>
-                </div>
-                <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>📱</span>
-                  <span className={styles.benefitText}>Автоматизация напоминаний</span>
-                </div>
-                <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>🎯</span>
-                  <span className={styles.benefitText}>Персонализированные акции</span>
-                </div>
-                <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>⭐️</span>
-                  <span className={styles.benefitText}>Рост рейтинга клиники</span>
-                </div>
-                <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>🔗</span>
-                  <span className={styles.benefitText}>Интеграции с 35+ МИС</span>
-                </div>
-                <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>⚡</span>
-                  <span className={styles.benefitText}>Запуск от 7 дней</span>
-                </div>
-                <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>😌</span>
-                  <span className={styles.benefitText}>Перехват негатива до публикации</span>
-                </div>
-                <div className={styles.benefit}>
-                  <span className={styles.benefitIcon}>🔒</span>
-                  <span className={styles.benefitText}>Оператор ПДн</span>
-                </div>
-              </div>
+              <RotatingBenefits />
           </div>
         </div>
 
-        <div className={styles.right}>
-          <img
-            src={imageSrc}
-            alt={imageAlt}
-            className={styles.heroImage}
-            decoding="async"
-          />
-        </div>
       </div>
     </section>
   );

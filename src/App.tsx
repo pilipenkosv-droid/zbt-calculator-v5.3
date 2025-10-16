@@ -85,7 +85,7 @@ const App: React.FC = () => {
             imageAlt="Zabota 2.0 — интерфейсы на ноутбуке и смартфоне"
             onLearnMore={() => {
               // Скролл к блоку "Калькулятор" с учетом высоты шапки
-              const el = document.getElementById('pricing');
+              const el = document.getElementById('calculator');
               if (el) {
                 const headerHeight = 80; // примерная высота шапки
                 const elementPosition = el.offsetTop - headerHeight;
@@ -99,7 +99,7 @@ const App: React.FC = () => {
         </div>
 
         {/* Основной калькулятор с приоритетными блоками */}
-        <div id="pricing" className="container" style={{ marginTop: '60px' }}>
+        <div id="calculator" className="container" style={{ marginTop: '60px' }}>
           <div className="grid-main">
             {/* Левая часть - приоритетные блоки и параметры */}
             <div className="order-2 lg:order-1">
@@ -362,14 +362,14 @@ const App: React.FC = () => {
           </section>
         )}
 
+        {/* Секция интеграций - перемещена выше для важности */}
+        <div id="integrations">
+          <IntegrationsSection />
+        </div>
+
         {/* Секция кейсов клиентов */}
         <div id="cases">
           <CasesSection />
-        </div>
-
-        {/* Секция интеграций */}
-        <div id="integrations">
-          <IntegrationsSection />
         </div>
 
         {/* Секция FAQ */}
@@ -464,6 +464,9 @@ const App: React.FC = () => {
                   >
                     Политика обработки персональных данных
                   </a>
+                </div>
+                <div className="footer-copyright">
+                  © {new Date().getFullYear()} ООО «Медицина». Все права защищены.
                 </div>
               </div>
             </div>

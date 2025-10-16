@@ -136,28 +136,6 @@ a:hover {
   border-bottom: 0;
 }
 
-/* Theme switch */
-.theme-switch {
-  display: inline-flex;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.theme-switch button {
-  padding: 8px 12px;
-  border: 0;
-  background: var(--card);
-  color: var(--text);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.theme-switch button.is-active {
-  background: var(--cta);
-  color: var(--text-on-orange);
-}
-
 /* Header styles */
 .site-header {
   position: sticky;
@@ -212,8 +190,7 @@ a:hover {
 
 /* Фокусы */
 .btn:focus,
-.chip:focus,
-.theme-switch button:focus {
+.chip:focus {
   outline: 2px solid var(--link);
   outline-offset: 2px;
 }

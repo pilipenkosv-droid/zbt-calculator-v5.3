@@ -1,6 +1,8 @@
 import React from 'react';
 import { CalculatorState } from '../types';
 import { track } from '../utils/analytics';
+import Tooltip from './Tooltip';
+import InfoIcon from './InfoIcon';
 
 // Usage example for the new SummaryDetailsPanel integration:
 //
@@ -128,24 +130,32 @@ const CalculatorParams: React.FC<CalculatorParamsProps> = ({
   return (
     <section className="extra-section py-6 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-4">
+        <div className="mb-4 flex items-center gap-2">
           <p className="mm-section-subtitle">Дополнительные параметры</p>
+          <Tooltip content="Дополнительные параметры влияют на итоговую стоимость. Филиалы увеличивают цену, WhatsApp номера добавляют стоимость за каждый номер, техподдержка влияет на качество обслуживания.">
+            <InfoIcon />
+          </Tooltip>
         </div>
 
         <div className="extra-row-3">
           {/* Количество филиалов */}
           <div className="extra-col branches">
-            <div
-              className="section-title"
-              style={{
-                color: '#1A1A1A',
-                fontSize: '14px',
-                fontWeight: '600',
-                lineHeight: '1.2',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              Количество филиалов
+            <div className="flex items-center gap-2">
+              <div
+                className="section-title"
+                style={{
+                  color: '#1A1A1A',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  lineHeight: '1.2',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Количество филиалов
+              </div>
+              <Tooltip content="Количество филиалов вашей клиники. Каждый дополнительный филиал увеличивает стоимость тарифа.">
+                <InfoIcon className="w-3 h-3" />
+              </Tooltip>
             </div>
             <div className="slider-wrap">
               <input
@@ -191,17 +201,22 @@ const CalculatorParams: React.FC<CalculatorParamsProps> = ({
 
           {/* Дополнительные номера WhatsApp */}
           <div className="extra-col whatsapp">
-            <div
-              className="section-title"
-              style={{
-                color: '#1A1A1A',
-                fontSize: '14px',
-                fontWeight: '600',
-                lineHeight: '1.2',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              Дополнительные номера WhatsApp
+            <div className="flex items-center gap-2">
+              <div
+                className="section-title"
+                style={{
+                  color: '#1A1A1A',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  lineHeight: '1.2',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Дополнительные номера WhatsApp
+              </div>
+              <Tooltip content="Количество дополнительных WhatsApp номеров для рассылок. Каждый номер добавляет 500₽/мес к стоимости.">
+                <InfoIcon className="w-3 h-3" />
+              </Tooltip>
             </div>
             <div className="slider-wrap">
               <input
@@ -236,17 +251,22 @@ const CalculatorParams: React.FC<CalculatorParamsProps> = ({
 
           {/* Техподдержка (радиокнопки) */}
           <div className="extra-col support">
-            <div
-              className="section-title"
-              style={{
-                color: '#1A1A1A',
-                fontSize: '14px',
-                fontWeight: '600',
-                lineHeight: '1.2',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              Техподдержка
+            <div className="flex items-center gap-2">
+              <div
+                className="section-title"
+                style={{
+                  color: '#1A1A1A',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  lineHeight: '1.2',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Техподдержка
+              </div>
+              <Tooltip content="Уровень техподдержки влияет на время отклика и доступность. 'Будни' - поддержка в рабочие дни, 'Каждый день' - круглосуточная поддержка с SLA.">
+                <InfoIcon className="w-3 h-3" />
+              </Tooltip>
             </div>
             <div className="support-block">
               <div className="support-row">

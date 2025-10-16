@@ -3,19 +3,67 @@ import styles from "./Header.module.scss";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      setIsScrolled(scrollTop > 50); // активируем эффект после 50px скролла
+      setIsScrolled(scrollTop > 50);
+      
+      // Вычисление прогресса прокрутки
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollableHeight = documentHeight - windowHeight;
+      const progress = scrollableHeight > 0 ? (scrollTop / scrollableHeight) * 100 : 0;
+      setScrollProgress(Math.min(progress, 100));
+
+      // Определение активной секции
+      const sections = ['calculator', 'integrations', 'cases', 'faq', 'contacts'];
+      let currentSection = '';
+      
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            currentSection = sectionId;
+            break;
+          }
+        }
+      }
+      
+      setActiveSection(currentSection);
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Вызываем сразу для инициализации
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerHeight = 80; // Высота хэдера
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
+      {/* Индикатор прокрутки */}
+      <div 
+        className={styles.scrollIndicator}
+        style={{ width: `${scrollProgress}%` }}
+      />
+      
       <div className={styles.container}>
         <div className={styles.leftGroup}>
           <a href="/" className={styles.brand} aria-label="Zabota 2.0 — на главную">
@@ -28,11 +76,41 @@ export default function Header() {
           </a>
           
           <nav className={styles.nav}>
-            <a href="#features" className={styles.navLink}>Возможности</a>
-            <a href="#integrations" className={styles.navLink}>Интеграции</a>
-            <a href="#cases" className={styles.navLink}>Кейсы</a>
-            <a href="#pricing" className={styles.navLink}>Тарифы</a>
-            <a href="#contacts" className={styles.navLink}>Контакты</a>
+            <a 
+              href="#calculator" 
+              className={`${styles.navLink} ${activeSection === 'calculator' ? styles.active : ''}`}
+              onClick={(e) => handleNavClick(e, 'calculator')}
+            >
+              Калькулятор
+            </a>
+            <a 
+              href="#integrations" 
+              className={`${styles.navLink} ${activeSection === 'integrations' ? styles.active : ''}`}
+              onClick={(e) => handleNavClick(e, 'integrations')}
+            >
+              Интеграции
+            </a>
+            <a 
+              href="#cases" 
+              className={`${styles.navLink} ${activeSection === 'cases' ? styles.active : ''}`}
+              onClick={(e) => handleNavClick(e, 'cases')}
+            >
+              Кейсы
+            </a>
+            <a 
+              href="#faq" 
+              className={`${styles.navLink} ${activeSection === 'faq' ? styles.active : ''}`}
+              onClick={(e) => handleNavClick(e, 'faq')}
+            >
+              FAQ
+            </a>
+            <a 
+              href="#contacts" 
+              className={`${styles.navLink} ${activeSection === 'contacts' ? styles.active : ''}`}
+              onClick={(e) => handleNavClick(e, 'contacts')}
+            >
+              Контакты
+            </a>
           </nav>
         </div>
         

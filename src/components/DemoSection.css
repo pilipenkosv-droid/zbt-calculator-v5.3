@@ -221,15 +221,18 @@
   80% { transform: translate(-5px, -10px) rotate(20deg) scale(0.92); }
 }
 
-/* Ромб 1 */
+/* Звезда 1 */
 .star1 {
   position: absolute;
   top: 25%;
   right: 10%;
   width: 30px;
   height: 30px;
-  background: rgba(255, 255, 255, 0.2);
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  background-image: url('/images/Soft_Star.png.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.4;
   transition: transform 0.8s ease;
   animation: demoFloat4 5.5s ease-in-out infinite;
 }
@@ -239,15 +242,18 @@
   50% { transform: translate(-4px, 8px) rotate(45deg) scale(1.25); }
 }
 
-/* Ромб 2 */
+/* Звезда 2 */
 .star2 {
   position: absolute;
   bottom: 35%;
   right: 5%;
   width: 25px;
   height: 25px;
-  background: rgba(255, 255, 255, 0.16);
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  background-image: url('/images/Soft_Star.png.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.32;
   transition: transform 0.8s ease;
   animation: demoFloat5 8.5s ease-in-out infinite;
 }
@@ -258,15 +264,18 @@
   75% { transform: translate(-2px, -6px) rotate(-90deg) scale(0.8); }
 }
 
-/* Ромб 3 */
+/* Звезда 3 */
 .star3 {
   position: absolute;
   top: 60%;
   right: 20%;
   width: 20px;
   height: 20px;
-  background: rgba(255, 255, 255, 0.14);
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  background-image: url('/images/Soft_Star.png.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.28;
   transition: transform 0.8s ease;
   animation: demoFloat6 7.5s ease-in-out infinite;
 }

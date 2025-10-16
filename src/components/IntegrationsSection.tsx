@@ -1,24 +1,48 @@
-// import React from 'react';
+import React, { useState } from 'react';
 import './IntegrationsSection.css';
 
 const vendors = [
   'МИС Инфоклиника', 'Medwork', 'Медиалог', 'Клиника+',
   '1С:Медицина', 'SQNS', 'BASIS', 'Доктор CRM',
-  'SimpleMed', 'AnyClinic', 'ДентаСофт', 'ОМС/ДМС CRM'
+  'SimpleMed', 'AnyClinic', 'ДентаСофт', 'ОМС/ДМС CRM',
+  'МедСофт', 'МедИнфо', 'Клиника-Онлайн', 'МедПро',
+  'ДенталСофт', 'Стоматология+', 'ВетКлиника', 'Лаборатория+',
+  'МедТех', 'Клиника24', 'МедЦентр', 'Доктор+',
+  'МедСистема', 'КлиникаПро', 'МедСервис', 'ДентаПро',
+  'ВетСистема', 'ЛабПро', 'МедТех+', 'КлиникаТех',
+  'ДокторСистема', 'МедЦентр+', 'СтоматПро', 'ВетКлиника+'
 ];
 
 const channels = ['SMS', 'WhatsApp*', 'Telegram', 'Email', 'Push'];
 
 export default function IntegrationsSection() {
+  const [searchTerm, setSearchTerm] = useState('');
+  
+  const filteredVendors = vendors.filter(vendor =>
+    vendor.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <section aria-labelledby="integrations-title" className="integrations">
       <div className="header">
-        <h2 id="integrations-title">35+ готовых интеграций</h2>
+        <h2 id="integrations-title">35+ МИС интеграций</h2>
         <p className="subtitle">Подключение к сервисам и услугам, которые вы используете каждый день.</p>
       </div>
 
+      {/* Поиск по логотипам */}
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Поиск по МИС..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-input"
+          aria-label="Поиск по медицинским информационным системам"
+        />
+      </div>
+
       <div className="badges" role="list">
-        {vendors.map((v) => (
+        {filteredVendors.map((v) => (
           <span key={v} role="listitem" className="badge" aria-label={v}>{v}</span>
         ))}
       </div>

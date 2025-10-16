@@ -3,6 +3,7 @@ import { CalculatorState } from '../types';
 import { calculatePrice } from '../lib/pricing';
 import { formatPrice } from '../utils/formatCurrency';
 import EmailModal from './EmailModal';
+import DoubleTicks from './DoubleTicks';
 
 interface StickyCalculationProps {
   state: CalculatorState;
@@ -17,6 +18,7 @@ const StickyCalculation: React.FC<StickyCalculationProps> = ({
   onRequestQuote
 }) => {
   const [isEmailModalOpen, setIsEmailModalOpen] = React.useState(false);
+  const [showDetails, setShowDetails] = React.useState(false);
   const priceBreakdown = calculatePrice(state);
   const discountPercent = Math.round(priceBreakdown.periodDiscount + priceBreakdown.networkDiscount);
 
@@ -31,40 +33,64 @@ const StickyCalculation: React.FC<StickyCalculationProps> = ({
   return (
     <div className="relative w-full">
       {/* Totals card */}
-      <div className={`relative rounded-xl border px-4 py-3 shadow-xl backdrop-saturate-125 backdrop-blur-md dark:bg-slate-900/70 dark:shadow-black/30 ${
-        hasDiscount 
-          ? 'border-green-400/40 bg-white/70 dark:border-green-400/30' 
-          : 'border-black/10 bg-white/70 dark:border-white/10'
-      }`}>
+      <div 
+        id="summary-block"
+        className={`relative rounded-xl border px-4 py-3 shadow-xl backdrop-saturate-125 backdrop-blur-md ${
+          hasDiscount 
+            ? 'border-green-400/40 bg-white/70' 
+            : 'border-black/10 bg-white/70'
+        }`}
+      >
+        {/* Double Ticks Indicator */}
+        <DoubleTicks 
+          calculatorSelector="#calculator" 
+          attachToSelector="#summary-block" 
+        />
         {/* Стоимость сверху с увеличенным размером */}
-        <div className="mb-2 text-[26px] font-bold text-slate-900 dark:text-white">
+        <div className="mb-2 text-[26px] font-bold text-slate-900">
           {formatPrice(priceBreakdown.monthlyPerBranch)}/мес
         </div>
         
         {/* Скидка в мягком зеленом или сером если нет скидки */}
-        <div className={`mb-2 text-[15px] font-semibold ${discountPercent > 0 ? 'discount-text-green' : 'text-gray-500 dark:text-gray-400'}`}>
+        <div className={`mb-2 text-[15px] font-semibold ${discountPercent > 0 ? 'discount-text-green' : 'text-gray-500'}`}>
           С учетом скидки –{discountPercent}%
         </div>
         
-        <div className="flex flex-wrap items-center gap-2 text-[13px] text-slate-700 dark:text-slate-300">
+        <div className="flex flex-wrap items-center gap-2 text-[13px] text-slate-700">
           <span>Ваша скидка составила: {formatPrice(discountRub)}</span>
           <span className="inline-block h-1 w-1 rounded-full bg-slate-400" />
-          <span>Итого за период в {state.period} мес: {formatPrice(priceBreakdown.total)}</span>
+          <span>Итого за {state.period} мес: {formatPrice(priceBreakdown.total)}</span>
         </div>
 
-        {/* Разложение цены - компактный breakdown */}
-        <div className="calc-breakdown">
-          <div className="label">Поддержка ММ ({formatLevelName(state.marketingLevel)})</div>
-          <div className="value">{formatPrice(Math.max(0, priceBreakdown.marketing))}</div>
-          <div className="label">База пациентов</div>
-          <div className="value">{formatPrice(Math.max(0, priceBreakdown.patientBase))}</div>
-          <div className="label">Филиалы</div>
-          <div className="value">{priceBreakdown.branches} шт.</div>
-          <div className="label">WhatsApp номера</div>
-          <div className="value">{state.whatsappNumbers + 1} номер{state.whatsappNumbers === 0 ? '' : state.whatsappNumbers === 1 ? 'а' : 'ов'} - {formatPrice(Math.max(0, priceBreakdown.whatsapp))}</div>
-          <div className="label">Техподдержка</div>
-          <div className="value">{formatPrice(Math.max(0, priceBreakdown.techSupport))}</div>
+        {/* Сворачиваемые "Показать детали" */}
+        <div className="calc-breakdown-header">
+          <button
+            onClick={() => setShowDetails(!showDetails)}
+            className="flex items-center justify-between w-full text-left hover:bg-gray-50 rounded-lg px-2 py-1 transition-colors"
+          >
+            <span className="text-sm font-medium text-gray-700">
+              {showDetails ? 'Свернуть детали' : 'Показать детали'}
+            </span>
+            <span className={`text-sm transition-transform ${showDetails ? 'rotate-180' : ''}`}>
+              ▼
+            </span>
+          </button>
         </div>
+
+        {showDetails && (
+          <div className="calc-breakdown">
+            <div className="label">Поддержка ММ ({formatLevelName(state.marketingLevel)})</div>
+            <div className="value">{formatPrice(Math.max(0, priceBreakdown.marketing))}</div>
+            <div className="label">База пациентов</div>
+            <div className="value">{formatPrice(Math.max(0, priceBreakdown.patientBase))}</div>
+            <div className="label">Филиалы</div>
+            <div className="value">{priceBreakdown.branches} шт.</div>
+            <div className="label">WhatsApp номера</div>
+            <div className="value">{state.whatsappNumbers + 1} номер{state.whatsappNumbers === 0 ? '' : state.whatsappNumbers === 1 ? 'а' : 'ов'} - {formatPrice(Math.max(0, priceBreakdown.whatsapp))}</div>
+            <div className="label">Техподдержка</div>
+            <div className="value">{formatPrice(Math.max(0, priceBreakdown.techSupport))}</div>
+          </div>
+        )}
 
         {/* Мини-заметка */}
         <div className="calc-mini-note flex justify-between items-center">

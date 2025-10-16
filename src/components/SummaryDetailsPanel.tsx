@@ -53,7 +53,7 @@ export const SummaryDetailsPanel: React.FC<SummaryDetailsPanelProps> = ({
         type="button"
         aria-expanded={open}
         onClick={toggle}
-        className="group flex w-full items-center justify-between gap-2 rounded-lg px-2 py-2 text-[15px] font-semibold text-slate-900 hover:text-slate-950 dark:text-slate-100 dark:hover:text-white"
+        className="group flex w-full items-center justify-between gap-2 rounded-lg px-2 py-2 text-[15px] font-semibold text-slate-900 hover:text-slate-950"
       >
         <span>{title}</span>
         <svg
@@ -75,7 +75,7 @@ export const SummaryDetailsPanel: React.FC<SummaryDetailsPanelProps> = ({
         ref={panelRef}
         role="region"
         aria-hidden={!open}
-        className="relative z-[1] -mt-2 overflow-hidden rounded-xl border border-black/10 bg-white/70 backdrop-blur-md shadow-xl transition-[max-height,opacity,transform] duration-250 ease-in-out dark:border-white/10 dark:bg-slate-900/70 dark:shadow-black/30"
+        className="relative z-[1] -mt-2 overflow-hidden rounded-xl border border-black/10 bg-white/70 backdrop-blur-md shadow-xl transition-[max-height,opacity,transform] duration-250 ease-in-out"
         style={{
           maxHeight: 0,
           opacity: 0,

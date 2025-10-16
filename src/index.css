@@ -216,8 +216,8 @@ p {
 .calc-sticky {
   position: sticky;
   top: 80px;
-  width: 380px;
-  max-width: 420px;
+  width: 420px;
+  max-width: 480px;
   padding: var(--gap-4);
 }
 
@@ -351,10 +351,6 @@ p {
   margin-right: 8px;
 }
 
-/* В тёмной теме контраст не меняем, типографику оставляем прежней */
-.theme-dark .mm-section-subtitle {
-  color: var(--text);
-}
 
 /* При повышенной контрастности */
 @media (prefers-contrast: more) {
@@ -758,19 +754,6 @@ p {
   image-rendering: -webkit-optimize-contrast;
 }
 
-@media (prefers-color-scheme: dark) {
-  .mm-title.gradient-premium {
-    filter: saturate(150%) brightness(120%);
-    background-image: linear-gradient(
-      35deg,
-      #ff6a00 0%,
-      #ff8c3a 60%,
-      #ff6a00 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
-}
 
 @media (prefers-contrast: more) {
   .mm-title.gradient-premium {
@@ -786,22 +769,6 @@ p {
   }
 }
 
-/* На очень тёмных подложках - яркий градиент */
-.theme-dark .mm-title.gradient-premium {
-  background-image: linear-gradient(
-    35deg,
-    #ff6a00 0%,
-    #ff8c3a 60%,
-    #ff6a00 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  filter: saturate(160%) brightness(130%);
-  text-shadow:
-    0 0 15px rgba(255, 106, 0, 0.7),
-    0 0 25px rgba(255, 140, 58, 0.5),
-    0 2px 6px rgba(0, 0, 0, 0.4);
-}
 
 /* Металлическая платина — только для Expert */
 .mm-title.metal {
@@ -851,33 +818,6 @@ p {
 .mm-title.metal:hover {
   background-position: 2% 0%; /* лёгкое движение блика */
   filter: saturate(108%) contrast(104%);
-}
-
-/* Тёмная тема — чуть более холодные тона и контрастный блик */
-.theme-dark .mm-title.metal {
-  background:
-    linear-gradient(
-      90deg,
-      #5f656b 0%,
-      #b2b7bd 20%,
-      #e6e9ed 38%,
-      #a5abb1 55%,
-      #f1f3f6 72%,
-      #8b9197 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.6) 0%,
-      rgba(255, 255, 255, 0) 30%,
-      rgba(255, 255, 255, 0) 70%,
-      rgba(255, 255, 255, 0.3) 100%
-    ),
-    radial-gradient(
-      120% 120% at 15% 85%,
-      rgba(255, 255, 255, 0.22) 0%,
-      rgba(255, 255, 255, 0) 45%
-    );
-  background-blend-mode: normal, overlay, overlay;
 }
 
 /* Повышенная контрастность — безопасный однотонный платиновый */
@@ -2595,16 +2535,6 @@ select::placeholder {
 
 /* Дополнительные стили для лучшей читаемости */
 
-/* Дополнительные варианты затемнения */
-.modal-backdrop.light {
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(4px);
-}
-
-.modal-backdrop.medium {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(6px);
-}
 
 /* Адаптивность модали для мобильных устройств */
 @media (max-width: 768px) {
@@ -2649,45 +2579,6 @@ select::placeholder {
   --track-margin: 9px 0;
 }
 
-/* Переключатель темы */
-.theme-switch {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 16px;
-  font-size: 14px;
-}
-
-.theme-label {
-  font-weight: 500;
-  color: var(--muted);
-}
-
-#theme-toggle {
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.15s;
-  border: 1px solid var(--border);
-  background: var(--card);
-  color: var(--text);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-#theme-toggle:hover {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-  transform: translateY(-1px);
-}
-
-#theme-toggle:focus {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
 
 /* Слайдер универсально */
 input[type='range'] {

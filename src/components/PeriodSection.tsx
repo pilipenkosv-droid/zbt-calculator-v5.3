@@ -1,6 +1,8 @@
 import React from 'react';
 import { CalculatorState } from '../types';
 import { track } from '../utils/analytics';
+import Tooltip from './Tooltip';
+import InfoIcon from './InfoIcon';
 
 interface PeriodSectionProps {
   state: CalculatorState;
@@ -21,7 +23,12 @@ const PeriodSection: React.FC<PeriodSectionProps> = ({ state, onParamChange }) =
 
   return (
     <section className="section-group">
-      <h2 className="section-title" style={{ color: '#1A1A1A' }}>Период подписки</h2>
+      <div className="flex items-center gap-2">
+        <h2 className="section-title" style={{ color: '#1A1A1A' }}>Срок оплаты</h2>
+        <Tooltip content="Период оплаты влияет на размер скидки. Чем дольше период, тем больше скидка: 3 месяца - 5%, 6 месяцев - 10%, 9 месяцев - 15%, 12 месяцев - 20%.">
+          <InfoIcon />
+        </Tooltip>
+      </div>
       
       <div className="slider-wrap">
         <input
@@ -48,11 +55,11 @@ const PeriodSection: React.FC<PeriodSectionProps> = ({ state, onParamChange }) =
         />
         
         <div className="flex justify-between text-xs" style={{ color: '#4A4A4A' }}>
-          <span>1 мес</span>
-          <span>3 мес</span>
-          <span>6 мес</span>
-          <span>9 мес</span>
-          <span>12 мес</span>
+          <span>1</span>
+          <span>3</span>
+          <span>6</span>
+          <span>9</span>
+          <span>12</span>
         </div>
         
         <div className="period-summary">

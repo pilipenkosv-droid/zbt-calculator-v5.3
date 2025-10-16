@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { CalculatorState } from '../types';
 import { track } from '../utils/analytics';
+import Tooltip from './Tooltip';
+import InfoIcon from './InfoIcon';
 
 interface PatientBaseSectionProps {
   state: CalculatorState;
@@ -90,7 +92,12 @@ const PatientBaseSection: React.FC<PatientBaseSectionProps> = ({ state, onParamC
 
   return (
     <section className="section-group">
-      <h2 className="section-title" style={{ color: '#1A1A1A' }}>База пациентов</h2>
+      <div className="flex items-center gap-2">
+        <h2 className="section-title" style={{ color: '#1A1A1A' }}>База пациентов</h2>
+        <Tooltip content="Количество пациентов в вашей базе данных. Влияет на стоимость тарифа - чем больше пациентов, тем выше цена.">
+          <InfoIcon />
+        </Tooltip>
+      </div>
       
       <div className="slider-wrap">
         <input
