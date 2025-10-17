@@ -145,7 +145,7 @@ const CalculatorParams: React.FC<CalculatorParamsProps> = ({
                 className="section-title"
                 style={{
                   color: '#1A1A1A',
-                  fontSize: '14px',
+                  fontSize: '18.5px',
                   fontWeight: '600',
                   lineHeight: '1.2',
                   whiteSpace: 'nowrap',
@@ -153,7 +153,7 @@ const CalculatorParams: React.FC<CalculatorParamsProps> = ({
               >
                 Количество филиалов
               </div>
-              <Tooltip content="Количество филиалов вашей клиники. Каждый дополнительный филиал увеличивает стоимость тарифа.">
+              <Tooltip content="Сетевая скидка - чем больше филиалов, тем больше экономии на подписке для каждого филиала.">
                 <InfoIcon className="w-3 h-3" />
               </Tooltip>
             </div>
@@ -206,7 +206,7 @@ const CalculatorParams: React.FC<CalculatorParamsProps> = ({
                 className="section-title"
                 style={{
                   color: '#1A1A1A',
-                  fontSize: '14px',
+                  fontSize: '18.5px',
                   fontWeight: '600',
                   lineHeight: '1.2',
                   whiteSpace: 'nowrap',
@@ -214,7 +214,7 @@ const CalculatorParams: React.FC<CalculatorParamsProps> = ({
               >
                 Дополнительные номера WhatsApp
               </div>
-              <Tooltip content="Количество дополнительных WhatsApp номеров для рассылок. Каждый номер добавляет 500₽/мес к стоимости.">
+              <Tooltip content="Количество дополнительных WhatsApp номеров для рассылок. Каждый номер добавляет 1500₽/мес к стоимости.">
                 <InfoIcon className="w-3 h-3" />
               </Tooltip>
             </div>
@@ -245,7 +245,7 @@ const CalculatorParams: React.FC<CalculatorParamsProps> = ({
               id="waLabel"
               style={{ color: '#1A1A1A' }}
             >
-              Номеров: {state.whatsappNumbers} • +1 500 ₽/мес за доп. номер
+              {state.whatsappNumbers} доп. номеров • 1 номер уже включен
             </div>
           </div>
 
@@ -256,7 +256,7 @@ const CalculatorParams: React.FC<CalculatorParamsProps> = ({
                 className="section-title"
                 style={{
                   color: '#1A1A1A',
-                  fontSize: '14px',
+                  fontSize: '18.5px',
                   fontWeight: '600',
                   lineHeight: '1.2',
                   whiteSpace: 'nowrap',
@@ -264,7 +264,7 @@ const CalculatorParams: React.FC<CalculatorParamsProps> = ({
               >
                 Техподдержка
               </div>
-              <Tooltip content="Уровень техподдержки влияет на время отклика и доступность. 'Будни' - поддержка в рабочие дни, 'Каждый день' - круглосуточная поддержка с SLA.">
+              <Tooltip content="Пн–Пт 9:00–18:00 • включено. «Каждый день» — выходные и мониторинг 24/7.">
                 <InfoIcon className="w-3 h-3" />
               </Tooltip>
             </div>
@@ -275,7 +275,7 @@ const CalculatorParams: React.FC<CalculatorParamsProps> = ({
                   data-value="weekdays"
                   onClick={() => handleSupportChange('weekdays')}
                 >
-                  Будни
+                  Рабочие дни
                 </button>
                 <button
                   className={`support-pill ${state.techSupport === 'daily' ? 'active' : ''}`}
@@ -285,12 +285,6 @@ const CalculatorParams: React.FC<CalculatorParamsProps> = ({
                   Каждый день
                 </button>
               </div>
-              {state.techSupport && (
-                <div className="support-note">
-                  Пн–Пт 9:00–18:00 • включено. «Каждый день» — SLA и мониторинг
-                  24/7.
-                </div>
-              )}
             </div>
           </div>
         </div>

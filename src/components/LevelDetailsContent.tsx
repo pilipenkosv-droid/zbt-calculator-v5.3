@@ -23,22 +23,11 @@ export const LevelDetailsContent: React.FC<LevelDetailsContentProps> = ({
     });
   };
 
-  const getSummaryText = (section: any) => {
-    const features = section.content.features || [];
-    const categories = section.content.byCategory || [];
-    const total = section.content.total;
-    
-    if (total) return `Всего: ${total}`;
-    if (categories.length > 0) return `Категории: ${categories.slice(0, 2).join(', ')}${categories.length > 2 ? '...' : ''}`;
-    if (features.length > 0) return `Включает ${features.length} функций`;
-    return section.content.description;
-  };
-
   const shouldShowAccordion = (section: any) => {
     const features = section.content.features || [];
     const categories = section.content.byCategory || [];
-    // Показываем аккордеон для всех секций с функциями или категориями
-    return features.length > 0 || categories.length > 0;
+    // Показываем аккордеон для всех секций с функциями или категориями, кроме "Сценарии"
+    return (features.length > 0 || categories.length > 0) && section.id !== 'scenarios';
   };
 
   return (
@@ -50,7 +39,8 @@ export const LevelDetailsContent: React.FC<LevelDetailsContentProps> = ({
         return (
           <div
             key={section.id}
-            className="rounded-lg border border-slate-200 bg-slate-50 p-4"
+            className={`rounded-lg border border-slate-200 bg-slate-50 p-4 ${showAccordion ? 'cursor-pointer hover:bg-slate-100 transition-colors' : ''}`}
+            onClick={() => showAccordion && toggleSection(section.id)}
           >
             <div className="flex items-center justify-between">
               <h4 className="text-sm font-semibold text-slate-900">
@@ -58,7 +48,10 @@ export const LevelDetailsContent: React.FC<LevelDetailsContentProps> = ({
               </h4>
               {showAccordion && (
                 <button
-                  onClick={() => toggleSection(section.id)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleSection(section.id);
+                  }}
                   className="flex items-center gap-1 text-xs text-slate-500 hover:text-slate-700 transition-colors"
                 >
                   <span>{isExpanded ? 'Свернуть' : 'Развернуть'}</span>
@@ -73,15 +66,8 @@ export const LevelDetailsContent: React.FC<LevelDetailsContentProps> = ({
               {section.content.description}
             </p>
 
-            {/* Краткое резюме */}
-            {showAccordion && !isExpanded && (
-              <div className="mb-3 p-2 bg-slate-100 rounded text-xs text-slate-600">
-                {getSummaryText(section)}
-              </div>
-            )}
-
-            {/* Полные детали - показываем только если развернуто или не нужен аккордеон */}
-            {(!showAccordion || isExpanded) && (
+            {/* Полные детали - показываем только если развернуто или не нужен аккордеон, или это Сценарии */}
+            {(!showAccordion || isExpanded || section.id === 'scenarios') && (
               <>
                 {section.content.total && (
                   <div className="mb-3 flex items-center gap-2">
@@ -94,11 +80,35 @@ export const LevelDetailsContent: React.FC<LevelDetailsContentProps> = ({
                   </div>
                 )}
 
-                {section.content.byCategory &&
+                {section.id === 'scenarios' && section.content.features && section.content.features.length > 0 && (
+                  <div className="mb-3">
+                    <span className="mb-2 block text-xs font-medium text-slate-500">
+                      Рекомендуемое распределение сценариев:
+                    </span>
+                    <div className="flex flex-wrap gap-1">
+                      {section.content.features.map(
+                        (feature: string, index: number) => (
+                          <span
+                            key={index}
+                            className={`rounded-full px-2 py-1 text-xs ${
+                              feature.startsWith('+') 
+                                ? 'bg-orange-100 text-orange-700 border border-orange-200' 
+                                : 'bg-slate-200 text-slate-600'
+                            }`}
+                          >
+                            {feature}
+                          </span>
+                        )
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {section.id !== 'scenarios' && section.content.byCategory &&
                   section.content.byCategory.length > 0 && (
                     <div className="mb-3">
                       <span className="mb-2 block text-xs font-medium text-slate-500">
-                        Категории:
+                        Рекомендуемые категории:
                       </span>
                       <div className="flex flex-wrap gap-1">
                         {section.content.byCategory.map(
@@ -115,7 +125,7 @@ export const LevelDetailsContent: React.FC<LevelDetailsContentProps> = ({
                     </div>
                   )}
 
-                {section.content.features && section.content.features.length > 0 && (
+                {section.id !== 'scenarios' && section.content.features && section.content.features.length > 0 && (
                   <div>
                     <span className="mb-2 block text-xs font-medium text-slate-500">
                       Включает:

@@ -1,80 +1,19 @@
-import { useState } from 'react';
 import './IntegrationsSection.css';
-
-const vendors = [
-  'МИС Инфоклиника', 'Medwork', 'Медиалог', 'Клиника+',
-  '1С:Медицина', 'SQNS', 'BASIS', 'Доктор CRM',
-  'SimpleMed', 'AnyClinic', 'ДентаСофт', 'ОМС/ДМС CRM',
-  'МедСофт', 'МедИнфо', 'Клиника-Онлайн', 'МедПро',
-  'ДенталСофт', 'Стоматология+', 'ВетКлиника', 'Лаборатория+',
-  'МедТех', 'Клиника24', 'МедЦентр', 'Доктор+',
-  'МедСистема', 'КлиникаПро', 'МедСервис', 'ДентаПро',
-  'ВетСистема', 'ЛабПро', 'МедТех+', 'КлиникаТех',
-  'ДокторСистема', 'МедЦентр+', 'СтоматПро', 'ВетКлиника+'
-];
-
-const channels = ['SMS', 'WhatsApp*', 'Telegram', 'Email', 'Push'];
+import IntegrationsMarquee from './IntegrationsMarquee';
 
 export default function IntegrationsSection() {
-  const [searchTerm, setSearchTerm] = useState('');
-  
-  const filteredVendors = vendors.filter(vendor =>
-    vendor.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   return (
     <section aria-labelledby="integrations-title" className="integrations">
-      <div className="header">
-        <h2 id="integrations-title">35+ МИС интеграций</h2>
-        <p className="subtitle">Подключение к сервисам и услугам, которые вы используете каждый день.</p>
-      </div>
-
-      {/* Поиск по логотипам */}
-      <div className="search-container">
-        <input
-          type="text"
-          placeholder="Поиск по МИС..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-input"
-          aria-label="Поиск по медицинским информационным системам"
-        />
-      </div>
-
-      <div className="badges" role="list">
-        {filteredVendors.map((v) => (
-          <span key={v} role="listitem" className="badge" aria-label={v}>{v}</span>
-        ))}
-      </div>
-
-      <div className="facts">
-        <div className="fact">
-          <strong>Запуск от 7 дней</strong>
-          <p>Доступы → синхронизация → тест → пилот.</p>
+        <div className="header">
+          <h2 id="integrations-title">
+            <span style={{ fontSize: '70px' }}>35+</span> интеграций
+          </h2>
+          <p className="subtitle">Подключение к МИС и сервисам, которые вы используете каждый день.</p>
         </div>
-        <div className="fact">
-          <strong>130+ интеграций</strong>
-          <p>Готовые коннекторы и опыт внедрений.</p>
-        </div>
-        <div className="fact">
-          <strong>Персональный специалист</strong>
-          <p>Сопровождение на всех этапах.</p>
-        </div>
-      </div>
 
-      <div className="channels" aria-label="Поддерживаемые каналы">
-        {channels.map((c) => (
-          <span key={c} className="chip">{c}</span>
-        ))}
-      </div>
+      {/* Новый анимированный маркиз с логотипами */}
+      <IntegrationsMarquee />
 
-      <ol className="steps" aria-label="Как подключаемся">
-        <li>Настраиваем обмен с вашей МИС/CRM.</li>
-        <li>Подключаем каналы и сценарии: напоминания, подтверждения, реактивацию.</li>
-        <li>Тестируем, запускаем пилот и выходим в прод.</li>
-      </ol>
-
-      <p className="note">*Принадлежит компании Meta, которая признана экстремистской организацией и запрещена в РФ.</p>
 
     </section>
   );

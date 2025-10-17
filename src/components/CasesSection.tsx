@@ -66,7 +66,9 @@ export default function CasesSection() {
     <section aria-labelledby="cases-title" className="cases">
       <div className="header">
         <h2 id="cases-title">Кейсы клиентов</h2>
-        <p className="subtitle">Задача → Решение → Результат. Только цифры и факты.</p>
+        <p className="subtitle">
+          Задача <span className="orange-arrow">→</span> Решение <span className="orange-arrow">→</span> Результат. Только цифры и факты.
+        </p>
       </div>
 
       <div className="grid">

@@ -32,7 +32,7 @@ const levels = [
     features: [
       { icon: DocumentIcon, text: 'Базовые сценарии' },
       { icon: QuestionIcon, text: 'Помощь по запросу' },
-      { icon: ChartIcon, text: 'Отчёты раз в квартал' },
+      { icon: ChartIcon, text: 'Ежемесячный отчет' },
     ],
   },
   {

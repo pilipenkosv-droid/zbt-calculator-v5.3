@@ -3,7 +3,7 @@ import { CalculatorState } from '../types';
 import { calculatePrice } from '../lib/pricing';
 import { formatPrice } from '../utils/formatCurrency';
 import EmailModal from './EmailModal';
-import DoubleTicks from './DoubleTicks';
+// import DoubleTicks from './DoubleTicks'; // временно отключено
 
 interface StickyCalculationProps {
   state: CalculatorState;
@@ -35,30 +35,27 @@ const StickyCalculation: React.FC<StickyCalculationProps> = ({
       {/* Totals card */}
       <div 
         id="summary-block"
-        className={`relative rounded-xl border px-4 py-3 shadow-xl backdrop-saturate-125 backdrop-blur-md ${
-          hasDiscount 
-            ? 'border-green-400/40 bg-white/70' 
-            : 'border-black/10 bg-white/70'
+        className={`relative rounded-xl border border-black/10 bg-white/70 px-4 py-3 shadow-xl backdrop-saturate-125 backdrop-blur-md ${
+          hasDiscount ? 'discount-glow-green' : ''
         }`}
       >
-        {/* Double Ticks Indicator */}
-        <DoubleTicks 
+        {/* Double Ticks Indicator - временно отключено */}
+        {/* <DoubleTicks 
           calculatorSelector="#calculator" 
           attachToSelector="#summary-block" 
-        />
+        /> */}
         {/* Стоимость сверху с увеличенным размером */}
-        <div className="mb-2 text-[26px] font-bold text-slate-900">
+        <div className="mb-2 text-[39px] font-bold text-slate-900">
           {formatPrice(priceBreakdown.monthlyPerBranch)}/мес
         </div>
         
         {/* Скидка в мягком зеленом или сером если нет скидки */}
-        <div className={`mb-2 text-[15px] font-semibold ${discountPercent > 0 ? 'discount-text-green' : 'text-gray-500'}`}>
+        <div className={`mb-2 text-[23px] font-semibold ${discountPercent > 0 ? 'discount-text-green' : 'text-gray-500'}`}>
           С учетом скидки –{discountPercent}%
         </div>
         
-        <div className="flex flex-wrap items-center gap-2 text-[13px] text-slate-700">
+        <div className="flex flex-wrap items-center gap-2 text-[20px] text-slate-700">
           <span>Ваша скидка составила: {formatPrice(discountRub)}</span>
-          <span className="inline-block h-1 w-1 rounded-full bg-slate-400" />
           <span>Итого за {state.period} мес: {formatPrice(priceBreakdown.total)}</span>
         </div>
 
@@ -68,10 +65,10 @@ const StickyCalculation: React.FC<StickyCalculationProps> = ({
             onClick={() => setShowDetails(!showDetails)}
             className="flex items-center justify-between w-full text-left hover:bg-gray-50 rounded-lg px-2 py-1 transition-colors"
           >
-            <span className="text-sm font-medium text-gray-700">
+            <span className="text-[11px] font-medium text-gray-700">
               {showDetails ? 'Свернуть детали' : 'Показать детали'}
             </span>
-            <span className={`text-sm transition-transform ${showDetails ? 'rotate-180' : ''}`}>
+            <span className={`text-[11px] transition-transform ${showDetails ? 'rotate-180' : ''}`}>
               ▼
             </span>
           </button>

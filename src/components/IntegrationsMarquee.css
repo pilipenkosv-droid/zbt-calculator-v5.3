@@ -1,0 +1,190 @@
+/* Маркиз интеграций */
+.integrations-marquee-wrapper {
+  width: 100%;
+}
+
+.integrations-marquee-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  cursor: grab;
+  user-select: none;
+}
+
+.integrations-marquee-container.dragging {
+  cursor: grabbing;
+}
+
+.integrations-marquee-track {
+  display: flex;
+  gap: 24px;
+  padding: 24px 0;
+  padding-left: 24px;
+  will-change: transform;
+  user-select: none;
+}
+
+.integrations-marquee-container.dragging .integration-tile {
+  pointer-events: none;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .integrations-marquee-track {
+    animation: none !important;
+  }
+}
+
+/* Градиентные маски */
+.integrations-marquee-fade-left,
+.integrations-marquee-fade-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.integrations-marquee-fade-left {
+  left: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.9), transparent);
+}
+
+.integrations-marquee-fade-right {
+  right: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.9), transparent);
+}
+
+/* Плитка с логотипом интеграции */
+.integration-tile {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 216px;
+  height: 96px;
+  border-radius: 12px;
+  background: transparent;
+  transition: all 0.2s ease;
+  padding: 14px;
+}
+
+.integration-tile:hover {
+  transform: translateY(-2px);
+}
+
+/* Логотип интеграции */
+.integration-logo {
+  max-width: 95%;
+  max-height: 95%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.3s ease;
+  display: block;
+  margin: auto;
+}
+
+.integration-tile:hover .integration-logo {
+  transform: scale(1.05);
+}
+
+/* Факты о интеграциях */
+.integrations-facts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 24px;
+  text-align: center;
+  justify-items: center;
+}
+
+@media (min-width: 768px) {
+  .integrations-facts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.fact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+  align-items: center;
+}
+
+.fact-label {
+  font-family: 'Navigo', 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 28px; /* Увеличено в 2 раза с 14px */
+  color: #1A1A1A;
+}
+
+.fact-text {
+  font-family: 'Navigo', 'Inter', sans-serif;
+  font-size: 17px; /* Увеличено на 30% с 13px */
+  color: #666666; /* Серый цвет, но читаемый */
+  line-height: 1.5;
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .integrations-marquee-container {
+    background: rgba(26, 26, 26, 0.5);
+  }
+
+  .integrations-marquee-fade-left {
+    background: linear-gradient(to right, rgba(26, 26, 26, 0.9), transparent);
+  }
+
+  .integrations-marquee-fade-right {
+    background: linear-gradient(to left, rgba(26, 26, 26, 0.9), transparent);
+  }
+
+  .integration-tile {
+    background: transparent;
+  }
+
+  .fact-label {
+    color: #FFFFFF;
+    font-size: 28px; /* Увеличено в 2 раза с 14px */
+  }
+
+  .fact-text {
+    color: #B5B5B5; /* Серый цвет для темной темы */
+    font-size: 17px; /* Увеличено на 30% с 13px */
+  }
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 640px) {
+  .integrations-marquee-track {
+    gap: 16px;
+    padding: 16px 0;
+    padding-left: 16px;
+  }
+
+  .integration-tile {
+    width: 168px;
+    height: 84px;
+  }
+
+  .integrations-marquee-fade-left,
+  .integrations-marquee-fade-right {
+    width: 40px;
+  }
+
+  .fact-label {
+    font-size: 26px; /* Увеличено в 2 раза с 13px */
+  }
+
+  .fact-text {
+    font-size: 16px; /* Увеличено на 30% с 12px */
+  }
+}
+

@@ -381,19 +381,27 @@ h2.section-title {
   margin-bottom: 16px !important;
 }
 
-/* ЗАГОЛОВКИ СЕКЦИЙ КЕЙСОВ, ИНТЕГРАЦИЙ И FAQ */
+/* ЗАГОЛОВКИ СЕКЦИЙ КЕЙСОВ И FAQ */
 .cases .header h2,
-.integrations .header h2,
 .faq .header h2 {
   color: #1A1A1A !important;
   font-family: 'Navigo', 'Inter', sans-serif !important;
-  font-size: 36px !important;
+  font-size: 54px !important;
   font-weight: 600 !important;
   margin: 0 0 12px 0 !important;
   display: block !important;
   visibility: visible !important;
-  opacity: 1 !important;
-  text-align: center !important;
+}
+
+/* Заголовок интеграций - обычный текст */
+.integrations .header h2 {
+  color: #1A1A1A !important;
+  font-family: 'Navigo', 'Inter', sans-serif !important;
+  font-size: 54px !important;
+  font-weight: 600 !important;
+  margin: 0 0 12px 0 !important;
+  display: block !important;
+  visibility: visible !important;
 }
 
 /* ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ ДЛЯ КЕЙСОВ */

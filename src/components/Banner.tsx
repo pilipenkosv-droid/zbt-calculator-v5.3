@@ -59,7 +59,8 @@ export default function Banner({
           <h1 id="banner-title" className={styles.title}>{title}</h1>
           <p className={styles.desc}>
             С заботой о ваших пациентах,<br />
-            улучшаем доходимость, возвращаем "спящих" и защищаем от спама.
+            улучшаем доходимость, возвращаем "спящих"<br />
+            и защищаем от спама.
           </p>
 
           <div className={styles.actions}>
@@ -70,6 +71,19 @@ export default function Banner({
                   aria-label="Посчитать стоимость Zabota 2.0"
                 >
                   Посчитать стоимость
+                </button>
+                <button
+                  type="button"
+                  className={styles.ctaSecondary}
+                  onClick={() => {
+                    const demoSection = document.getElementById('demo-title');
+                    if (demoSection) {
+                      demoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }}
+                  aria-label="Получить консультацию"
+                >
+                  Получить консультацию
                 </button>
           </div>
 

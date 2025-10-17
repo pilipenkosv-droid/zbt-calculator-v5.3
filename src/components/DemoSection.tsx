@@ -16,7 +16,6 @@ export default function DemoSection({ onSubmit, policyUrl = '#' }: DemoSectionPr
     clinic: '',
     mis: '',
     baseSize: '',
-    consent: false,
   });
   const [status, setStatus] = useState<'idle' | 'sending' | 'ok' | 'error'>('idle');
 
@@ -51,8 +50,7 @@ export default function DemoSection({ onSubmit, policyUrl = '#' }: DemoSectionPr
     validateEmail(form.email) &&
     form.clinic.trim().length >= 2 &&
     form.mis.trim().length >= 2 &&
-    /^\d{1,7}$/.test(form.baseSize) &&
-    form.consent;
+    /^\d{1,7}$/.test(form.baseSize);
 
   const handleChange = (key: keyof typeof form, value: string | boolean) => {
     setForm((f) => ({ ...f, [key]: value }));
@@ -70,7 +68,6 @@ export default function DemoSection({ onSubmit, policyUrl = '#' }: DemoSectionPr
         clinic: form.clinic.trim(),
         mis: form.mis.trim(),
         baseSize: Number(form.baseSize),
-        consent: form.consent,
         ts: new Date().toISOString(),
       };
       if (onSubmit) {
@@ -104,8 +101,7 @@ export default function DemoSection({ onSubmit, policyUrl = '#' }: DemoSectionPr
 
       <div className="demo-form-container">
         <div className="header">
-          <h2 id="demo-title">Оставьте заявку на демо</h2>
-          <p className="subtitle">Демо с вашим расчётом: доходимость, повторные визиты, ROI.</p>
+          <h2 id="demo-title">Записаться на консультацию</h2>
         </div>
 
         <form className="demo-form" onSubmit={handleSubmit} noValidate>
@@ -212,22 +208,6 @@ export default function DemoSection({ onSubmit, policyUrl = '#' }: DemoSectionPr
           </div>
 
           <div className="demo-form-actions">
-            <label className="demo-form-consent">
-              <input
-                id="demo-consent"
-                type="checkbox"
-                checked={form.consent}
-                onChange={(e) => handleChange('consent', e.target.checked)}
-                required
-                aria-required="true"
-                aria-describedby="consent-error"
-              />
-              <span>Согласен(на) на обработку персональных данных</span>
-              {!form.consent && (
-                <span id="consent-error" className="demo-form-consent-note">Обязательно для отправки</span>
-              )}
-            </label>
-
             <button 
               className="demo-form-submit"
               type="submit" 

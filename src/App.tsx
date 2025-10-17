@@ -16,6 +16,7 @@ import StickyCalculation from './components/StickyCalculation';
 import CalculatorParams from './components/CalculatorParams';
 import CasesSection from './components/CasesSection';
 import IntegrationsSection from './components/IntegrationsSection';
+import ClientsSection from './components/ClientsSection';
 import FAQSection from './components/FAQSection';
 import DemoSection from './components/DemoSection';
 import ApplyModal from './components/ApplyModal';
@@ -370,6 +371,11 @@ const App: React.FC = () => {
         {/* Секция кейсов клиентов */}
         <div id="cases">
           <CasesSection />
+        </div>
+
+        {/* Секция наши клиенты */}
+        <div id="clients">
+          <ClientsSection />
         </div>
 
         {/* Секция FAQ */}

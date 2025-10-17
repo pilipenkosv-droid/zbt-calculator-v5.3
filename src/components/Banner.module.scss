@@ -372,7 +372,7 @@
 
 .title {
   font-family: 'Navigo', 'Futura PT', 'Futura', 'Avenir', 'Helvetica Neue', sans-serif;
-  font-size: 54px; /* увеличен в 1.5 раза (36px * 1.5 = 54px) */
+  font-size: 62px; /* увеличен на 15% (54px * 1.15 = 62px) */
   line-height: 1.15;
   font-weight: 400; /* Regular weight */
   color: #FFFFFF !important; /* белый цвет с принудительным применением */
@@ -382,7 +382,7 @@
 
 .desc {
   font-family: 'Navigo', 'Inter', sans-serif;
-  font-size: 16px;
+  font-size: 20px; /* увеличен на 25% (16px * 1.25 = 20px) */
   line-height: 1.6;
   font-weight: 400; /* Regular как на скриншоте */
   color: #FFFFFF !important; /* белый цвет с принудительным применением */
@@ -416,6 +416,28 @@
 }
 .cta:hover { box-shadow: 0 8px 22px rgba(255, 255, 255, 0.35); }
 .cta:active { transform: translateY(1px); }
+
+/* Вторичная CTA для "Получить консультацию" */
+.ctaSecondary {
+  font-family: 'Navigo', 'Inter', sans-serif;
+  background-color: transparent;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 10px 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  letter-spacing: -0.01em;
+}
+.ctaSecondary:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #FFFFFF;
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+.ctaSecondary:active { transform: translateY(1px); }
 
 /* Телефон — светлый, подчёркнутый при ховере */
 .phone {
@@ -503,7 +525,7 @@
     padding: 32px 24px; /* адаптивные отступы для мобильных */
   }
   .right { order: -1; min-height: 220px; }
-  .title { font-size: 30px; }
+  .title { font-size: 35px; } /* увеличен на 15% (30px * 1.15 = 35px) */
   .heroImage { margin: 0 auto; width: 90%; filter: drop-shadow(0 10px 18px rgba(0,0,0,0.18)); }
   
   /* Адаптация декоративных фигур для мобильных */

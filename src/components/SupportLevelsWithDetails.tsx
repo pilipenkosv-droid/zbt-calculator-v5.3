@@ -32,7 +32,7 @@ export const SupportLevelsWithDetails: React.FC<SupportLevelsWithDetailsProps> =
       {/* Заголовки вне контура */}
       <div className="mb-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <h3 className="text-[18px] font-bold text-slate-900">
+          <h3 className="text-[27px] font-bold text-slate-900">
             Выберите уровень поддержки<br />
             медицинского маркетинга
           </h3>

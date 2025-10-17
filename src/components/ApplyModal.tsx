@@ -285,10 +285,23 @@ const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose, onSubmit, calc
               required
             >
               <option value="" disabled>Выберите МИС</option>
-              <option value="Инфоклиника">Инфоклиника</option>
-              <option value="МедРегистр">МедРегистр</option>
-              <option value="Клиника+ (Medwork)">Клиника+ (Medwork)</option>
-              <option value="QuasiMed">QuasiMed</option>
+              <option value="Dental4Windows">Dental4Windows</option>
+              <option value="ИНФОДЕНТ">ИНФОДЕНТ</option>
+              <option value="IDENT">IDENT</option>
+              <option value="DENTAL PRO">DENTAL PRO</option>
+              <option value="ИНФОКЛИНИКА">ИНФОКЛИНИКА</option>
+              <option value="Дент (ООО АП-DENT)">Дент (ООО АП-DENT)</option>
+              <option value="1С: Стоматология">1С: Стоматология</option>
+              <option value="STOMX">STOMX</option>
+              <option value="UNIVERSE SOFT">UNIVERSE SOFT</option>
+              <option value="АДЕНТА">АДЕНТА</option>
+              <option value="STOMPRO">STOMPRO</option>
+              <option value="RENOVATIO">RENOVATIO</option>
+              <option value="МЕДИАЛОГ">МЕДИАЛОГ</option>
+              <option value="КЛИНИКА ОНЛАЙН">КЛИНИКА ОНЛАЙН</option>
+              <option value="ISTOM">ISTOM</option>
+              <option value="ФЕНИКС">ФЕНИКС</option>
+              <option value="MEDODS">MEDODS</option>
               <option value="Другое">Другое</option>
             </select>
             <div className="field-note">Укажете, если интеграция уже есть</div>

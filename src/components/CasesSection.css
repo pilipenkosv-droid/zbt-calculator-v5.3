@@ -1,5 +1,5 @@
 .cases { 
-  padding: 48px 24px; 
+  padding: 80px 24px; 
   background: #ffffff !important; 
   color: var(--fg, #1a1a1a); 
   max-width: 1200px;
@@ -26,6 +26,11 @@
   color: #666666;
   font-size: 18px;
   margin: 0;
+}
+
+.cases .subtitle .orange-arrow {
+  color: #FF6A00 !important;
+  font-weight: 600;
 }
 
 .grid {
