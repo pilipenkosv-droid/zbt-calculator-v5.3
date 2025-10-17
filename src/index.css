@@ -204,6 +204,7 @@ p {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--gap-3);
+  overflow-x: hidden;
 }
 
 .container-wide {
@@ -217,12 +218,14 @@ p {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--gap-4);
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 @media (min-width: 1024px) {
   .grid-main {
-    grid-template-columns: 1fr 450px;
-    gap: var(--gap-5);
+    grid-template-columns: 1fr 400px;
+    gap: var(--gap-4);
   }
 }
 
@@ -242,10 +245,11 @@ p {
 .calc-sticky {
   position: sticky;
   top: 80px;
-  width: 450px;
-  max-width: 450px;
-  padding: var(--gap-4);
+  width: 400px;
+  max-width: 400px;
+  padding: var(--gap-3);
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .calc-title {
@@ -1948,7 +1952,8 @@ body {
   overflow: hidden;
   word-wrap: break-word;
   box-sizing: border-box;
-  padding: 16px !important;
+  padding: 12px !important;
+  width: 100% !important;
 }
 
 /* Уменьшаем размеры шрифтов в блоке итогов для лучшего размещения */
