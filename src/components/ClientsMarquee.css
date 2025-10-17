@@ -99,25 +99,6 @@
   transform: scale(1.05);
 }
 
-/* Темная тема */
-@media (prefers-color-scheme: dark) {
-  .clients-marquee-container {
-    background: rgba(26, 26, 26, 0.5);
-  }
-
-  .clients-marquee-fade-left {
-    background: linear-gradient(to right, rgba(26, 26, 26, 0.9), transparent);
-  }
-
-  .clients-marquee-fade-right {
-    background: linear-gradient(to left, rgba(26, 26, 26, 0.9), transparent);
-  }
-
-  .client-tile {
-    background: transparent;
-  }
-}
-
 /* Адаптив для мобильных */
 @media (max-width: 640px) {
   .clients-marquee-track {

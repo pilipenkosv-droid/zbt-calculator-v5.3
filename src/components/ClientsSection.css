@@ -44,14 +44,3 @@
   }
 }
 
-/* Темная тема */
-@media (prefers-color-scheme: dark) {
-  .clients-header h2 {
-    color: #FFFFFF;
-  }
-
-  .clients-subtitle {
-    color: #B5B5B5;
-  }
-}
-

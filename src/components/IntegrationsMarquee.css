@@ -132,35 +132,6 @@
   line-height: 1.5;
 }
 
-/* Темная тема */
-@media (prefers-color-scheme: dark) {
-  .integrations-marquee-container {
-    background: rgba(26, 26, 26, 0.5);
-  }
-
-  .integrations-marquee-fade-left {
-    background: linear-gradient(to right, rgba(26, 26, 26, 0.9), transparent);
-  }
-
-  .integrations-marquee-fade-right {
-    background: linear-gradient(to left, rgba(26, 26, 26, 0.9), transparent);
-  }
-
-  .integration-tile {
-    background: transparent;
-  }
-
-  .fact-label {
-    color: #FFFFFF;
-    font-size: 28px; /* Увеличено в 2 раза с 14px */
-  }
-
-  .fact-text {
-    color: #B5B5B5; /* Серый цвет для темной темы */
-    font-size: 17px; /* Увеличено на 30% с 13px */
-  }
-}
-
 /* Адаптив для мобильных */
 @media (max-width: 640px) {
   .integrations-marquee-track {
