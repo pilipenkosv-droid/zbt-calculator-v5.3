@@ -204,7 +204,6 @@ p {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--gap-3);
-  overflow-x: hidden;
 }
 
 .container-wide {
@@ -219,7 +218,6 @@ p {
   grid-template-columns: 1fr;
   gap: var(--gap-4);
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 @media (min-width: 1024px) {
@@ -249,7 +247,6 @@ p {
   max-width: 400px;
   padding: var(--gap-3);
   box-sizing: border-box;
-  overflow-x: hidden;
 }
 
 .calc-title {
