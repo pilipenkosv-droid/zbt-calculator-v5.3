@@ -221,8 +221,20 @@ p {
 
 @media (min-width: 1024px) {
   .grid-main {
-    grid-template-columns: 1fr 420px;
+    grid-template-columns: 1fr 450px;
     gap: var(--gap-5);
+  }
+}
+
+@media (min-width: 1400px) {
+  .grid-main {
+    grid-template-columns: 1fr 480px;
+    gap: var(--gap-6);
+  }
+  
+  .calc-sticky {
+    width: 480px;
+    max-width: 480px;
   }
 }
 
@@ -230,8 +242,8 @@ p {
 .calc-sticky {
   position: sticky;
   top: 80px;
-  width: 420px;
-  max-width: 420px;
+  width: 450px;
+  max-width: 450px;
   padding: var(--gap-4);
   box-sizing: border-box;
 }
@@ -1936,19 +1948,35 @@ body {
   overflow: hidden;
   word-wrap: break-word;
   box-sizing: border-box;
+  padding: 16px !important;
 }
 
 /* Уменьшаем размеры шрифтов в блоке итогов для лучшего размещения */
 #summary-block .text-\[39px\] {
-  font-size: 32px !important;
+  font-size: 28px !important;
+  line-height: 1.2 !important;
 }
 
 #summary-block .text-\[23px\] {
-  font-size: 18px !important;
+  font-size: 16px !important;
+  line-height: 1.3 !important;
 }
 
 #summary-block .text-\[20px\] {
-  font-size: 16px !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+}
+
+/* Дополнительные ограничения для текста в блоке итогов */
+#summary-block .calc-mini-note {
+  font-size: 14px !important;
+  line-height: 1.3 !important;
+}
+
+#summary-block .calc-breakdown .label,
+#summary-block .calc-breakdown .value {
+  font-size: 13px !important;
+  line-height: 1.3 !important;
 }
 
 .btn-primary {
