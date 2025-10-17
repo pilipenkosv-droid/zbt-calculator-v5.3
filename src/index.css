@@ -20,7 +20,6 @@
 
 /* Предотвращение горизонтального скролла */
 html {
-  overflow-x: hidden;
   max-width: 100vw;
 }
 
@@ -247,6 +246,9 @@ p {
   max-width: 400px;
   padding: var(--gap-3);
   box-sizing: border-box;
+  align-self: start;
+  height: fit-content;
+  max-height: calc(100vh - 48px);
 }
 
 .calc-title {
@@ -577,13 +579,6 @@ p {
 }
 
 /* Sticky итог — выравниваем верх по ползункам, низ по высоте карточек ММ */
-.calc-sticky {
-  position: sticky;
-  top: 80px; /* старт ниже шапки, чтобы не налезала */
-  align-self: start; /* выравнивание по верхней границе */
-  height: fit-content; /* высота по содержимому */
-  max-height: calc(100vh - 48px); /* ограничение высоты для удобства */
-}
 
 /* Визуально ограничить высоту до низа блока уровней ММ: */
 .mm-and-calc-row {
