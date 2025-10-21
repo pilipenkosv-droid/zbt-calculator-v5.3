@@ -100,7 +100,7 @@ const App: React.FC = () => {
         </div>
 
         {/* Основной калькулятор с приоритетными блоками */}
-        <div id="calculator" className="container" style={{ marginTop: '60px' }}>
+        <div id="calculator" className="container calculator-centered" style={{ marginTop: '60px' }}>
           <div className="grid-main">
             {/* Левая часть - приоритетные блоки и параметры */}
             <div className="order-2 lg:order-1">
