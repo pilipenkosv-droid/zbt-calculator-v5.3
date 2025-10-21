@@ -9,7 +9,6 @@ import { useFunnelTracking } from '../../hooks/useFunnelTracking';
 // Мобильные компоненты
 import MobileHeader from './components/MobileHeader';
 import MobileBanner from './components/MobileBanner';
-import MobileNavBar from './components/MobileNavBar';
 import MobileFAB from './components/MobileFAB';
 import MobileStickyPrice from './components/MobileStickyPrice';
 import MobileFAQ from './components/MobileFAQ';
@@ -103,9 +102,6 @@ const MobileApp: React.FC<MobileAppProps> = ({ detection }) => {
       <div className="mobile-app" data-platform="mobile">
         {/* Мобильный Header */}
         <MobileHeader />
-
-        {/* Sticky Navigation Bar */}
-        <MobileNavBar />
 
         {/* Hero-блок */}
         <div id="features">
