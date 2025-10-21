@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { PlatformDetectionResult } from '../../shared/types/platform';
-import type { CalculatorState } from '../../shared/types/calculator';
-import { normalizeCalculatorState } from '../../shared/utils/validation';
 import { track } from '../../utils/analytics';
 
 // Импорт оригинального App для десктопа

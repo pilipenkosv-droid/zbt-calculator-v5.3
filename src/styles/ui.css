@@ -1,9 +1,5 @@
 /* Layout primitives */
-.container {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+/* .container определен в index.css с max-width: 1200px */
 
 .section {
   margin: 24px 0;
@@ -197,9 +193,7 @@ a:hover {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .container {
-    padding: 0 16px;
-  }
+  /* .container padding определен в index.css */
   
   .section {
     margin: 16px 0;

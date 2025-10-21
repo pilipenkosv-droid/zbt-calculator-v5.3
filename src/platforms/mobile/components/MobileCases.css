@@ -1,0 +1,362 @@
+/**
+ * Мобильная карусель кейсов
+ * Свайп-навигация с метриками и структурой "проблема → решение → результат"
+ */
+
+.mobile-cases {
+  background: #FFFFFF;
+  overflow: hidden;
+}
+
+.mobile-cases__title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-bottom: 8px;
+}
+
+.mobile-cases__subtitle {
+  text-align: center;
+  font-size: 15px;
+  color: rgba(26, 26, 26, 0.7);
+  margin-bottom: 32px;
+  max-width: 100%;
+}
+
+.mobile-cases__arrow {
+  color: #FF6A00;
+  font-weight: 600;
+}
+
+/* Карусель */
+.mobile-cases__carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 24px;
+  /* Для плавного свайпа */
+  touch-action: pan-y pinch-zoom;
+}
+
+.mobile-cases__carousel {
+  display: flex;
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+}
+
+.mobile-cases__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  padding: 0 4px;
+}
+
+/* Карточка кейса */
+.mobile-cases__card {
+  background: #FFFFFF;
+  border: 1px solid rgba(26, 26, 26, 0.15);
+  border-radius: 16px;
+  padding: 20px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Хедер с фото */
+.mobile-cases__header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.mobile-cases__photo {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(248, 248, 248, 0.8);
+  border: 2px solid rgba(26, 26, 26, 0.1);
+}
+
+.mobile-cases__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mobile-cases__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.mobile-cases__name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+}
+
+.mobile-cases__position {
+  font-size: 14px;
+  color: rgba(26, 26, 26, 0.7);
+  margin-bottom: 2px;
+}
+
+.mobile-cases__clinic {
+  font-size: 15px;
+  font-weight: 600;
+  color: #FF6A00;
+  margin-bottom: 4px;
+}
+
+.mobile-cases__clients {
+  font-size: 13px;
+  color: rgba(26, 26, 26, 0.6);
+}
+
+/* Секции: Проблема, Решение, Результат */
+.mobile-cases__section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-cases__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(26, 26, 26, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mobile-cases__label svg {
+  flex-shrink: 0;
+  color: rgba(26, 26, 26, 0.5);
+}
+
+.mobile-cases__label--solution {
+  color: #25D366;
+}
+
+.mobile-cases__label--solution svg {
+  color: #25D366;
+}
+
+.mobile-cases__label--result {
+  color: #FF6A00;
+}
+
+.mobile-cases__label--result svg {
+  color: #FF6A00;
+}
+
+.mobile-cases__text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(26, 26, 26, 0.9);
+  margin: 0;
+  max-width: 100%;
+}
+
+/* KPI метрики */
+.mobile-cases__kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.mobile-cases__kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  background: rgba(255, 106, 0, 0.08);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 106, 0, 0.2);
+  text-align: center;
+}
+
+.mobile-cases__kpi-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #FF6A00;
+  line-height: 1.2;
+}
+
+.mobile-cases__kpi-label {
+  font-size: 12px;
+  color: rgba(26, 26, 26, 0.7);
+  line-height: 1.3;
+}
+
+/* Индикаторы */
+.mobile-cases__indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.mobile-cases__indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(26, 26, 26, 0.2);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobile-cases__indicator--active {
+  width: 24px;
+  border-radius: 4px;
+  background: #FF6A00;
+}
+
+.mobile-cases__indicator:active {
+  transform: scale(1.2);
+}
+
+/* Навигация */
+.mobile-cases__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.mobile-cases__nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: #FFFFFF;
+  border: 1px solid rgba(26, 26, 26, 0.2);
+  border-radius: 50%;
+  color: #1A1A1A;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.mobile-cases__nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.mobile-cases__nav-btn:not(:disabled):active {
+  background: rgba(248, 248, 248, 1);
+  transform: scale(0.95);
+  border-color: #FF6A00;
+}
+
+.mobile-cases__counter {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(26, 26, 26, 0.8);
+  min-width: 60px;
+  text-align: center;
+}
+
+/* Адаптация под очень маленькие экраны */
+@media (max-width: 360px) {
+  .mobile-cases__title {
+    font-size: 22px;
+  }
+  
+  .mobile-cases__subtitle {
+    font-size: 14px;
+  }
+  
+  .mobile-cases__card {
+    padding: 16px;
+    min-height: 480px;
+  }
+  
+  .mobile-cases__photo {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .mobile-cases__name {
+    font-size: 17px;
+  }
+  
+  .mobile-cases__text {
+    font-size: 14px;
+  }
+  
+  .mobile-cases__kpi-value {
+    font-size: 16px;
+  }
+  
+  .mobile-cases__kpi-label {
+    font-size: 11px;
+  }
+}
+
+/* Адаптация под большие мобильные экраны */
+@media (min-width: 480px) {
+  .mobile-cases__title {
+    font-size: 28px;
+  }
+  
+  .mobile-cases__subtitle {
+    font-size: 16px;
+  }
+  
+  .mobile-cases__slide {
+    padding: 0 8px;
+  }
+  
+  .mobile-cases__card {
+    padding: 24px;
+  }
+  
+  .mobile-cases__photo {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .mobile-cases__name {
+    font-size: 20px;
+  }
+  
+  .mobile-cases__text {
+    font-size: 16px;
+  }
+  
+  .mobile-cases__kpi-value {
+    font-size: 20px;
+  }
+  
+  .mobile-cases__kpi-label {
+    font-size: 13px;
+  }
+}
+
+/* Адаптация под планшеты */
+@media (min-width: 768px) {
+  .mobile-cases__slide {
+    padding: 0 12px;
+  }
+  
+  .mobile-cases__card {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+

@@ -1,0 +1,343 @@
+/**
+ * Мобильный липкий блок стоимости
+ */
+
+.mobile-sticky-price {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(26, 26, 26, 0.15);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.12);
+  z-index: 900;
+  padding: 12px 16px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
+}
+
+.mobile-sticky-price__container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Основная информация */
+.mobile-sticky-price__main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.mobile-sticky-price__price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.mobile-sticky-price__amount {
+  font-size: 24px;
+  font-weight: 700;
+  color: #FF6A00;
+  line-height: 1;
+}
+
+.mobile-sticky-price__period {
+  font-size: 14px;
+  color: rgba(26, 26, 26, 0.6);
+  line-height: 1;
+}
+
+.mobile-sticky-price__discount {
+  padding: 4px 8px;
+  background: rgba(37, 211, 102, 0.15);
+  color: #25D366;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+/* Действия */
+.mobile-sticky-price__actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.mobile-sticky-price__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: rgba(248, 248, 248, 0.8);
+  border: 1px solid rgba(26, 26, 26, 0.2);
+  border-radius: 8px;
+  color: #1A1A1A;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobile-sticky-price__toggle:active {
+  background: rgba(240, 240, 240, 1);
+  border-color: #FF6A00;
+}
+
+.mobile-sticky-price__details-btn {
+  flex-shrink: 0;
+  padding: 12px 16px;
+  min-height: 44px;
+  font-size: 15px;
+  font-weight: 600;
+  background: rgba(248, 248, 248, 0.8);
+  border: 1px solid rgba(26, 26, 26, 0.2);
+  border-radius: 8px;
+  color: #1A1A1A;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobile-sticky-price__details-btn:active {
+  background: rgba(240, 240, 240, 1);
+  border-color: #FF6A00;
+}
+
+.mobile-sticky-price__cta {
+  flex: 1;
+  padding: 12px 20px;
+  min-height: 44px;
+  font-size: 15px;
+  font-weight: 600;
+  background: #FF6A00;
+  border: none;
+  border-radius: 8px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(255, 106, 0, 0.3);
+}
+
+.mobile-sticky-price__cta:active {
+  background: #E56000;
+  transform: translateY(1px);
+}
+
+/* Overlay */
+.mobile-sticky-price__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 950;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Модальное окно */
+.mobile-sticky-price__modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 80vh;
+  background: #FFFFFF;
+  border-radius: 20px 20px 0 0;
+  z-index: 951;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.mobile-sticky-price__modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 16px;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.mobile-sticky-price__modal-header h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin: 0;
+}
+
+.mobile-sticky-price__modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  color: rgba(26, 26, 26, 0.7);
+  cursor: pointer;
+  padding: 0;
+  margin: -10px;
+}
+
+.mobile-sticky-price__modal-close:active {
+  color: #1A1A1A;
+}
+
+.mobile-sticky-price__modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 16px;
+  padding-bottom: calc(20px + env(safe-area-inset-bottom));
+}
+
+.mobile-sticky-price__detail-group {
+  margin-bottom: 24px;
+}
+
+.mobile-sticky-price__detail-group:last-child {
+  margin-bottom: 0;
+}
+
+.mobile-sticky-price__detail-group h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(26, 26, 26, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 12px 0;
+}
+
+.mobile-sticky-price__detail-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+  font-size: 16px;
+  color: rgba(26, 26, 26, 0.9);
+}
+
+.mobile-sticky-price__detail-item:last-child {
+  border-bottom: none;
+}
+
+.mobile-sticky-price__detail-item--strike {
+  text-decoration: line-through;
+  color: rgba(26, 26, 26, 0.4);
+}
+
+.mobile-sticky-price__detail-item--primary {
+  color: #FF6A00;
+  font-weight: 600;
+}
+
+.mobile-sticky-price__detail-item--total {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1A1A1A;
+  padding: 16px 0;
+  border-top: 1px solid rgba(26, 26, 26, 0.2);
+  border-bottom: none;
+}
+
+.mobile-sticky-price__discount-badge {
+  padding: 4px 8px;
+  background: rgba(37, 211, 102, 0.15);
+  color: #25D366;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.mobile-sticky-price__detail-note {
+  font-size: 14px;
+  color: rgba(26, 26, 26, 0.6);
+  padding: 4px 0;
+  line-height: 1.4;
+}
+
+.mobile-sticky-price__modal-footer {
+  padding: 16px;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+}
+
+.mobile-sticky-price__modal-cta {
+  width: 100%;
+  padding: 14px 20px;
+  min-height: 48px;
+  font-size: 16px;
+  font-weight: 600;
+  background: #FF6A00;
+  border: none;
+  border-radius: 8px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(255, 106, 0, 0.3);
+}
+
+.mobile-sticky-price__modal-cta:active {
+  background: #E56000;
+  transform: translateY(1px);
+}
+
+/* Адаптация под очень маленькие экраны */
+@media (max-width: 360px) {
+  .mobile-sticky-price {
+    padding: 10px 12px;
+  }
+  
+  .mobile-sticky-price__amount {
+    font-size: 22px;
+  }
+  
+  .mobile-sticky-price__actions {
+    gap: 6px;
+  }
+  
+  .mobile-sticky-price__details-btn {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  
+  .mobile-sticky-price__cta {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+/* Адаптация под большие мобильные экраны */
+@media (min-width: 480px) {
+  .mobile-sticky-price {
+    padding: 16px 24px;
+  }
+  
+  .mobile-sticky-price__amount {
+    font-size: 28px;
+  }
+  
+  .mobile-sticky-price__modal-header {
+    padding: 24px 24px;
+  }
+  
+  .mobile-sticky-price__modal-body {
+    padding: 24px;
+  }
+  
+  .mobile-sticky-price__modal-footer {
+    padding: 20px 24px;
+  }
+}
+

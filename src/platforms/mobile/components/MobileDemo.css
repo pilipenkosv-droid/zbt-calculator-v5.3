@@ -1,0 +1,136 @@
+/**
+ * Мобильная версия секции Demo
+ */
+
+.mobile-demo {
+  background: #FFFFFF;
+}
+
+.mobile-demo__title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.mobile-demo__subtitle {
+  text-align: center;
+  font-size: 16px;
+  color: rgba(26, 26, 26, 0.7);
+  margin-bottom: 24px;
+  max-width: 100%;
+  line-height: 1.5;
+}
+
+/* Преимущества */
+.mobile-demo__benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.mobile-demo__benefit {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(37, 211, 102, 0.08);
+  border: 1px solid rgba(37, 211, 102, 0.2);
+  border-radius: 8px;
+  font-size: 15px;
+  color: rgba(26, 26, 26, 0.9);
+  line-height: 1.4;
+}
+
+.mobile-demo__benefit svg {
+  flex-shrink: 0;
+  color: #25D366;
+}
+
+/* Контакты */
+.mobile-demo__contacts {
+  margin-top: 32px;
+  padding: 20px;
+  background: rgba(248, 248, 248, 0.8);
+  border-radius: 12px;
+  border: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.mobile-demo__contacts-text {
+  font-size: 15px;
+  color: rgba(26, 26, 26, 0.8);
+  margin: 0 0 16px 0;
+  text-align: center;
+  max-width: 100%;
+}
+
+.mobile-demo__contacts-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-demo__contact-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  min-height: 48px;
+  background: #FFFFFF;
+  border: 1px solid rgba(26, 26, 26, 0.15);
+  border-radius: 8px;
+  color: #1A1A1A;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.mobile-demo__contact-link:active {
+  background: rgba(248, 248, 248, 1);
+  border-color: #FF6A00;
+}
+
+.mobile-demo__contact-link svg {
+  flex-shrink: 0;
+  color: #FF6A00;
+}
+
+/* Адаптация под очень маленькие экраны */
+@media (max-width: 360px) {
+  .mobile-demo__title {
+    font-size: 22px;
+  }
+  
+  .mobile-demo__subtitle {
+    font-size: 15px;
+  }
+  
+  .mobile-demo__benefit {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+  
+  .mobile-demo__contact-link {
+    font-size: 15px;
+  }
+}
+
+/* Адаптация под большие мобильные экраны */
+@media (min-width: 480px) {
+  .mobile-demo__title {
+    font-size: 28px;
+  }
+  
+  .mobile-demo__subtitle {
+    font-size: 17px;
+  }
+  
+  .mobile-demo__benefit {
+    font-size: 16px;
+  }
+}
+

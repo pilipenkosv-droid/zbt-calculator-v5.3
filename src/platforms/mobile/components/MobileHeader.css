@@ -1,0 +1,272 @@
+/**
+ * Мобильный Header стили
+ * Оптимизированы для тап-целей 44px и удобной навигации
+ */
+
+.mobile-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.mobile-header--scrolled {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.mobile-header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 100%;
+  max-width: 100%;
+}
+
+.mobile-header__logo {
+  flex-shrink: 0;
+}
+
+.mobile-header__logo-img {
+  height: 32px;
+  width: auto;
+}
+
+.mobile-header__phone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: #FF6A00;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.mobile-header__phone:active {
+  opacity: 0.7;
+}
+
+/* Бургер-меню */
+.mobile-header__burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1001;
+}
+
+.mobile-header__burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #1A1A1A;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.mobile-header__burger--active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-header__burger--active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-header__burger--active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Выдвижное меню */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 85%;
+  max-width: 320px;
+  height: 100vh;
+  background: #FFFFFF;
+  z-index: 1001;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+}
+
+.mobile-menu--open {
+  right: 0;
+}
+
+.mobile-menu__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  min-height: 60px;
+}
+
+.mobile-menu__logo {
+  height: 32px;
+  width: auto;
+}
+
+.mobile-menu__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  color: #1A1A1A;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-menu__close:active {
+  opacity: 0.7;
+}
+
+.mobile-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 20px 0;
+  flex-grow: 1;
+}
+
+.mobile-menu__item {
+  margin: 0;
+}
+
+.mobile-menu__link {
+  display: block;
+  padding: 16px 24px;
+  color: #1A1A1A;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-menu__link:active {
+  background: rgba(255, 106, 0, 0.08);
+  color: #FF6A00;
+}
+
+/* Контакты в меню */
+.mobile-menu__contacts {
+  padding: 24px;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-menu__contact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  color: #1A1A1A;
+  font-size: 16px;
+  text-decoration: none;
+  background: rgba(248, 248, 248, 0.8);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  min-height: 48px;
+  border: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.mobile-menu__contact:active {
+  background: rgba(240, 240, 240, 1);
+  border-color: #FF6A00;
+}
+
+.mobile-menu__contact svg {
+  flex-shrink: 0;
+  color: #FF6A00;
+}
+
+.mobile-menu__contact--whatsapp {
+  background: rgba(37, 211, 102, 0.1);
+  color: #25D366;
+}
+
+.mobile-menu__contact--whatsapp svg {
+  color: #25D366;
+}
+
+.mobile-menu__contact--whatsapp:active {
+  background: rgba(37, 211, 102, 0.2);
+}
+
+/* Отступ для контента под фиксированным хедером */
+body {
+  padding-top: 60px;
+}
+
+/* Адаптация под очень маленькие экраны */
+@media (max-width: 360px) {
+  .mobile-header__logo-img {
+    height: 28px;
+  }
+  
+  .mobile-menu {
+    width: 90%;
+  }
+  
+  .mobile-menu__link {
+    font-size: 16px;
+    padding: 14px 20px;
+  }
+}
+
+/* Адаптация под большие мобильные экраны */
+@media (min-width: 768px) {
+  .mobile-menu {
+    max-width: 360px;
+  }
+}
+

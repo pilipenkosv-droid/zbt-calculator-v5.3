@@ -1,0 +1,93 @@
+/**
+ * Sticky навигационный бар стили
+ */
+
+.mobile-navbar {
+  position: fixed;
+  top: 60px; /* Под хедером */
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 900;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  animation: slideDown 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.mobile-navbar__container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.mobile-navbar__container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.mobile-navbar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 12px;
+  background: none;
+  border: none;
+  color: rgba(26, 26, 26, 0.7);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+  min-width: 70px;
+}
+
+.mobile-navbar__item:active {
+  background: rgba(248, 248, 248, 0.5);
+}
+
+.mobile-navbar__item--active {
+  color: #FF6A00;
+  background: rgba(255, 106, 0, 0.1);
+}
+
+.mobile-navbar__icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.mobile-navbar__label {
+  line-height: 1.2;
+}
+
+/* Адаптация под очень маленькие экраны */
+@media (max-width: 360px) {
+  .mobile-navbar__item {
+    min-width: 60px;
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+  
+  .mobile-navbar__icon {
+    font-size: 14px;
+  }
+}
+
