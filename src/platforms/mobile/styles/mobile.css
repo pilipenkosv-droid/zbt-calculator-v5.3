@@ -9,7 +9,6 @@
   width: 100%;
   margin: 0;
   padding: 0;
-  padding-top: 60px; /* Отступ под фиксированный хедер */
   display: block;
   background: #FFFFFF;
   color: #1A1A1A;
@@ -33,7 +32,7 @@
   font-size: 26px;
   font-weight: 700;
   line-height: 1.2;
-  margin: 0 0 16px 0;
+  margin: 0;
   color: #1A1A1A;
 }
 
@@ -66,7 +65,7 @@
 .mobile-app p {
   font-size: 16px;
   line-height: 1.5;
-  margin: 0 0 16px 0;
+  margin: 0;
   color: rgba(26, 26, 26, 0.85);
   max-width: 38ch; /* Ограничение ширины для читаемости */
 }
