@@ -207,6 +207,13 @@ p {
   padding: 0 var(--gap-3);
 }
 
+/* Специальное центрирование для блока калькулятора */
+#calculator.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .container-wide {
   max-width: 1280px;
   margin: 0 auto;
