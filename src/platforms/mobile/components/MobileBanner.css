@@ -142,66 +142,6 @@
   border-color: #FF6A00;
 }
 
-/* Контакты */
-.mobile-banner__contacts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 16px 0;
-  border-top: 1px solid rgba(26, 26, 26, 0.15);
-}
-
-.mobile-banner__contact-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  font-size: 14px;
-  color: #1A1A1A;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  background: rgba(248, 248, 248, 0.8);
-  border-radius: 6px;
-  transition: all 0.2s ease;
-  min-height: 44px;
-  border: 1px solid rgba(26, 26, 26, 0.1);
-}
-
-.mobile-banner__contact-link:active {
-  background: rgba(240, 240, 240, 1);
-  border-color: #FF6A00;
-}
-
-.mobile-banner__contact-link svg {
-  flex-shrink: 0;
-  color: #FF6A00;
-}
-
-.mobile-banner__contact-link--whatsapp {
-  background: rgba(37, 211, 102, 0.1);
-  color: #25D366;
-}
-
-.mobile-banner__contact-link--whatsapp svg {
-  color: #25D366;
-}
-
-.mobile-banner__contact-link--whatsapp:active {
-  background: rgba(37, 211, 102, 0.2);
-}
-
-/* Изображение */
-.mobile-banner__image {
-  margin: 24px -16px 0;
-  max-width: calc(100% + 32px);
-}
-
-.mobile-banner__image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px 12px 0 0;
-}
 
 /* Адаптация под очень маленькие экраны */
 @media (max-width: 360px) {

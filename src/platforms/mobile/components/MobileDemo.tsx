@@ -53,8 +53,8 @@ const MobileDemo: React.FC<MobileDemoProps> = ({ onSubmit, policyUrl }) => {
           <p className="mobile-demo__contacts-text">Или свяжитесь с нами напрямую:</p>
           <div className="mobile-demo__contacts-links">
             <a href="tel:88005553862" className="mobile-demo__contact-link">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M18.3 14.9c-1.5 0-3-.3-4.4-.8-.4-.2-.9 0-1.2.3l-2.7 2.7c-3.5-1.8-6.4-4.6-8.2-8.2L4.6 6.2c.3-.3.4-.8.3-1.2-.5-1.4-.8-2.9-.8-4.4 0-.6-.4-1-1-1H1c-.6 0-1 .4-1 1 0 10.5 8.5 19 19 19 .6 0 1-.4 1-1v-2.1c0-.6-.4-1-1-1z" fill="currentColor"/>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.3-1.1-.5-2.3-.5-3.6 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1zM5 5h1.5c.1.9.2 1.8.5 2.6L5.8 8.8C5.4 7.6 5.1 6.3 5 5zm14 14c-1.3-.1-2.6-.4-3.8-.8l1.2-1.2c.8.2 1.7.4 2.6.5V19z" fill="currentColor" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               <span>8 800 555 38 62</span>
             </a>
