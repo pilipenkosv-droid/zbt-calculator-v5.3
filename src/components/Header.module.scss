@@ -41,12 +41,24 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .leftGroup {
   display: flex;
   align-items: center;
   gap: 32px;
+  flex: 1;
+}
+
+/* Центрированная навигация */
+.nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 24px;
+  align-items: center;
 }
 
 .brand {
@@ -62,12 +74,7 @@
   image-rendering: -webkit-optimize-contrast;
 }
 
-/* Навигация */
-.nav {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-}
+/* Навигация - стили перенесены выше */
 
 .navLink {
   color: #666666 !important;
@@ -89,10 +96,12 @@
   font-weight: 500;
 }
 
-/* Телефон */
+/* Правая группа с телефоном */
 .phone {
   display: flex;
   align-items: center;
+  flex: 1;
+  justify-content: flex-end;
 }
 
 .phoneLink {
