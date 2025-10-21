@@ -29,6 +29,7 @@
 
 /* Типографика - заголовки */
 .mobile-app h1 {
+  font-family: 'Navigo', 'Inter', sans-serif;
   font-size: 26px;
   font-weight: 700;
   line-height: 1.2;
@@ -37,6 +38,7 @@
 }
 
 .mobile-app h2 {
+  font-family: 'Navigo', 'Inter', sans-serif;
   font-size: 22px;
   font-weight: 700;
   line-height: 1.3;
@@ -45,10 +47,18 @@
 }
 
 .mobile-app h3 {
+  font-family: 'Navigo', 'Inter', sans-serif;
   font-size: 18px;
   font-weight: 600;
   line-height: 1.4;
   margin: 0 0 10px 0;
+  color: #1A1A1A;
+}
+
+.mobile-app h4,
+.mobile-app h5,
+.mobile-app h6 {
+  font-family: 'Navigo', 'Inter', sans-serif;
   color: #1A1A1A;
 }
 

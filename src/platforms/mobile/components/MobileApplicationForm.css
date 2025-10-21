@@ -60,6 +60,7 @@
 }
 
 .mobile-form__step-title {
+  font-family: 'Navigo', 'Inter', sans-serif;
   font-size: 20px;
   font-weight: 700;
   color: #1A1A1A;
@@ -288,6 +289,7 @@
 }
 
 .mobile-form-success__title {
+  font-family: 'Navigo', 'Inter', sans-serif;
   font-size: 24px;
   font-weight: 700;
   color: #1A1A1A;

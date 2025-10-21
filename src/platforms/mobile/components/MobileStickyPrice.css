@@ -37,6 +37,7 @@
 }
 
 .mobile-sticky-price__amount {
+  font-family: 'Navigo', 'Inter', sans-serif;
   font-size: 24px;
   font-weight: 700;
   color: #FF6A00;
@@ -170,6 +171,7 @@
 }
 
 .mobile-sticky-price__modal-header h3 {
+  font-family: 'Navigo', 'Inter', sans-serif;
   font-size: 20px;
   font-weight: 700;
   color: #1A1A1A;
@@ -210,6 +212,7 @@
 }
 
 .mobile-sticky-price__detail-group h4 {
+  font-family: 'Navigo', 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: rgba(26, 26, 26, 0.7);

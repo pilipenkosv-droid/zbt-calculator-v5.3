@@ -9,6 +9,7 @@
 }
 
 .mobile-cases__title {
+  font-family: 'Navigo', 'Inter', sans-serif;
   text-align: center;
   font-size: 26px;
   font-weight: 700;
@@ -17,6 +18,7 @@
 }
 
 .mobile-cases__subtitle {
+  font-family: 'Navigo', 'Inter', sans-serif;
   text-align: center;
   font-size: 15px;
   color: rgba(26, 26, 26, 0.7);
@@ -94,6 +96,7 @@
 }
 
 .mobile-cases__name {
+  font-family: 'Navigo', 'Inter', sans-serif;
   font-size: 18px;
   font-weight: 700;
   color: #1A1A1A;
@@ -188,6 +191,7 @@
 }
 
 .mobile-cases__kpi-value {
+  font-family: 'Navigo', 'Inter', sans-serif;
   font-size: 18px;
   font-weight: 700;
   color: #FF6A00;

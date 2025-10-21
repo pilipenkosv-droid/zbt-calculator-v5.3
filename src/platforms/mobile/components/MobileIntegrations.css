@@ -8,6 +8,7 @@
 }
 
 .mobile-integrations__title {
+  font-family: 'Navigo', 'Inter', sans-serif;
   text-align: center;
   font-size: 26px;
   font-weight: 700;
@@ -17,6 +18,7 @@
 }
 
 .mobile-integrations__count {
+  font-family: 'Navigo', 'Inter', sans-serif;
   font-size: 48px;
   font-weight: 700;
   color: #FF6A00;
@@ -25,6 +27,7 @@
 }
 
 .mobile-integrations__subtitle {
+  font-family: 'Navigo', 'Inter', sans-serif;
   text-align: center;
   font-size: 15px;
   color: rgba(26, 26, 26, 0.7);
