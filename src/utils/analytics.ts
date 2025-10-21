@@ -21,8 +21,13 @@ export function track(event: string, payload: any = {}) {
     // Добавляем фоновые атрибуты для аналитики
     const abVariant = localStorage.getItem('calc_ab_period_tooltip') || 'A';
     const utmParams = window.__utm || {};
+    
+    // Определение платформы (если не указано в payload)
+    const platform = payload.platform || (window.innerWidth < 1024 ? 'mobile' : 'desktop');
+    
     const fullPayload = { 
-      ...payload, 
+      ...payload,
+      platform, // Добавляем платформу
       ab: abVariant,
       utm: utmParams,
       ts: Date.now()
@@ -34,7 +39,7 @@ export function track(event: string, payload: any = {}) {
     }
     
     // Fallback на console.log
-    console.log(event, fullPayload);
+    console.log(`[Analytics][${platform}]`, event, fullPayload);
   }
 }
 
