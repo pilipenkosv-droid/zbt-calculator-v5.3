@@ -127,17 +127,6 @@ const MobileIntegrations: React.FC = () => {
                   </div>
                   <div className="mobile-integrations__content">
                     <h3 className="mobile-integrations__name">{integration.title}</h3>
-                    <span className="mobile-integrations__category">{integration.category}</span>
-                    {integration.status === 'ready' && (
-                      <span className="mobile-integrations__status mobile-integrations__status--ready">
-                        Готово
-                      </span>
-                    )}
-                    {integration.status === 'connector' && (
-                      <span className="mobile-integrations__status mobile-integrations__status--connector">
-                        Коннектор
-                      </span>
-                    )}
                   </div>
                 </div>
               </div>
