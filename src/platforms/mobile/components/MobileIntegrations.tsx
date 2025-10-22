@@ -109,7 +109,7 @@ const MobileIntegrations: React.FC = () => {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            {INTEGRATIONS.map((integration, index) => (
+            {INTEGRATIONS.map((integration) => (
               <div key={integration.id} className="mobile-integrations__slide">
                 {/* Только логотип без рамок и названий */}
                 <img
