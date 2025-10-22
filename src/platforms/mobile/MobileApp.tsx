@@ -144,7 +144,7 @@ const MobileApp: React.FC<MobileAppProps> = ({ detection }) => {
             </div>
 
             {/* Остальные параметры */}
-            <div style={{ marginBottom: '80px' }}>
+            <div style={{ marginBottom: '40px' }}>
               <CalculatorParams
                 state={state}
                 onParamChange={handleParamChange}
@@ -188,13 +188,7 @@ const MobileApp: React.FC<MobileAppProps> = ({ detection }) => {
         <footer className="footer" style={{ marginTop: '48px' }}>
           <div className="footer-top">
             <div className="footer-container">
-              <div className="footer-contacts">
-                <a href="tel:88005553862" className="phone">8 800 555 38 62</a>
-                <a href="mailto:info@zabota.tech" className="email-link">
-                  info@zabota.tech
-                </a>
-              </div>
-              <div className="footer-social">
+              <div className="footer-social" style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>
                 <a href="#" className="social-link" aria-label="ВКонтакте">
                   <img src="/images/3.svg" alt="VK" className="social-icon" />
                 </a>

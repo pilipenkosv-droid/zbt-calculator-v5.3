@@ -169,40 +169,6 @@
   max-width: 100%;
 }
 
-/* KPI метрики */
-.mobile-cases__kpis {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 12px;
-  margin-top: auto;
-  padding-top: 16px;
-  border-top: 1px solid rgba(26, 26, 26, 0.1);
-}
-
-.mobile-cases__kpi {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 12px;
-  background: rgba(255, 106, 0, 0.08);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 106, 0, 0.2);
-  text-align: center;
-}
-
-.mobile-cases__kpi-value {
-  font-family: 'Navigo', 'Inter', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: #FF6A00;
-  line-height: 1.2;
-}
-
-.mobile-cases__kpi-label {
-  font-size: 12px;
-  color: rgba(26, 26, 26, 0.7);
-  line-height: 1.3;
-}
 
 /* Индикаторы */
 .mobile-cases__indicators {
@@ -213,8 +179,8 @@
 }
 
 .mobile-cases__indicator {
-  width: 8px;
-  height: 8px;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
   background: rgba(26, 26, 26, 0.2);
   border: none;
@@ -224,8 +190,8 @@
 }
 
 .mobile-cases__indicator--active {
-  width: 24px;
-  border-radius: 4px;
+  width: 8px;
+  border-radius: 2px;
   background: #FF6A00;
 }
 
@@ -233,47 +199,6 @@
   transform: scale(1.2);
 }
 
-/* Навигация */
-.mobile-cases__nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-}
-
-.mobile-cases__nav-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: #FFFFFF;
-  border: 1px solid rgba(26, 26, 26, 0.2);
-  border-radius: 50%;
-  color: #1A1A1A;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-}
-
-.mobile-cases__nav-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-.mobile-cases__nav-btn:not(:disabled):active {
-  background: rgba(248, 248, 248, 1);
-  transform: scale(0.95);
-  border-color: #FF6A00;
-}
-
-.mobile-cases__counter {
-  font-size: 16px;
-  font-weight: 600;
-  color: rgba(26, 26, 26, 0.8);
-  min-width: 60px;
-  text-align: center;
-}
 
 /* Адаптация под очень маленькие экраны */
 @media (max-width: 360px) {
@@ -301,14 +226,6 @@
   
   .mobile-cases__text {
     font-size: 14px;
-  }
-  
-  .mobile-cases__kpi-value {
-    font-size: 16px;
-  }
-  
-  .mobile-cases__kpi-label {
-    font-size: 11px;
   }
 }
 
@@ -341,14 +258,6 @@
   
   .mobile-cases__text {
     font-size: 16px;
-  }
-  
-  .mobile-cases__kpi-value {
-    font-size: 20px;
-  }
-  
-  .mobile-cases__kpi-label {
-    font-size: 13px;
   }
 }
 

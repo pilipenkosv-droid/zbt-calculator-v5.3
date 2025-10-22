@@ -183,7 +183,17 @@ const MobileFAQ: React.FC = () => {
           <p>Не нашли ответ?</p>
           <button
             className="mobile-faq__contact-btn"
-            onClick={() => window.dispatchEvent(new CustomEvent('openApplyModal'))}
+            onClick={() => {
+              const element = document.getElementById('contacts');
+              if (element) {
+                const headerHeight = 60;
+                const elementPosition = element.offsetTop - headerHeight;
+                window.scrollTo({
+                  top: elementPosition,
+                  behavior: 'smooth',
+                });
+              }
+            }}
           >
             Задать вопрос
           </button>

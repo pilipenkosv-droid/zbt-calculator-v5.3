@@ -15,7 +15,7 @@
   z-index: 900;
   padding: 0 16px 12px;
   padding-bottom: calc(12px + env(safe-area-inset-bottom));
-  transform: translateY(calc(100% - 32px));
+  transform: translateY(calc(100% - 28px));
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 

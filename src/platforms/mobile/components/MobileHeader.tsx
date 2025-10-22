@@ -104,11 +104,6 @@ const MobileHeader: React.FC<MobileHeaderProps> = ({ onMenuItemClick }) => {
       {/* Выдвижное меню */}
       <nav className={`mobile-menu ${isMenuOpen ? 'mobile-menu--open' : ''}`}>
         <div className="mobile-menu__header">
-          <img 
-            src="/images/logo___descript (3).svg" 
-            alt="Zabota 2.0" 
-            className="mobile-menu__logo"
-          />
           <button
             className="mobile-menu__close"
             onClick={() => setIsMenuOpen(false)}

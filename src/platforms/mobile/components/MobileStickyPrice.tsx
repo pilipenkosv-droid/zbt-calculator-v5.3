@@ -18,6 +18,11 @@ const MobileStickyPrice: React.FC<MobileStickyPriceProps> = ({ state, onRequestQ
   const [isExpanded, setIsExpanded] = useState(false);
   const [userClosedManually, setUserClosedManually] = useState(false);
   const isFirstRender = React.useRef(true);
+  
+  // Состояние для перетягивания
+  const [isDragging, setIsDragging] = useState(false);
+  const [startY, setStartY] = useState(0);
+  const [currentY, setCurrentY] = useState(0);
 
   const pricing = calculatePrice(state);
 
@@ -58,6 +63,8 @@ const MobileStickyPrice: React.FC<MobileStickyPriceProps> = ({ state, onRequestQ
 
   // Обработчик клика по ушку
   const handleToggle = () => {
+    if (isDragging) return; // Игнорируем клик если был драг
+    
     const newState = !isExpanded;
     setIsExpanded(newState);
     // Если пользователь закрывает блок вручную - запоминаем это
@@ -69,6 +76,44 @@ const MobileStickyPrice: React.FC<MobileStickyPriceProps> = ({ state, onRequestQ
     }
   };
 
+  // Обработчики для перетягивания
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!e.touches[0]) return;
+    setIsDragging(true);
+    setStartY(e.touches[0].clientY);
+    setCurrentY(e.touches[0].clientY);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !e.touches[0]) return;
+    
+    const touchY = e.touches[0].clientY;
+    setCurrentY(touchY);
+  };
+
+  const handleTouchEnd = () => {
+    if (!isDragging) return;
+    
+    const deltaY = currentY - startY;
+    const threshold = 50; // Минимальное расстояние для срабатывания
+    
+    if (Math.abs(deltaY) > threshold) {
+      if (deltaY < 0) {
+        // Потянули вверх - открыть
+        setIsExpanded(true);
+        setUserClosedManually(false);
+      } else {
+        // Потянули вниз - закрыть
+        setIsExpanded(false);
+        setUserClosedManually(true);
+      }
+    }
+    
+    setIsDragging(false);
+    setStartY(0);
+    setCurrentY(0);
+  };
+
   // Уведомляем другие компоненты об изменении состояния блока
   React.useEffect(() => {
     document.body.setAttribute('data-sticky-expanded', isExpanded ? 'true' : 'false');
@@ -78,10 +123,13 @@ const MobileStickyPrice: React.FC<MobileStickyPriceProps> = ({ state, onRequestQ
     <>
       {/* Липкий блок внизу экрана */}
       <div className={`mobile-sticky-price ${isExpanded ? 'mobile-sticky-price--expanded' : ''}`}>
-        {/* Ушко для клика */}
+        {/* Ушко для клика и перетягивания */}
         <div 
           className="mobile-sticky-price__handle"
           onClick={handleToggle}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           <div className="mobile-sticky-price__handle-bar"></div>
         </div>

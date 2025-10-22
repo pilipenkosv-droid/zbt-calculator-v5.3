@@ -206,15 +206,6 @@ const MobileCases: React.FC = () => {
                     <p className="mobile-cases__text">{caseItem.result}</p>
                   </div>
 
-                  {/* Метрики (KPI) */}
-                  <div className="mobile-cases__kpis">
-                    {caseItem.kpis.map((kpi, kpiIndex) => (
-                      <div key={kpiIndex} className="mobile-cases__kpi">
-                        <div className="mobile-cases__kpi-value">{kpi.value}</div>
-                        <div className="mobile-cases__kpi-label">{kpi.label}</div>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
             ))}
@@ -233,32 +224,6 @@ const MobileCases: React.FC = () => {
           ))}
         </div>
 
-        {/* Навигация */}
-        <div className="mobile-cases__nav">
-          <button
-            className="mobile-cases__nav-btn"
-            onClick={() => goToSlide(Math.max(0, currentIndex - 1))}
-            disabled={currentIndex === 0}
-            aria-label="Предыдущий кейс"
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-          <div className="mobile-cases__counter">
-            {currentIndex + 1} / {cases.length}
-          </div>
-          <button
-            className="mobile-cases__nav-btn"
-            onClick={() => goToSlide(Math.min(cases.length - 1, currentIndex + 1))}
-            disabled={currentIndex === cases.length - 1}
-            aria-label="Следующий кейс"
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-        </div>
       </div>
     </section>
   );

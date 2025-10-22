@@ -101,12 +101,6 @@ const MMLevelsSection: React.FC<MMLevelsSectionProps> = ({ selected, onLevelChan
                   data-text={level.name}
                 >
                   {level.name}
-                  {level.isRecommended && (
-                    <div className="mm-easter-egg" title="Рекомендуем">
-                      <div className="mm-dot"></div>
-                      <div className="mm-easter-tooltip">Рекомендуем</div>
-                    </div>
-                  )}
                 </div>
                 <div className="mm-price">{formatPrice(level.price)}</div>
                 <div className="mm-price-sub">в мес</div>

@@ -133,16 +133,12 @@
 .mobile-menu__header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 16px;
   border-bottom: 1px solid rgba(26, 26, 26, 0.1);
   min-height: 60px;
 }
 
-.mobile-menu__logo {
-  height: 32px;
-  width: auto;
-}
 
 .mobile-menu__close {
   display: flex;

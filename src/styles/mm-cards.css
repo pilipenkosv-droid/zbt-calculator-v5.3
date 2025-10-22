@@ -35,21 +35,17 @@
   display: grid;
   grid-template-rows: auto auto auto;
   gap: 6px;
-  min-height: 96px;
+  min-height: 110px;
 }
 
 .mm-title {
   text-align: left;
   font-weight: 600;
   font-size: 18px;
-  line-height: 1.2;
+  line-height: 1.4;
   white-space: normal;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: visible;
   color: var(--text, #111);
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
 }
 
 /* Premium — градиентный текст */
