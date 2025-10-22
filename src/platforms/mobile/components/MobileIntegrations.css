@@ -31,7 +31,7 @@
   text-align: center;
   font-size: 15px;
   color: rgba(26, 26, 26, 0.7);
-  margin-bottom: 48px; /* Увеличен отступ с 24px до 48px */
+  margin-bottom: 48px !important; /* Увеличен отступ с 24px до 48px с !important */
   max-width: 100%;
   line-height: 1.4;
 }
@@ -361,7 +361,7 @@
   
   .mobile-integrations__subtitle {
     font-size: 14px;
-    margin-bottom: 48px; /* Сохраняем увеличенный отступ */
+    margin-bottom: 48px !important; /* Сохраняем увеличенный отступ */
   }
   
   .mobile-integrations__grid {
@@ -396,7 +396,7 @@
   
   .mobile-integrations__subtitle {
     font-size: 16px;
-    margin-bottom: 48px; /* Сохраняем увеличенный отступ */
+    margin-bottom: 48px !important; /* Сохраняем увеличенный отступ */
   }
   
   .mobile-integrations__grid {

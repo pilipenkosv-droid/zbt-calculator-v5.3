@@ -21,7 +21,7 @@
   text-align: center;
   font-size: 16px;
   color: rgba(26, 26, 26, 0.7);
-  margin-bottom: 48px; /* Увеличен отступ с 32px до 48px */
+  margin-bottom: 48px !important; /* Увеличен отступ с 32px до 48px с !important */
   max-width: 100%;
 }
 
@@ -197,7 +197,7 @@
   
   .mobile-faq__subtitle {
     font-size: 15px;
-    margin-bottom: 48px; /* Сохраняем увеличенный отступ */
+    margin-bottom: 48px !important; /* Сохраняем увеличенный отступ */
   }
   
   .mobile-faq__question {
@@ -226,7 +226,7 @@
   
   .mobile-faq__subtitle {
     font-size: 17px;
-    margin-bottom: 48px; /* Сохраняем увеличенный отступ */
+    margin-bottom: 48px !important; /* Сохраняем увеличенный отступ */
   }
   
   .mobile-faq__question {

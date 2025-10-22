@@ -22,7 +22,7 @@
   text-align: center;
   font-size: 15px;
   color: rgba(26, 26, 26, 0.7);
-  margin-bottom: 48px; /* Увеличен отступ с 32px до 48px */
+  margin-bottom: 48px !important; /* Увеличен отступ с 32px до 48px с !important */
   max-width: 100%;
 }
 
@@ -208,7 +208,7 @@
   
   .mobile-cases__subtitle {
     font-size: 14px;
-    margin-bottom: 48px; /* Сохраняем увеличенный отступ */
+    margin-bottom: 48px !important; /* Сохраняем увеличенный отступ */
   }
   
   .mobile-cases__card {
@@ -238,7 +238,7 @@
   
   .mobile-cases__subtitle {
     font-size: 16px;
-    margin-bottom: 48px; /* Сохраняем увеличенный отступ */
+    margin-bottom: 48px !important; /* Сохраняем увеличенный отступ */
   }
   
   .mobile-cases__slide {
