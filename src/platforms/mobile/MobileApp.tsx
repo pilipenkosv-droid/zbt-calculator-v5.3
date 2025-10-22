@@ -111,10 +111,6 @@ const MobileApp: React.FC<MobileAppProps> = ({ detection }) => {
         {/* Калькулятор */}
         <section id="calculator" className="section">
           <div className="container">
-            <h2 style={{ textAlign: 'center', marginBottom: '24px' }}>
-              Рассчитайте стоимость
-            </h2>
-            
             {/* База пациентов и Период */}
             <div style={{ marginBottom: '24px' }}>
               <PatientBaseSection

@@ -7,6 +7,7 @@ import './MobileFAB.css';
  */
 const MobileFAB: React.FC = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [isStickyExpanded, setIsStickyExpanded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +21,25 @@ const MobileFAB: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Отслеживаем состояние блока итогов
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const expanded = document.body.getAttribute('data-sticky-expanded') === 'true';
+      setIsStickyExpanded(expanded);
+    });
+
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['data-sticky-expanded'],
+    });
+
+    // Проверяем начальное состояние
+    const expanded = document.body.getAttribute('data-sticky-expanded') === 'true';
+    setIsStickyExpanded(expanded);
+
+    return () => observer.disconnect();
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -27,13 +47,8 @@ const MobileFAB: React.FC = () => {
     });
   };
 
-  const handleContact = () => {
-    // Открыть модалку заявки
-    window.dispatchEvent(new CustomEvent('openApplyModal'));
-  };
-
   return (
-    <div className="mobile-fab">
+    <div className={`mobile-fab ${isStickyExpanded ? 'mobile-fab--sticky-expanded' : ''}`}>
       {/* Кнопка "Наверх" */}
       {showBackToTop && (
         <button
@@ -46,17 +61,6 @@ const MobileFAB: React.FC = () => {
           </svg>
         </button>
       )}
-
-      {/* Кнопка "Связаться" */}
-      <button
-        className="mobile-fab__btn mobile-fab__btn--contact"
-        onClick={handleContact}
-        aria-label="Связаться с нами"
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
-        </svg>
-      </button>
     </div>
   );
 };

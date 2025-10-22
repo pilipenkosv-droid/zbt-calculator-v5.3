@@ -41,12 +41,18 @@ const MobileBanner: React.FC<MobileBannerProps> = ({
 
   return (
     <section className="mobile-banner">
+      {/* Декоративные элементы */}
+      <div className="mobile-banner__decorations">
+        <div className="mobile-banner__star mobile-banner__star--1"></div>
+        <div className="mobile-banner__star mobile-banner__star--2"></div>
+      </div>
+      
       <div className="mobile-banner__container">
         {/* Заголовок */}
         <h1 className="mobile-banner__title">
           Zabota 2.0
           <span className="mobile-banner__subtitle">
-            Платформа медицинского маркетинга
+            С заботой о ваших пациентах, улучшаем доходимость, возвращаем "спящих" и защищаем от спама.
           </span>
         </h1>
 
@@ -62,12 +68,6 @@ const MobileBanner: React.FC<MobileBannerProps> = ({
             <span className="mobile-banner__value-text">запуск сервиса</span>
           </div>
         </div>
-
-        {/* Описание */}
-        <p className="mobile-banner__description">
-          Автоматизируйте коммуникации с пациентами, увеличьте доходимость 
-          и управляйте репутацией клиники
-        </p>
 
         {/* CTA кнопки */}
         <div className="mobile-banner__cta">

@@ -1,4 +1,73 @@
 /* Шрифты Navigo с Inter как fallback */
+@font-face {
+  font-family: 'Navigo';
+  src: url('/font/Navigo-Thin.woff2') format('woff2'),
+       url('/font/Navigo-Thin.woff') format('woff'),
+       url('/font/Navigo-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Navigo';
+  src: url('/font/Navigo-ExtraLight.woff2') format('woff2'),
+       url('/font/Navigo-ExtraLight.woff') format('woff'),
+       url('/font/Navigo-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Navigo';
+  src: url('/font/Navigo-Light.woff2') format('woff2'),
+       url('/font/Navigo-Light.woff') format('woff'),
+       url('/font/Navigo-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Navigo';
+  src: url('/font/Navigo-Regular.woff2') format('woff2'),
+       url('/font/Navigo-Regular.woff') format('woff'),
+       url('/font/Navigo-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Navigo';
+  src: url('/font/Navigo-Medium.woff2') format('woff2'),
+       url('/font/Navigo-Medium.woff') format('woff'),
+       url('/font/Navigo-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Navigo';
+  src: url('/font/Navigo-Bold.woff2') format('woff2'),
+       url('/font/Navigo-Bold.woff') format('woff'),
+       url('/font/Navigo-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Navigo';
+  src: url('/font/Navigo-Black.woff2') format('woff2'),
+       url('/font/Navigo-Black.woff') format('woff'),
+       url('/font/Navigo-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* Стили для карточек уровней ММ */
 @import './styles/mm-cards.css';
@@ -1024,7 +1093,10 @@ p {
 
 @media (max-width: 640px) {
   .mm-grid {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    grid-template-columns: none !important;
   }
 }
 
@@ -1063,12 +1135,18 @@ p {
 
 @media (max-width: 640px) {
   .mm-grid {
-    grid-template-columns: 1fr;
-    gap: var(--gap-3);
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    grid-template-columns: none !important;
+    gap: 16px;
   }
 
   .mm-card {
-    min-height: 260px;
+    min-height: 320px;
+    flex: 0 0 85% !important;
+    min-width: 85% !important;
+    max-width: 85% !important;
   }
 
   .btn {

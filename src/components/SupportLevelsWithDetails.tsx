@@ -32,17 +32,12 @@ export const SupportLevelsWithDetails: React.FC<SupportLevelsWithDetailsProps> =
       {/* Заголовки вне контура */}
       <div className="mb-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <h3 className="text-[27px] font-bold text-slate-900">
-            Выберите уровень поддержки<br />
-            медицинского маркетинга
+          <h3 className="text-[20px] md:text-[27px] font-bold text-slate-900">
+            Выберите уровень поддержки медицинского маркетинга
           </h3>
           <Tooltip content="Уровень поддержки определяет количество сценариев, экспериментов, качество SLA и объем услуг. Чем выше уровень, тем больше возможностей и выше стоимость.">
             <InfoIcon />
           </Tooltip>
-        </div>
-        <div className="text-[12px] text-slate-600">
-          Нажмите на карточку,<br />
-          чтобы увидеть детали
         </div>
       </div>
 

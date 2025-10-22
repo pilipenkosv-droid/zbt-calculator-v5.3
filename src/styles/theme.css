@@ -279,6 +279,30 @@ footer a:hover {
   max-width: 100%;
 }
 
+/* Мобильная карусель */
+@media (max-width: 639px) {
+  .mm-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    grid-template-columns: none !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  .mm-grid::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .mm-card {
+    flex: 0 0 85% !important;
+    min-width: 85% !important;
+    max-width: 85% !important;
+    scroll-snap-align: center !important;
+  }
+}
+
 @media (min-width: 640px) {
   .mm-grid {
     grid-template-columns: repeat(2, 1fr);

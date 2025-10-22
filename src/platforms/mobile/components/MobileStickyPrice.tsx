@@ -15,6 +15,9 @@ interface MobileStickyPriceProps {
 const MobileStickyPrice: React.FC<MobileStickyPriceProps> = ({ state, onRequestQuote }) => {
   const [showDetails, setShowDetails] = useState(false);
   const [viewMode, setViewMode] = useState<'monthly' | 'total'>('monthly');
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [userClosedManually, setUserClosedManually] = useState(false);
+  const isFirstRender = React.useRef(true);
 
   const pricing = calculatePrice(state);
 
@@ -39,10 +42,50 @@ const MobileStickyPrice: React.FC<MobileStickyPriceProps> = ({ state, onRequestQ
     }
   };
 
+  // Открыть блок при изменении параметров калькулятора
+  // НО только если пользователь не закрыл его вручную
+  // И только если это НЕ первый рендер
+  React.useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    
+    if (!userClosedManually) {
+      setIsExpanded(true);
+    }
+  }, [state.period, state.patientBase, state.branches, state.whatsappNumbers, state.marketingLevel, state.techSupport, userClosedManually]);
+
+  // Обработчик клика по ушку
+  const handleToggle = () => {
+    const newState = !isExpanded;
+    setIsExpanded(newState);
+    // Если пользователь закрывает блок вручную - запоминаем это
+    if (!newState) {
+      setUserClosedManually(true);
+    } else {
+      // Если открывает - сбрасываем флаг
+      setUserClosedManually(false);
+    }
+  };
+
+  // Уведомляем другие компоненты об изменении состояния блока
+  React.useEffect(() => {
+    document.body.setAttribute('data-sticky-expanded', isExpanded ? 'true' : 'false');
+  }, [isExpanded]);
+
   return (
     <>
       {/* Липкий блок внизу экрана */}
-      <div className="mobile-sticky-price">
+      <div className={`mobile-sticky-price ${isExpanded ? 'mobile-sticky-price--expanded' : ''}`}>
+        {/* Ушко для клика */}
+        <div 
+          className="mobile-sticky-price__handle"
+          onClick={handleToggle}
+        >
+          <div className="mobile-sticky-price__handle-bar"></div>
+        </div>
+        
         <div className="mobile-sticky-price__container">
           {/* Основная информация */}
           <div className="mobile-sticky-price__main">

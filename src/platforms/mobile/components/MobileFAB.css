@@ -5,12 +5,18 @@
 
 .mobile-fab {
   position: fixed;
-  bottom: 20px;
+  bottom: 140px;
   right: 16px;
   z-index: 950;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Когда блок итогов свернут - кнопка опускается ниже */
+.mobile-fab:not(.mobile-fab--sticky-expanded) {
+  bottom: 60px;
 }
 
 .mobile-fab__btn {
@@ -44,48 +50,26 @@
 
 /* Кнопка "Наверх" */
 .mobile-fab__btn--top {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.mobile-fab__btn--top:active {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-/* Кнопка "Связаться" */
-.mobile-fab__btn--contact {
   background: #FF6A00;
   color: #FFFFFF;
   box-shadow: 0 4px 16px rgba(255, 106, 0, 0.4);
 }
 
-.mobile-fab__btn--contact:active {
+.mobile-fab__btn--top:active {
   background: #E56000;
-}
-
-/* Пульсация для привлечения внимания */
-@keyframes pulse {
-  0%, 100% {
-    box-shadow: 0 4px 16px rgba(255, 106, 0, 0.4);
-  }
-  50% {
-    box-shadow: 0 4px 24px rgba(255, 106, 0, 0.6);
-  }
-}
-
-.mobile-fab__btn--contact {
-  animation: pulse 2s ease-in-out infinite;
+  transform: scale(0.95);
 }
 
 /* Адаптация под очень маленькие экраны */
 @media (max-width: 360px) {
   .mobile-fab {
-    bottom: 16px;
+    bottom: 130px;
     right: 12px;
     gap: 10px;
+  }
+  
+  .mobile-fab:not(.mobile-fab--sticky-expanded) {
+    bottom: 55px;
   }
   
   .mobile-fab__btn {
@@ -97,8 +81,12 @@
 /* Адаптация под большие мобильные экраны */
 @media (min-width: 480px) {
   .mobile-fab {
-    bottom: 24px;
+    bottom: 150px;
     right: 24px;
+  }
+  
+  .mobile-fab:not(.mobile-fab--sticky-expanded) {
+    bottom: 65px;
   }
   
   .mobile-fab__btn {
