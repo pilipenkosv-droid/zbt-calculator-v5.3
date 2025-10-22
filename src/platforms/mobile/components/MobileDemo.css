@@ -64,7 +64,7 @@
 .mobile-demo__contacts-text {
   font-size: 15px;
   color: rgba(26, 26, 26, 0.8);
-  margin: 0 0 32px 0; /* Увеличен отступ с 16px до 32px */
+  margin: 0 0 48px 0; /* Еще больше увеличен отступ с 32px до 48px */
   text-align: center;
   max-width: 100%;
 }
