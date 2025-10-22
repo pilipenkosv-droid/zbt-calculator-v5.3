@@ -48,7 +48,7 @@
 
 .mobile-app .mobile-banner__title .mobile-banner__subtitle {
   font-family: 'Navigo', 'Inter', sans-serif;
-  font-size: 16px;
+  font-size: 24px; /* Увеличено в 1,5 раза (16px * 1.5 = 24px) */
   font-weight: 400;
   color: #FFFFFF !important;
   line-height: 1.4;
@@ -108,6 +108,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: 60px; /* Добавлен отступ сверху, чтобы опустить кнопки */
   margin-bottom: 24px;
 }
 
@@ -216,7 +217,7 @@
   }
   
   .mobile-app .mobile-banner__title .mobile-banner__subtitle {
-    font-size: 15px;
+    font-size: 22.5px; /* Увеличено в 1,5 раза (15px * 1.5 = 22.5px) */
   }
   
   .mobile-app .mobile-banner__value-number {
@@ -252,7 +253,7 @@
   }
   
   .mobile-app .mobile-banner__title .mobile-banner__subtitle {
-    font-size: 17px;
+    font-size: 25.5px; /* Увеличено в 1,5 раза (17px * 1.5 = 25.5px) */
   }
   
   .mobile-app .mobile-banner__value-number {

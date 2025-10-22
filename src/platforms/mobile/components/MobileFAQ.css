@@ -21,7 +21,7 @@
   text-align: center;
   font-size: 16px;
   color: rgba(26, 26, 26, 0.7);
-  margin-bottom: 32px;
+  margin-bottom: 48px; /* Увеличен отступ с 32px до 48px */
   max-width: 100%;
 }
 

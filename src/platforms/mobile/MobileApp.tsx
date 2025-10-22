@@ -185,7 +185,7 @@ const MobileApp: React.FC<MobileAppProps> = ({ detection }) => {
         </div>
 
         {/* Футер */}
-        <footer className="footer" style={{ marginTop: '48px' }}>
+        <footer className="footer" style={{ marginTop: '80px' }}> {/* Увеличен отступ с 48px до 80px */}
           <div className="footer-top">
             <div className="footer-container">
               <div className="footer-social" style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>

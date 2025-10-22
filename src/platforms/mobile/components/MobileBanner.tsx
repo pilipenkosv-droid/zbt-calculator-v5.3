@@ -34,8 +34,16 @@ const MobileBanner: React.FC<MobileBannerProps> = ({
     if (onConsultation) {
       onConsultation();
     } else {
-      // Открыть модалку заявки
-      window.dispatchEvent(new CustomEvent('openApplyModal'));
+      // Прокрутка к блоку "Демо" (контакты)
+      const contactsEl = document.getElementById('contacts');
+      if (contactsEl) {
+        const headerHeight = 60;
+        const elementPosition = contactsEl.offsetTop - headerHeight;
+        window.scrollTo({
+          top: elementPosition,
+          behavior: 'smooth',
+        });
+      }
     }
   };
 

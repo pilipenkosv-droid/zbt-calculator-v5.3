@@ -21,7 +21,7 @@
   text-align: center;
   font-size: 16px;
   color: rgba(26, 26, 26, 0.7);
-  margin-bottom: 24px;
+  margin-bottom: 48px; /* Увеличен отступ с 24px до 48px */
   max-width: 100%;
   line-height: 1.5;
 }
@@ -64,7 +64,7 @@
 .mobile-demo__contacts-text {
   font-size: 15px;
   color: rgba(26, 26, 26, 0.8);
-  margin: 0 0 16px 0;
+  margin: 0 0 32px 0; /* Увеличен отступ с 16px до 32px */
   text-align: center;
   max-width: 100%;
 }

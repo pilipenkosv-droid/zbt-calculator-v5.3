@@ -69,8 +69,8 @@
 }
 
 .social-icon {
-  width: 64px;
-  height: 64px;
+  width: 44.8px; /* Уменьшено на 30% (64px * 0.7 = 44.8px) */
+  height: 44.8px; /* Уменьшено на 30% (64px * 0.7 = 44.8px) */
   object-fit: contain;
   filter: brightness(0) saturate(100%);
 }

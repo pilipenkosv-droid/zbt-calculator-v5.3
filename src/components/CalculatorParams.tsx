@@ -130,12 +130,7 @@ const CalculatorParams: React.FC<CalculatorParamsProps> = ({
   return (
     <section className="extra-section py-6 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-4 flex items-center gap-2">
-          <p className="mm-section-subtitle">Дополнительные параметры</p>
-          <Tooltip content="Дополнительные параметры влияют на итоговую стоимость. Филиалы увеличивают цену, WhatsApp номера добавляют стоимость за каждый номер, техподдержка влияет на качество обслуживания.">
-            <InfoIcon />
-          </Tooltip>
-        </div>
+        {/* Убрана надпись "Дополнительные параметры" */}
 
         <div className="extra-row-3">
           {/* Количество филиалов */}
