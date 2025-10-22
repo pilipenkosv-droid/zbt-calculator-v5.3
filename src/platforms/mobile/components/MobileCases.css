@@ -179,8 +179,8 @@
 }
 
 .mobile-cases__indicator {
-  width: 3px;
-  height: 3px;
+  width: 1px; /* Уменьшено в 3 раза (3px / 3 = 1px) */
+  height: 1px; /* Уменьшено в 3 раза (3px / 3 = 1px) */
   border-radius: 50%;
   background: rgba(26, 26, 26, 0.2);
   border: none;
@@ -190,8 +190,8 @@
 }
 
 .mobile-cases__indicator--active {
-  width: 8px;
-  border-radius: 2px;
+  width: 2.67px; /* Уменьшено в 3 раза (8px / 3 ≈ 2.67px) */
+  border-radius: 1px;
   background: #FF6A00;
 }
 

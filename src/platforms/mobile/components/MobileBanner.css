@@ -9,6 +9,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 0;
+  min-height: 100vh; /* Занимаем весь экран, чтобы скрыть следующий блок */
 }
 
 /* Виньетирование как в десктопе */

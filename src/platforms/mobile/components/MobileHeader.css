@@ -134,9 +134,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 16px;
+  padding: 8px 16px; /* Уменьшен верхний и нижний padding с 16px до 8px */
   border-bottom: 1px solid rgba(26, 26, 26, 0.1);
-  min-height: 60px;
+  min-height: auto; /* Убираем фиксированную высоту, чтобы меню начиналось сверху */
 }
 
 

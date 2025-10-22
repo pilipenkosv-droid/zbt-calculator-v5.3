@@ -64,15 +64,16 @@ const Tooltip: React.FC<TooltipProps> = ({
 
         {/* Модальный лист для мобильных */}
         {isVisible && (
-          <div className="fixed inset-0 z-50 flex items-end justify-center">
+          <div className="fixed inset-0 z-[10000] flex items-end justify-center" style={{ zIndex: 10000 }}>
             {/* Backdrop */}
             <div 
               className="absolute inset-0 bg-black/50"
               onClick={handleClose}
+              style={{ zIndex: 9999 }}
             />
             
-            {/* Modal sheet */}
-            <div className="relative bg-white rounded-t-xl p-6 w-full max-w-md mx-4 mb-4 shadow-xl">
+            {/* Modal sheet - выше блока итогов */}
+            <div className="relative bg-white rounded-t-xl p-6 w-full max-w-md mx-4 mb-4 shadow-xl" style={{ zIndex: 10000 }}>
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-gray-900">Подсказка</h3>
                 <button

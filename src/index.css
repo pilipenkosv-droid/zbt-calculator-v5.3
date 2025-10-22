@@ -1,3 +1,6 @@
+/* Стили для карточек уровней ММ */
+@import './styles/mm-cards.css';
+
 /* Шрифты Navigo с Inter как fallback */
 @font-face {
   font-family: 'Navigo';
@@ -68,9 +71,6 @@
   font-style: normal;
   font-display: swap;
 }
-
-/* Стили для карточек уровней ММ */
-@import './styles/mm-cards.css';
 
 /* Зеленый цвет для текста скидки */
 .discount-text-green {
