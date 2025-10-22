@@ -91,7 +91,7 @@ const MobileIntegrations: React.FC = () => {
   }, [currentIndex]);
 
   return (
-    <section className="mobile-integrations section">
+    <section className="mobile-integrations">
       <div className="container">
         <h2 className="mobile-integrations__title">
           <span className="mobile-integrations__count">35+</span> интеграций

@@ -13,7 +13,7 @@ interface MobileDemoProps {
  */
 const MobileDemo: React.FC<MobileDemoProps> = ({ onSubmit, policyUrl }) => {
   return (
-    <section className="mobile-demo section">
+    <section className="mobile-demo">
       <div className="container">
         <h2 className="mobile-demo__title">Получите демо-доступ</h2>
         <p className="mobile-demo__subtitle">

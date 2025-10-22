@@ -100,7 +100,7 @@ const MobileFAQ: React.FC = () => {
   };
 
   return (
-    <section className="mobile-faq section">
+    <section className="mobile-faq">
       <div className="container">
         <h2 className="mobile-faq__title">Частые вопросы</h2>
         <p className="mobile-faq__subtitle">

@@ -48,7 +48,7 @@ const MobileBanner: React.FC<MobileBannerProps> = ({
   };
 
   return (
-    <section className="mobile-banner">
+    <section className="mobile-banner section">
       {/* Декоративные элементы */}
       <div className="mobile-banner__decorations">
         <div className="mobile-banner__star mobile-banner__star--1"></div>

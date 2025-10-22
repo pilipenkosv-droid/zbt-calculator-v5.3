@@ -154,27 +154,27 @@ const MobileApp: React.FC<MobileAppProps> = ({ detection }) => {
         </section>
 
         {/* Интеграции */}
-        <div id="integrations">
+        <div id="integrations" className="section">
           <MobileIntegrations />
         </div>
 
         {/* Кейсы */}
-        <div id="cases">
+        <div id="cases" className="section">
           <MobileCases />
         </div>
 
         {/* Клиенты */}
-        <div id="clients">
+        <div id="clients" className="section">
           <ClientsSection />
         </div>
 
         {/* FAQ */}
-        <div id="faq">
+        <div id="faq" className="section">
           <MobileFAQ />
         </div>
 
         {/* Демо и контакты */}
-        <div id="contacts">
+        <div id="contacts" className="section">
           <MobileDemo
             onSubmit={payload => {
               console.log('Demo form submitted:', payload);

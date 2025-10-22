@@ -138,7 +138,7 @@ const MobileCases: React.FC = () => {
   }, [currentIndex]);
 
   return (
-    <section className="mobile-cases section">
+    <section className="mobile-cases">
       <div className="container">
         <h2 className="mobile-cases__title">Кейсы клиентов</h2>
         <p className="mobile-cases__subtitle">

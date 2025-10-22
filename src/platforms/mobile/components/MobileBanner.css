@@ -4,7 +4,6 @@
  */
 
 .mobile-banner {
-  padding: 0 16px 32px;
   background: linear-gradient(135deg, #FF6A00 0%, #FF8C3A 50%, #FF6A00 100%);
   position: relative;
   overflow: hidden;
@@ -29,7 +28,7 @@
   z-index: 1;
   max-width: 600px;
   margin: 0 auto;
-  padding-top: 24px;
+  padding: 32px 16px; /* Добавлен padding для контента */
 }
 
 /* Заголовок */
