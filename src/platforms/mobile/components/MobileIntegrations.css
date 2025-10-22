@@ -62,20 +62,21 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  min-height: 240px; /* Увеличено с 200px до 240px для большего логотипа */
+  min-height: 280px; /* Еще больше увеличено с 240px до 280px для максимального логотипа */
   justify-content: center;
 }
 
 .mobile-integrations__logo {
-  width: 120px; /* Увеличено с 80px до 120px */
-  height: 120px; /* Увеличено с 80px до 120px */
-  margin-bottom: 16px;
+  width: 140px; /* Еще больше увеличено с 120px до 140px */
+  height: 140px; /* Еще больше увеличено с 120px до 140px */
+  margin-bottom: 20px; /* Увеличен отступ снизу */
   display: flex;
   align-items: center;
   justify-content: center;
   background: #F8F8F8;
-  border-radius: 12px;
-  padding: 20px; /* Увеличено с 16px до 20px */
+  border-radius: 16px; /* Увеличен радиус для более современного вида */
+  padding: 24px; /* Увеличен padding для лучшего отображения логотипа */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Добавлена легкая тень для выделения */
 }
 
 .mobile-integrations__logo img {
@@ -94,11 +95,11 @@
 
 .mobile-integrations__name {
   font-family: 'Navigo', 'Inter', sans-serif;
-  font-size: 14px; /* Уменьшено с 18px до 14px */
-  font-weight: 600; /* Уменьшено с 700 до 600 */
-  color: #1A1A1A;
+  font-size: 11px; /* Еще больше уменьшено с 14px до 11px */
+  font-weight: 500; /* Еще меньше жирности с 600 до 500 */
+  color: rgba(26, 26, 26, 0.7); /* Сделаем менее контрастным */
   margin-bottom: 8px;
-  line-height: 1.3;
+  line-height: 1.2; /* Более компактный межстрочный интервал */
 }
 
 
@@ -493,23 +494,19 @@ button[class*="mobile-integrations__indicator--active"] {
     margin-bottom: 48px !important; /* Сохраняем увеличенный отступ */
   }
   
-  .mobile-integrations__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-  
-  .mobile-integrations__item {
-    padding: 14px 10px;
-    min-height: 110px;
+  .mobile-integrations__card {
+    padding: 20px;
+    min-height: 260px; /* Адаптивная высота для маленьких экранов */
   }
   
   .mobile-integrations__logo {
-    width: 50px;
-    height: 50px;
+    width: 100px; /* Адаптивный размер для маленьких экранов */
+    height: 100px;
+    padding: 16px;
   }
   
   .mobile-integrations__name {
-    font-size: 12px;
+    font-size: 10px; /* Еще меньше для маленьких экранов */
   }
 }
 
@@ -528,21 +525,19 @@ button[class*="mobile-integrations__indicator--active"] {
     margin-bottom: 48px !important; /* Сохраняем увеличенный отступ */
   }
   
-  .mobile-integrations__grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  
-  .mobile-integrations__item {
-    padding: 18px 14px;
+  .mobile-integrations__card {
+    padding: 32px;
+    min-height: 300px; /* Больше места для логотипа на больших экранах */
   }
   
   .mobile-integrations__logo {
-    width: 70px;
-    height: 70px;
+    width: 160px; /* Еще больше на больших экранах */
+    height: 160px;
+    padding: 28px;
   }
   
   .mobile-integrations__name {
-    font-size: 14px;
+    font-size: 12px; /* Компактное название */
   }
 }
 
