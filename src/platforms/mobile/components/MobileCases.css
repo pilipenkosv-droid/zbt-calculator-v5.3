@@ -182,12 +182,12 @@
 .mobile-cases__indicator[class],
 button.mobile-cases__indicator,
 button[class*="mobile-cases__indicator"] {
-  width: 0.3px !important; /* ЭКСТРЕМАЛЬНО МАЛЫЙ РАЗМЕР */
-  height: 0.3px !important; /* ЭКСТРЕМАЛЬНО МАЛЫЙ РАЗМЕР */
-  min-width: 0.3px !important;
-  min-height: 0.3px !important;
-  max-width: 0.3px !important;
-  max-height: 0.3px !important;
+  width: 2px !important; /* ВИДИМЫЙ, НО МАЛЕНЬКИЙ РАЗМЕР */
+  height: 2px !important; /* ВИДИМЫЙ, НО МАЛЕНЬКИЙ РАЗМЕР */
+  min-width: 2px !important;
+  min-height: 2px !important;
+  max-width: 2px !important;
+  max-height: 2px !important;
   border-radius: 50%;
   background: rgba(26, 26, 26, 0.2);
   border: none;
@@ -202,10 +202,10 @@ button[class*="mobile-cases__indicator"] {
 .mobile-cases__indicator--active[class],
 button.mobile-cases__indicator--active,
 button[class*="mobile-cases__indicator--active"] {
-  width: 0.8px !important; /* ЭКСТРЕМАЛЬНО МАЛЫЙ АКТИВНЫЙ РАЗМЕР */
-  min-width: 0.8px !important;
-  max-width: 0.8px !important;
-  border-radius: 1px;
+  width: 4px !important; /* ВИДИМЫЙ АКТИВНЫЙ РАЗМЕР */
+  min-width: 4px !important;
+  max-width: 4px !important;
+  border-radius: 2px;
   background: #FF6A00;
 }
 
@@ -216,8 +216,8 @@ button[class*="mobile-cases__indicator--active"] {
 /* ДОПОЛНИТЕЛЬНЫЕ ПЕРЕОПРЕДЕЛЕНИЯ ДЛЯ TAILWIND */
 .mobile-cases__indicator[style*="width"],
 .mobile-cases__indicator[style*="height"] {
-  width: 0.3px !important;
-  height: 0.3px !important;
+  width: 2px !important;
+  height: 2px !important;
 }
 
 /* ПЕРЕОПРЕДЕЛЕНИЕ ВСЕХ ВОЗМОЖНЫХ TAILWIND КЛАССОВ */
@@ -229,8 +229,8 @@ button[class*="mobile-cases__indicator--active"] {
 .mobile-cases__indicator.h-2,
 .mobile-cases__indicator.h-3,
 .mobile-cases__indicator.h-4 {
-  width: 0.3px !important;
-  height: 0.3px !important;
+  width: 2px !important;
+  height: 2px !important;
 }
 
 
