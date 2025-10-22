@@ -197,6 +197,7 @@
   
   .mobile-faq__subtitle {
     font-size: 15px;
+    margin-bottom: 48px; /* Сохраняем увеличенный отступ */
   }
   
   .mobile-faq__question {
@@ -225,6 +226,7 @@
   
   .mobile-faq__subtitle {
     font-size: 17px;
+    margin-bottom: 48px; /* Сохраняем увеличенный отступ */
   }
   
   .mobile-faq__question {

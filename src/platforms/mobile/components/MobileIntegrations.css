@@ -361,6 +361,7 @@
   
   .mobile-integrations__subtitle {
     font-size: 14px;
+    margin-bottom: 48px; /* Сохраняем увеличенный отступ */
   }
   
   .mobile-integrations__grid {
@@ -395,6 +396,7 @@
   
   .mobile-integrations__subtitle {
     font-size: 16px;
+    margin-bottom: 48px; /* Сохраняем увеличенный отступ */
   }
   
   .mobile-integrations__grid {
