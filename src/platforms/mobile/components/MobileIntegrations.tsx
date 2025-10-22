@@ -111,25 +111,17 @@ const MobileIntegrations: React.FC = () => {
           >
             {INTEGRATIONS.map((integration, index) => (
               <div key={integration.id} className="mobile-integrations__slide">
-                <div className="mobile-integrations__card">
-                  {/* Логотип */}
-                  <div className="mobile-integrations__logo">
-                    <img
-                      src={integration.logoSrc}
-                      alt={integration.alt}
-                      loading="lazy"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                      }}
-                    />
-                  </div>
-                  
-                  {/* Название */}
-                  <div className="mobile-integrations__name">
-                    {integration.title}
-                  </div>
-                </div>
+                {/* Только логотип без рамок и названий */}
+                <img
+                  src={integration.logoSrc}
+                  alt={integration.alt}
+                  loading="lazy"
+                  className="mobile-integrations__logo-only"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
+                />
               </div>
             ))}
           </div>
