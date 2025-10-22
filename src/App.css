@@ -52,6 +52,7 @@
 
 .footer-social {
   display: flex;
+  justify-content: center; /* Центрируем иконки */
   gap: 8px; /* Уменьшено с 12px до 8px */
 }
 
@@ -160,6 +161,7 @@
   
   /* Мобильные стили для иконок соц сетей */
   .footer-social {
+    justify-content: center; /* Центрируем иконки на мобильных */
     gap: 6px; /* Еще меньше gap для мобильных */
   }
   
