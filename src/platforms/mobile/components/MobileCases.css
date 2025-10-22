@@ -178,25 +178,59 @@
   margin-bottom: 16px;
 }
 
-.mobile-cases__indicator {
-  width: 0.5px !important; /* Уменьшено еще больше для гарантии */
-  height: 0.5px !important; /* Уменьшено еще больше для гарантии */
+.mobile-cases__indicator,
+.mobile-cases__indicator[class],
+button.mobile-cases__indicator,
+button[class*="mobile-cases__indicator"] {
+  width: 0.3px !important; /* ЭКСТРЕМАЛЬНО МАЛЫЙ РАЗМЕР */
+  height: 0.3px !important; /* ЭКСТРЕМАЛЬНО МАЛЫЙ РАЗМЕР */
+  min-width: 0.3px !important;
+  min-height: 0.3px !important;
+  max-width: 0.3px !important;
+  max-height: 0.3px !important;
   border-radius: 50%;
   background: rgba(26, 26, 26, 0.2);
   border: none;
-  padding: 0;
+  padding: 0 !important;
+  margin: 0 !important;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-sizing: border-box !important;
 }
 
-.mobile-cases__indicator--active {
-  width: 1.5px !important; /* Уменьшено еще больше для гарантии */
+.mobile-cases__indicator--active,
+.mobile-cases__indicator--active[class],
+button.mobile-cases__indicator--active,
+button[class*="mobile-cases__indicator--active"] {
+  width: 0.8px !important; /* ЭКСТРЕМАЛЬНО МАЛЫЙ АКТИВНЫЙ РАЗМЕР */
+  min-width: 0.8px !important;
+  max-width: 0.8px !important;
   border-radius: 1px;
   background: #FF6A00;
 }
 
 .mobile-cases__indicator:active {
-  transform: scale(1.1); /* Уменьшен scale для меньшего увеличения */
+  transform: scale(1.05) !important; /* МИНИМАЛЬНОЕ УВЕЛИЧЕНИЕ */
+}
+
+/* ДОПОЛНИТЕЛЬНЫЕ ПЕРЕОПРЕДЕЛЕНИЯ ДЛЯ TAILWIND */
+.mobile-cases__indicator[style*="width"],
+.mobile-cases__indicator[style*="height"] {
+  width: 0.3px !important;
+  height: 0.3px !important;
+}
+
+/* ПЕРЕОПРЕДЕЛЕНИЕ ВСЕХ ВОЗМОЖНЫХ TAILWIND КЛАССОВ */
+.mobile-cases__indicator.w-1,
+.mobile-cases__indicator.w-2,
+.mobile-cases__indicator.w-3,
+.mobile-cases__indicator.w-4,
+.mobile-cases__indicator.h-1,
+.mobile-cases__indicator.h-2,
+.mobile-cases__indicator.h-3,
+.mobile-cases__indicator.h-4 {
+  width: 0.3px !important;
+  height: 0.3px !important;
 }
 
 
