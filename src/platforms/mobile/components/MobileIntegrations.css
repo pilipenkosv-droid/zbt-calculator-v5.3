@@ -1,6 +1,6 @@
 /**
  * Мобильная версия интеграций
- * Фильтры + поиск + lazy-load
+ * Карусель как в блоке "Кейсы"
  */
 
 .mobile-integrations {
@@ -34,6 +34,163 @@
   margin-bottom: 48px !important; /* Увеличен отступ с 24px до 48px с !important */
   max-width: 100%;
   line-height: 1.4;
+}
+
+/* Карусель */
+.mobile-integrations__carousel-wrapper {
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.mobile-integrations__carousel {
+  display: flex;
+  transition: transform 0.3s ease;
+  width: 100%;
+}
+
+.mobile-integrations__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  padding: 0 8px;
+}
+
+.mobile-integrations__card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 200px;
+  justify-content: center;
+}
+
+.mobile-integrations__logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F8F8F8;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.mobile-integrations__logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.mobile-integrations__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.mobile-integrations__name {
+  font-family: 'Navigo', 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.mobile-integrations__category {
+  font-family: 'Navigo', 'Inter', sans-serif;
+  font-size: 14px;
+  color: rgba(26, 26, 26, 0.6);
+  margin-bottom: 12px;
+  padding: 4px 12px;
+  background: #F8F8F8;
+  border-radius: 20px;
+}
+
+.mobile-integrations__status {
+  font-family: 'Navigo', 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.mobile-integrations__status--ready {
+  background: #E8F5E8;
+  color: #2E7D32;
+}
+
+.mobile-integrations__status--connector {
+  background: #FFF3E0;
+  color: #F57C00;
+}
+
+/* Индикаторы */
+.mobile-integrations__indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.mobile-integrations__indicator,
+.mobile-integrations__indicator[class],
+button.mobile-integrations__indicator,
+button[class*="mobile-integrations__indicator"] {
+  width: 2px !important; /* ВИДИМЫЙ, НО МАЛЕНЬКИЙ РАЗМЕР */
+  height: 2px !important; /* ВИДИМЫЙ, НО МАЛЕНЬКИЙ РАЗМЕР */
+  min-width: 2px !important;
+  min-height: 2px !important;
+  max-width: 2px !important;
+  max-height: 2px !important;
+  border-radius: 50%;
+  background: rgba(26, 26, 26, 0.2);
+  border: none;
+  padding: 0 !important;
+  margin: 0 !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-sizing: border-box !important;
+}
+
+.mobile-integrations__indicator--active,
+.mobile-integrations__indicator--active[class],
+button.mobile-integrations__indicator--active,
+button[class*="mobile-integrations__indicator--active"] {
+  width: 4px !important; /* ВИДИМЫЙ АКТИВНЫЙ РАЗМЕР */
+  min-width: 4px !important;
+  max-width: 4px !important;
+  border-radius: 2px;
+  background: #FF6A00;
+}
+
+.mobile-integrations__indicator:active {
+  transform: scale(1.05) !important; /* МИНИМАЛЬНОЕ УВЕЛИЧЕНИЕ */
+}
+
+/* ДОПОЛНИТЕЛЬНЫЕ ПЕРЕОПРЕДЕЛЕНИЯ ДЛЯ TAILWIND */
+.mobile-integrations__indicator[style*="width"],
+.mobile-integrations__indicator[style*="height"] {
+  width: 2px !important;
+  height: 2px !important;
+}
+
+/* ПЕРЕОПРЕДЕЛЕНИЕ ВСЕХ ВОЗМОЖНЫХ TAILWIND КЛАССОВ */
+.mobile-integrations__indicator.w-1,
+.mobile-integrations__indicator.w-2,
+.mobile-integrations__indicator.w-3,
+.mobile-integrations__indicator.w-4,
+.mobile-integrations__indicator.h-1,
+.mobile-integrations__indicator.h-2,
+.mobile-integrations__indicator.h-3,
+.mobile-integrations__indicator.h-4 {
+  width: 2px !important;
+  height: 2px !important;
 }
 
 /* Поиск */

@@ -32,61 +32,65 @@ const INTEGRATIONS: Integration[] = [
   { id: "medialog", title: "Медиалог", logoSrc: "/logo mis/медиалог.png", alt: "Медиалог", category: "МИС", status: "ready" },
 ];
 
-type Category = 'Все' | 'МИС' | 'Запись' | 'Другое';
-
 /**
- * Мобильная версия интеграций
- * Фильтры по категориям + карусель + lazy-load
+ * Мобильная версия интеграций с каруселью
+ * Карусель как в блоке "Кейсы"
  */
 const MobileIntegrations: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<Category>('Все');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [visibleCount, setVisibleCount] = useState(12);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
-  const categories: Category[] = ['Все', 'МИС', 'Запись'];
-
-  // Фильтрация
-  const filteredIntegrations = INTEGRATIONS.filter(integration => {
-    const matchesCategory = selectedCategory === 'Все' || integration.category === selectedCategory;
-    const matchesSearch = searchQuery === '' || 
-      integration.title.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
-
-  // Отображаемые интеграции (с lazy-load)
-  const visibleIntegrations = filteredIntegrations.slice(0, visibleCount);
-  const hasMore = visibleIntegrations.length < filteredIntegrations.length;
-
-  const handleCategoryChange = (category: Category) => {
-    setSelectedCategory(category);
-    setVisibleCount(12); // Сбросить при смене категории
-    track('integration_filter', { category });
+  // Обработчики touch для карусели
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
   };
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-    setVisibleCount(12); // Сбросить при поиске
-    track('integration_search', { query: e.target.value });
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
   };
 
-  const handleLoadMore = () => {
-    setVisibleCount(prev => prev + 12);
-    track('integration_load_more', { visibleCount: visibleCount + 12 });
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe && currentIndex < INTEGRATIONS.length - 1) {
+      goToSlide(currentIndex + 1);
+    }
+    if (isRightSwipe && currentIndex > 0) {
+      goToSlide(currentIndex - 1);
+    }
   };
 
-  const handleIntegrationClick = (integration: Integration) => {
-    track('integration_click', { 
-      integrationId: integration.id,
-      integrationTitle: integration.title,
-      category: integration.category,
-    });
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+    if (carouselRef.current) {
+      const offset = -index * 100;
+      carouselRef.current.style.transform = `translateX(${offset}%)`;
+    }
+    track('integration_carousel_navigate', { index });
   };
 
-  // Сброс счетчика при смене фильтров
+  // Автоматическая прокрутка
   useEffect(() => {
-    setVisibleCount(12);
-  }, [selectedCategory, searchQuery]);
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % INTEGRATIONS.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Обновление позиции карусели при изменении currentIndex
+  useEffect(() => {
+    if (carouselRef.current) {
+      const offset = -currentIndex * 100;
+      carouselRef.current.style.transform = `translateX(${offset}%)`;
+    }
+  }, [currentIndex]);
 
   return (
     <section className="mobile-integrations section">
@@ -98,128 +102,61 @@ const MobileIntegrations: React.FC = () => {
           Подключение к МИС и сервисам, которые вы используете каждый день
         </p>
 
-        {/* Поиск */}
-        <div className="mobile-integrations__search">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="mobile-integrations__search-icon">
-            <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="2"/>
-            <path d="M14 14l4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-          </svg>
-          <input
-            type="text"
-            placeholder="Поиск интеграции..."
-            value={searchQuery}
-            onChange={handleSearchChange}
-            className="mobile-integrations__search-input"
-          />
-          {searchQuery && (
-            <button
-              className="mobile-integrations__search-clear"
-              onClick={() => setSearchQuery('')}
-              aria-label="Очистить поиск"
-            >
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
-            </button>
-          )}
+        {/* Карусель */}
+        <div className="mobile-integrations__carousel-wrapper">
+          <div
+            ref={carouselRef}
+            className="mobile-integrations__carousel"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            {INTEGRATIONS.map((integration, index) => (
+              <div key={integration.id} className="mobile-integrations__slide">
+                <div className="mobile-integrations__card">
+                  <div className="mobile-integrations__logo">
+                    <img
+                      src={integration.logoSrc}
+                      alt={integration.alt}
+                      loading="lazy"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
+                  </div>
+                  <div className="mobile-integrations__content">
+                    <h3 className="mobile-integrations__name">{integration.title}</h3>
+                    <span className="mobile-integrations__category">{integration.category}</span>
+                    {integration.status === 'ready' && (
+                      <span className="mobile-integrations__status mobile-integrations__status--ready">
+                        Готово
+                      </span>
+                    )}
+                    {integration.status === 'connector' && (
+                      <span className="mobile-integrations__status mobile-integrations__status--connector">
+                        Коннектор
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Фильтры по категориям */}
-        <div className="mobile-integrations__filters" ref={scrollContainerRef}>
-          {categories.map(category => (
+        {/* Индикаторы */}
+        <div className="mobile-integrations__indicators">
+          {INTEGRATIONS.map((_, index) => (
             <button
-              key={category}
-              className={`mobile-integrations__filter ${selectedCategory === category ? 'mobile-integrations__filter--active' : ''}`}
-              onClick={() => handleCategoryChange(category)}
-            >
-              {category}
-              {category !== 'Все' && (
-                <span className="mobile-integrations__filter-count">
-                  {INTEGRATIONS.filter(i => i.category === category).length}
-                </span>
-              )}
-            </button>
+              key={index}
+              className={`mobile-integrations__indicator ${currentIndex === index ? 'mobile-integrations__indicator--active' : ''}`}
+              onClick={() => goToSlide(index)}
+              aria-label={`Перейти к интеграции ${index + 1}`}
+            />
           ))}
         </div>
 
-        {/* Результаты */}
-        <div className="mobile-integrations__results">
-          <div className="mobile-integrations__results-text">
-            Найдено: {filteredIntegrations.length}
-          </div>
-        </div>
-
-        {/* Сетка интеграций */}
-        {visibleIntegrations.length > 0 ? (
-          <>
-            <div className="mobile-integrations__grid">
-              {visibleIntegrations.map((integration) => (
-                <button
-                  key={integration.id}
-                  className="mobile-integrations__item"
-                  onClick={() => handleIntegrationClick(integration)}
-                >
-                  <div className="mobile-integrations__logo">
-                    <img 
-                      src={integration.logoSrc} 
-                      alt={integration.alt}
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="mobile-integrations__name">{integration.title}</div>
-                  {integration.status && (
-                    <div className={`mobile-integrations__status mobile-integrations__status--${integration.status}`}>
-                      {integration.status === 'ready' ? 'Готово' : 'Через API'}
-                    </div>
-                  )}
-                </button>
-              ))}
-            </div>
-
-            {/* Кнопка "Показать ещё" */}
-            {hasMore && (
-              <div className="mobile-integrations__load-more">
-                <button
-                  className="mobile-integrations__load-more-btn"
-                  onClick={handleLoadMore}
-                >
-                  Показать ещё ({filteredIntegrations.length - visibleCount})
-                </button>
-              </div>
-            )}
-          </>
-        ) : (
-          <div className="mobile-integrations__empty">
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-              <circle cx="32" cy="32" r="30" stroke="currentColor" strokeWidth="2" opacity="0.2"/>
-              <path d="M28 28l8 8m0-8l-8 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
-            <p>Ничего не найдено</p>
-            <button
-              className="mobile-integrations__reset"
-              onClick={() => {
-                setSearchQuery('');
-                setSelectedCategory('Все');
-              }}
-            >
-              Сбросить фильтры
-            </button>
-          </div>
-        )}
-
-        {/* Информация */}
-        <div className="mobile-integrations__info">
-          <p>
-            Не нашли нужную систему?{' '}
-            <button
-              className="mobile-integrations__contact"
-              onClick={() => window.dispatchEvent(new CustomEvent('openApplyModal'))}
-            >
-              Свяжитесь с нами
-            </button>
-            {' '}— мы поможем с интеграцией через API.
-          </p>
-        </div>
       </div>
     </section>
   );
