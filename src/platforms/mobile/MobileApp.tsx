@@ -188,7 +188,7 @@ const MobileApp: React.FC<MobileAppProps> = ({ detection }) => {
         <footer className="footer" style={{ marginTop: '80px' }}> {/* Увеличен отступ с 48px до 80px */}
           <div className="footer-top">
             <div className="footer-container">
-              <div className="footer-social" style={{ display: 'flex', justifyContent: 'center', gap: '16px' }}>
+              <div className="footer-social" style={{ display: 'flex', justifyContent: 'center', gap: '8px' }}>
                 <a href="#" className="social-link" aria-label="ВКонтакте">
                   <img src="/images/3.svg" alt="VK" className="social-icon" />
                 </a>
