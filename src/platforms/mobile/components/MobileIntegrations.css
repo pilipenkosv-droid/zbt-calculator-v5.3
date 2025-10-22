@@ -62,20 +62,20 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  min-height: 200px;
+  min-height: 240px; /* Увеличено с 200px до 240px для большего логотипа */
   justify-content: center;
 }
 
 .mobile-integrations__logo {
-  width: 80px;
-  height: 80px;
+  width: 120px; /* Увеличено с 80px до 120px */
+  height: 120px; /* Увеличено с 80px до 120px */
   margin-bottom: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #F8F8F8;
   border-radius: 12px;
-  padding: 16px;
+  padding: 20px; /* Увеличено с 16px до 20px */
 }
 
 .mobile-integrations__logo img {
@@ -94,8 +94,8 @@
 
 .mobile-integrations__name {
   font-family: 'Navigo', 'Inter', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 14px; /* Уменьшено с 18px до 14px */
+  font-weight: 600; /* Уменьшено с 700 до 600 */
   color: #1A1A1A;
   margin-bottom: 8px;
   line-height: 1.3;
