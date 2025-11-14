@@ -27,7 +27,7 @@ interface MMLevelsSectionProps {
 const levels = [
   {
     id: 'base' as MMLevelId,
-    name: 'Base',
+    name: 'Эконом',
     price: 9900,
     features: [
       { icon: DocumentIcon, text: 'Базовые сценарии' },
@@ -37,7 +37,7 @@ const levels = [
   },
   {
     id: 'advanced' as MMLevelId,
-    name: 'Advanced',
+    name: 'Актив',
     price: 29900,
     isRecommended: true,
     features: [
@@ -49,7 +49,7 @@ const levels = [
   },
   {
     id: 'premium' as MMLevelId,
-    name: 'Premium',
+    name: 'Стандарт',
     price: 59900,
     features: [
       { icon: TargetIcon, text: 'Максимум сценариев' },
@@ -60,7 +60,7 @@ const levels = [
   },
   {
     id: 'expert' as MMLevelId,
-    name: 'Expert',
+    name: 'Эксперт',
     price: 119900,
     features: [
       { icon: PresentationIcon, text: 'Стратегические сессии' },

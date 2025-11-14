@@ -106,7 +106,7 @@ const ApplyModal: React.FC<ApplyModalProps> = ({ isOpen, onClose, onSubmit, calc
         baseSize: 35000,
         branches: 1,
         whatsappNumbers: 0,
-        mmLevel: 'Advanced',
+        mmLevel: 'advanced',
         supportLevel: 'weekday',
         monthly: 51800,
         total: 396270,

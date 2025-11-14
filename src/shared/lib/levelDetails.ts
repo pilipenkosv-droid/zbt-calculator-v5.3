@@ -304,14 +304,14 @@ export interface SupportLevel {
 
 export const supportLevels: SupportLevel[] = [
   {
-    id: 'Base',
-    title: 'Base',
+    id: 'Эконом',
+    title: 'Эконом',
     price: '9 900 ₽/мес',
     features: ['Базовые сценарии', 'Помощь по запросу', 'Ежемесячный отчет'],
   },
   {
-    id: 'Advanced',
-    title: 'Advanced',
+    id: 'Актив',
+    title: 'Актив',
     price: '29 900 ₽/мес',
     features: [
       'Расширенные сценарии',
@@ -321,8 +321,8 @@ export const supportLevels: SupportLevel[] = [
     ],
   },
   {
-    id: 'Premium',
-    title: 'Premium',
+    id: 'Стандарт',
+    title: 'Стандарт',
     price: '59 900 ₽/мес',
     features: [
       'Максимум сценариев',
@@ -332,8 +332,8 @@ export const supportLevels: SupportLevel[] = [
     ],
   },
   {
-    id: 'Expert',
-    title: 'Expert',
+    id: 'Эксперт',
+    title: 'Эксперт',
     price: '119 900 ₽/мес',
     features: [
       'Стратегические сессии',

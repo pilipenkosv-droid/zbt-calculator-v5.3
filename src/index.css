@@ -866,7 +866,7 @@ p {
 }
 
 
-/* Металлическая платина — только для Expert */
+/* Металлическая платина — только для Эксперт */
 .mm-title.metal {
   /* Слой 1: основной платиновый линейный градиент (холодные серые) */
   background:
@@ -1670,7 +1670,7 @@ body {
   box-shadow: 0 8px 32px rgba(255, 122, 26, 0.2);
 }
 
-/* Платиновая окантовка для Expert */
+/* Платиновая окантовка для Эксперт */
 .glass.mm-card.expert {
   border: 3px solid rgba(150, 160, 170, 1) !important; /* более контрастная платиновая окантовка */
   box-shadow:
@@ -1679,7 +1679,7 @@ body {
   position: relative;
 }
 
-/* Дополнительное платиновое свечение для Expert */
+/* Дополнительное платиновое свечение для Эксперт */
 .glass.mm-card.expert::before {
   content: '';
   position: absolute;
@@ -1696,7 +1696,7 @@ body {
   z-index: -1;
 }
 
-/* При выборе Expert - оранжевая окантовка как у остальных */
+/* При выборе Эксперт - оранжевая окантовка как у остальных */
 .glass.mm-card.expert.selected {
   background: rgba(255, 122, 26, 0.15) !important;
   border: 3px solid rgba(255, 122, 26, 0.6) !important;
