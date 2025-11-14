@@ -35,6 +35,13 @@ export const SupportLevelsWithDetails: React.FC<SupportLevelsWithDetailsProps> =
   const [selected, setSelected] = useState<SupportLevelId>(defaultLevel);
   const [open, setOpen] = useState<boolean>(false);
 
+  // Синхронизация selected с defaultLevel при изменении пропса
+  useEffect(() => {
+    if (defaultLevel) {
+      setSelected(defaultLevel);
+    }
+  }, [defaultLevel]);
+
   useEffect(() => {
     onLevelChange?.(selected);
   }, [selected, onLevelChange]);

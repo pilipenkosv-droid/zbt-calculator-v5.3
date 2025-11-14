@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { formatPrice } from '../utils/formatCurrency';
 import {
   DocumentIcon,
@@ -72,11 +72,81 @@ const levels = [
 ];
 
 const MMLevelsSection: React.FC<MMLevelsSectionProps> = ({ selected, onLevelChange }) => {
+  const gridRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<Record<MMLevelId, HTMLDivElement | null>>({
+    base: null,
+    advanced: null,
+    premium: null,
+    expert: null,
+  });
+
+  // Автоматическая прокрутка к выбранной карточке на мобильных устройствах
+  useEffect(() => {
+    const selectedCard = cardRefs.current[selected];
+    if (selectedCard && gridRef.current) {
+      // Проверяем, что это мобильная версия (горизонтальный скролл)
+      const isMobile = window.innerWidth <= 640;
+      if (isMobile) {
+        // Небольшая задержка для завершения рендеринга
+        const timeoutId = setTimeout(() => {
+          selectedCard.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center',
+          });
+        }, 100);
+        return () => clearTimeout(timeoutId);
+      }
+    }
+  }, [selected]);
+
+  // Прокрутка при первом появлении компонента на экране (при скролле к калькулятору)
+  useEffect(() => {
+    const selectedCard = cardRefs.current[selected];
+    if (selectedCard && gridRef.current) {
+      const isMobile = window.innerWidth <= 640;
+      if (isMobile) {
+        // Используем Intersection Observer для отслеживания видимости компонента
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
+                // Компонент стал видимым, прокручиваем к выбранной карточке
+                setTimeout(() => {
+                  selectedCard.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center',
+                  });
+                }, 200);
+                // Отключаем observer после первого срабатывания
+                observer.disconnect();
+              }
+            });
+          },
+          {
+            threshold: 0.1, // Срабатывает когда 10% компонента видно
+            rootMargin: '0px',
+          }
+        );
+
+        observer.observe(gridRef.current);
+
+        return () => {
+          observer.disconnect();
+        };
+      }
+    }
+  }, [selected]);
+
   return (
-    <div className="mm-grid px-4 py-6">
+    <div ref={gridRef} className="mm-grid px-4 py-6">
           {levels.map((level) => (
             <div
               key={level.id}
+              ref={(el) => {
+                cardRefs.current[level.id] = el;
+              }}
               onClick={() => onLevelChange(level.id)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
