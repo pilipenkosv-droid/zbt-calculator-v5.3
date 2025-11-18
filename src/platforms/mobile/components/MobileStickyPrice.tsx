@@ -30,14 +30,18 @@ const MobileStickyPrice: React.FC<MobileStickyPriceProps> = ({ state, onRequestQ
   const monthly = pricing.monthlyPerBranch * state.branches + pricing.whatsapp;
   const monthlyPrice = Math.round(monthly).toLocaleString('ru-RU');
   const totalPrice = Math.round(pricing.total).toLocaleString('ru-RU');
+  const implementationPrice = Math.round(pricing.implementation).toLocaleString('ru-RU');
   
   // Цена до скидки (помесячно)
   const originalMonthly = pricing.beforeDiscount 
     ? Math.round(pricing.beforeDiscount / state.period).toLocaleString('ru-RU')
     : null;
   
-  // Общая скидка в процентах
-  const discountPercent = pricing.periodDiscount + pricing.networkDiscount;
+  // Общая скидка в процентах (с учетом капа 25%)
+  const rawDiscountPercent = pricing.periodDiscount + pricing.networkDiscount;
+  const effectiveDiscountPercent = Math.min(25, rawDiscountPercent);
+  const discountPercent = Math.round(effectiveDiscountPercent);
+  const hasDiscount = rawDiscountPercent > 0;
 
   const handleRequestQuote = () => {
     if (onRequestQuote) {
@@ -152,9 +156,9 @@ const MobileStickyPrice: React.FC<MobileStickyPriceProps> = ({ state, onRequestQ
             </div>
 
             {/* Скидка */}
-            {discountPercent > 0 && (
+            {hasDiscount && (
               <div className="mobile-sticky-price__discount">
-                Экономия {Math.round(discountPercent)}%
+                Экономия {discountPercent}%
               </div>
             )}
           </div>
@@ -250,31 +254,30 @@ const MobileStickyPrice: React.FC<MobileStickyPriceProps> = ({ state, onRequestQ
                   <span>Итого за {state.period} мес</span>
                   <span>{totalPrice} ₽</span>
                 </div>
+                <div className="mobile-sticky-price__detail-item">
+                  <span>Стоимость внедрения</span>
+                  <span>{implementationPrice} ₽</span>
+                </div>
               </div>
 
               {/* Скидки */}
-              {discountPercent > 0 && (
+              {hasDiscount && (
                 <div className="mobile-sticky-price__detail-group">
                   <h4>Скидки</h4>
                   <div className="mobile-sticky-price__detail-item">
                     <span>Общая скидка</span>
                     <span className="mobile-sticky-price__discount-badge">
-                      {Math.round(discountPercent)}%
+                      {discountPercent}%
                     </span>
                   </div>
-                  {state.period >= 12 && (
+                  {pricing.periodDiscount > 0 && (
                     <div className="mobile-sticky-price__detail-note">
-                      • Скидка за годовую подписку: 20%
+                      • Скидка за срок оплаты: {pricing.periodDiscount}%
                     </div>
                   )}
-                  {state.period >= 6 && state.period < 12 && (
+                  {state.branches >= 2 && pricing.networkDiscount > 0 && (
                     <div className="mobile-sticky-price__detail-note">
-                      • Скидка за полугодовую подписку: 10%
-                    </div>
-                  )}
-                  {state.branches >= 2 && (
-                    <div className="mobile-sticky-price__detail-note">
-                      • Скидка за сеть клиник: 5%
+                      • Скидка за сеть клиник: {pricing.networkDiscount}%
                     </div>
                   )}
                 </div>

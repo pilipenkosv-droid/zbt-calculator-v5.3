@@ -18,6 +18,7 @@ export interface PriceBreakdown {
   whatsapp: number;
   marketing: number;
   techSupport: number;
+  implementation: number;
   periodDiscount: number;
   networkDiscount: number;
   total: number;

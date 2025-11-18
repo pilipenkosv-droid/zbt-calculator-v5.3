@@ -20,7 +20,9 @@ const StickyCalculation: React.FC<StickyCalculationProps> = ({
   const [isEmailModalOpen, setIsEmailModalOpen] = React.useState(false);
   const [showDetails, setShowDetails] = React.useState(false);
   const priceBreakdown = calculatePrice(state);
-  const discountPercent = Math.round(priceBreakdown.periodDiscount + priceBreakdown.networkDiscount);
+  const rawDiscountPercent = priceBreakdown.periodDiscount + priceBreakdown.networkDiscount;
+  const totalDiscountPercent = Math.min(25, rawDiscountPercent);
+  const discountPercent = Math.round(totalDiscountPercent);
 
   const discountRub = priceBreakdown.beforeDiscount - priceBreakdown.total;
 
@@ -28,7 +30,7 @@ const StickyCalculation: React.FC<StickyCalculationProps> = ({
     return level.charAt(0).toUpperCase() + level.slice(1);
   };
 
-  const hasDiscount = discountPercent > 0;
+  const hasDiscount = rawDiscountPercent > 0;
 
   return (
     <div className="relative w-full">
@@ -58,6 +60,9 @@ const StickyCalculation: React.FC<StickyCalculationProps> = ({
           <span>Ваша скидка составила: {formatPrice(discountRub)}</span>
           <span>Итого за {state.period} мес: {formatPrice(priceBreakdown.total)}</span>
         </div>
+        <div className="mt-1 text-[18px] text-slate-700">
+          Стоимость внедрения: {formatPrice(priceBreakdown.implementation)}
+        </div>
 
         {/* Сворачиваемые "Показать детали" */}
         <div className="calc-breakdown-header">
@@ -86,6 +91,8 @@ const StickyCalculation: React.FC<StickyCalculationProps> = ({
             <div className="value">{state.whatsappNumbers + 1} номер{state.whatsappNumbers === 0 ? '' : state.whatsappNumbers === 1 ? 'а' : 'ов'} - {formatPrice(Math.max(0, priceBreakdown.whatsapp))}</div>
             <div className="label">Техподдержка</div>
             <div className="value">{formatPrice(Math.max(0, priceBreakdown.techSupport))}</div>
+            <div className="label">Стоимость внедрения</div>
+            <div className="value">{formatPrice(Math.max(0, priceBreakdown.implementation))}</div>
           </div>
         )}
 

@@ -35,6 +35,13 @@ const MARKETING_PRICES = {
   expert: 119900,
 };
 
+const IMPLEMENTATION_COSTS: Record<CalculatorState['marketingLevel'], number> = {
+  base: 39900,
+  advanced: 129900,
+  premium: 199900,
+  expert: 269900,
+};
+
 // Дополнительные номера WhatsApp
 const WHATSAPP_PRICE_PER_NUMBER = 1500;
 
@@ -50,10 +57,17 @@ export function getPatientBasePrice(patientBase: number): number {
   return PATIENT_BASE_PRICES[60000];
 }
 
+function getNetworkDiscount(branches: number): number {
+  if (branches >= 5) return 0.15;
+  if (branches >= 3) return 0.10;
+  if (branches === 2) return 0.05;
+  return 0;
+}
+
 export function calculatePrice(state: CalculatorState): PriceBreakdown {
   // Скидки
   const periodDiscount = PERIOD_DISCOUNTS[state.period as keyof typeof PERIOD_DISCOUNTS] || 0;
-  const networkDiscount = state.branches >= 2 ? 0.05 : 0; // -5% при филиалах ≥2
+  const networkDiscount = getNetworkDiscount(state.branches);
   let totalDiscount = periodDiscount + networkDiscount;
   
   // Каппируем скидку до 25%
@@ -67,6 +81,7 @@ export function calculatePrice(state: CalculatorState): PriceBreakdown {
   const mmPricePerBranch = MARKETING_PRICES[state.marketingLevel];
   const supportPricePerBranch = state.techSupport === 'daily' ? TECH_SUPPORT_DAILY_PRICE : 0;
   const whatsappPrice = WHATSAPP_PRICE_PER_NUMBER * state.whatsappNumbers;
+  const implementationCost = IMPLEMENTATION_COSTS[state.marketingLevel] || 0;
   
   // Стоимость на один филиал в месяц (с учетом скидок)
   const monthlyPerBranch = (basePricePerBranch + mmPricePerBranch + supportPricePerBranch) * (1 - totalDiscount);
@@ -83,6 +98,7 @@ export function calculatePrice(state: CalculatorState): PriceBreakdown {
     whatsapp: whatsappPrice,
     marketing: mmPricePerBranch,
     techSupport: supportPricePerBranch,
+    implementation: implementationCost,
     periodDiscount: periodDiscount * 100,
     networkDiscount: networkDiscount * 100,
     total: total,
