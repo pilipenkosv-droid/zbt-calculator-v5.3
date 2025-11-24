@@ -185,8 +185,11 @@ const CalculatorParams: React.FC<CalculatorParamsProps> = ({
               {state.branches === 2 && (
                 <span className="discount"> — Скидка 5%</span>
               )}
-              {state.branches >= 3 && state.branches <= 4 && (
+              {state.branches === 3 && (
                 <span className="discount"> — Скидка 10%</span>
+              )}
+              {state.branches === 4 && (
+                <span className="discount"> — Скидка 12.5%</span>
               )}
               {state.branches >= 5 && (
                 <span className="discount"> — Скидка 15%</span>

@@ -59,7 +59,8 @@ export function getPatientBasePrice(patientBase: number): number {
 
 function getNetworkDiscount(branches: number): number {
   if (branches >= 5) return 0.15;
-  if (branches >= 3) return 0.10;
+  if (branches === 4) return 0.125;
+  if (branches === 3) return 0.10;
   if (branches === 2) return 0.05;
   return 0;
 }

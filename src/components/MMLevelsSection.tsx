@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { formatPrice } from '../utils/formatCurrency';
+import Tooltip from './Tooltip';
+import InfoIcon from './InfoIcon';
 import {
   DocumentIcon,
   QuestionIcon,
@@ -30,7 +32,7 @@ const levels = [
     name: 'Эконом',
     price: 9900,
     features: [
-      { icon: DocumentIcon, text: 'Базовые сценарии' },
+      { icon: DocumentIcon, text: 'Базовое сопровождение' },
       { icon: QuestionIcon, text: 'Помощь по запросу' },
       { icon: ChartIcon, text: 'Ежемесячный отчет' },
     ],
@@ -41,7 +43,7 @@ const levels = [
     price: 29900,
     isRecommended: true,
     features: [
-      { icon: RocketIcon, text: 'Расширенные сценарии' },
+      { icon: RocketIcon, text: 'Расширенное сопровождение' },
       { icon: LightbulbIcon, text: 'Персональные рекомендации' },
       { icon: TrendingUpIcon, text: 'Ежемесячная аналитика' },
       { icon: LightningIcon, text: 'Быстрый запуск' },
@@ -52,7 +54,7 @@ const levels = [
     name: 'Стандарт',
     price: 59900,
     features: [
-      { icon: TargetIcon, text: 'Максимум сценариев' },
+      { icon: TargetIcon, text: 'Индивидуальное сопровождение' },
       { icon: SearchIcon, text: 'Регулярный аудит' },
       { icon: DocumentIcon, text: 'План развития' },
       { icon: StarIcon, text: 'Приоритет задач' },
@@ -70,6 +72,38 @@ const levels = [
     ],
   },
 ];
+
+const levelTooltips: Record<MMLevelId, string> = {
+  base: [
+    'Улучшаем показатели:',
+    '- Доходимость: меньше отмен «день в день», онлайн‑подтверждение визита в 1 клик.',
+    '- Долечиваемость: напоминания о продолжении лечения, контрольные визиты, гигиена.',
+    '- Лояльность: поздравления с днём рождения и праздниками, благодарности после визита.',
+  ].join('\n\n'),
+  advanced: [
+    'Все что в "Эконом" и плюс:',
+    '- Реактивация «спящих»: возврат пациентов дешевле привлечения первичных.',
+    '- Точечные офферы: RFM‑сегментация → персональные предложения по услугам.',
+    '- Рост повторных покупок: профилактика, контрольные визиты, компоновка пакетов.',
+    '- Репутация: сбор NPS/отзывов и перехват негатива до публикации.',
+  ].join('\n\n'),
+  premium: [
+    'Все что в "Эконом", "Актив" и плюс:',
+    '- Замена внутреннего маркетолога: закрываем задачи по действующей базе.',
+    '- План роста: квартальный план, регулярный аудит, A/B‑эксперименты.',
+    '- Глубокая сегментация: семьи, частота, чеки, циклы лечения → кампании.',
+    '- Виральность: реферальные механики и кампании рекомендаций.',
+    '- Ежемесячная аналитика, цели/метрики.',
+  ].join('\n\n'),
+  expert: [
+    'Все что в "Эконом", "Актив", "Стандарт" и плюс:',
+    '- Стратегия: сессии с командой, роадмап на квартал/год.',
+    '- Для сетей и 100k+: единые стандарты и локальные сценарии по филиалам.',
+    '- Персональная команда: выделенный менеджер и мед‑маркетолог, приоритет задач.',
+    '- Масштабирование: кастомные интеграции и поддержка сложных процессов.',
+    '- Максимальный эффект: ускоренный апсейл, удержание и возврат по всем сегментам.',
+  ].join('\n\n'),
+};
 
 const MMLevelsSection: React.FC<MMLevelsSectionProps> = ({ selected, onLevelChange }) => {
   const gridRef = useRef<HTMLDivElement>(null);
@@ -157,12 +191,26 @@ const MMLevelsSection: React.FC<MMLevelsSectionProps> = ({ selected, onLevelChan
               tabIndex={0}
               role="button"
               aria-label={`Выбрать уровень ${level.name} за ${formatPrice(level.price)} в месяц`}
-              className={`glass mm-card ${selected === level.id ? 'selected' : ''} ${
+              className={`glass mm-card relative ${selected === level.id ? 'selected' : ''} ${
                 level.id === 'advanced' ? 'advanced' : ''
               } ${level.id === 'premium' ? 'premium' : ''} ${level.id === 'expert' ? 'expert' : ''} ${
                 selected === level.id ? 'rounded-b-none' : ''
               }`}
             >
+              <div className="absolute top-4 right-4">
+                <Tooltip content={levelTooltips[level.id]} position="left">
+                  <button
+                    type="button"
+                    className="rounded-full border border-white/50 bg-white/60 p-1.5 text-slate-600 hover:bg-white transition-colors"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                    }}
+                    onMouseDown={(e) => e.stopPropagation()}
+                  >
+                    <InfoIcon className="w-3 h-3" />
+                  </button>
+                </Tooltip>
+              </div>
               <div className="mm-card-header">
                 <div
                   className={`mm-title ${
