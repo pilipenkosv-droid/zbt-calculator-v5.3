@@ -26,8 +26,15 @@ const StickyCalculation: React.FC<StickyCalculationProps> = ({
 
   const discountRub = priceBreakdown.beforeDiscount - priceBreakdown.total;
 
+  const LEVEL_NAME_MAP: Record<string, string> = {
+    base: 'Эконом',
+    advanced: 'Актив',
+    premium: 'Стандарт',
+    expert: 'Эксперт',
+  };
+
   const formatLevelName = (level: string) => {
-    return level.charAt(0).toUpperCase() + level.slice(1);
+    return LEVEL_NAME_MAP[level] || level;
   };
 
   const hasDiscount = rawDiscountPercent > 0;
