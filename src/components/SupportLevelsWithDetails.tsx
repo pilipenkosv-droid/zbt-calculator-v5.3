@@ -5,26 +5,46 @@ import MMLevelsSection, { MMLevelId } from './MMLevelsSection';
 import Tooltip from './Tooltip';
 import InfoIcon from './InfoIcon';
 
-type SupportLevelId = 'Base' | 'Advanced' | 'Premium' | 'Expert';
+type SupportLevelId = 'Эконом' | 'Актив' | 'Стандарт' | 'Эксперт';
 
 type SupportLevelsWithDetailsProps = {
   defaultLevel?: SupportLevelId;
   onLevelChange?: (level: SupportLevelId) => void;
 };
 
+const levelNameToId: Record<SupportLevelId, MMLevelId> = {
+  'Эконом': 'base',
+  'Актив': 'advanced',
+  'Стандарт': 'premium',
+  'Эксперт': 'expert',
+};
+
+const levelIdToName: Record<MMLevelId, SupportLevelId> = {
+  base: 'Эконом',
+  advanced: 'Актив',
+  premium: 'Стандарт',
+  expert: 'Эксперт',
+};
 
 export const SupportLevelsWithDetails: React.FC<SupportLevelsWithDetailsProps> = ({
-  defaultLevel = 'Advanced',
+  defaultLevel = 'Актив',
   onLevelChange,
 }) => {
   const [selected, setSelected] = useState<SupportLevelId>(defaultLevel);
   const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
+    if (defaultLevel) {
+      setSelected(defaultLevel);
+    }
+  }, [defaultLevel]);
+
+  useEffect(() => {
     onLevelChange?.(selected);
   }, [selected, onLevelChange]);
 
-  const levelData = useMemo(() => getLevelDetails(selected), [selected]);
+  const levelId = levelNameToId[selected];
+  const levelData = useMemo(() => getLevelDetails(levelId), [levelId]);
   const panelTargetHeight = 600; // Фиксированная высота панели
 
   return (
@@ -47,9 +67,9 @@ export const SupportLevelsWithDetails: React.FC<SupportLevelsWithDetailsProps> =
         <div className="px-0">
           {/* Грид карточек — без дополнительной обёртки для выбранной */}
           <MMLevelsSection
-            selected={selected.toLowerCase() as MMLevelId}
+            selected={levelId}
             onLevelChange={(lvl) => {
-              setSelected(lvl.charAt(0).toUpperCase() + lvl.slice(1) as SupportLevelId);
+              setSelected(levelIdToName[lvl]);
               setOpen(true);
               setTimeout(() => document.getElementById('details-dock')?.scrollTo({ top: 0, behavior: 'smooth' }), 0);
             }}

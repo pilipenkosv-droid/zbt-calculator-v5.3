@@ -130,16 +130,22 @@ const MobileApp: React.FC<MobileAppProps> = ({ detection }) => {
               <SupportLevelsWithDetails
                 defaultLevel={
                   state.marketingLevel === 'base'
-                    ? 'Base'
+                    ? 'Эконом'
                     : state.marketingLevel === 'advanced'
-                      ? 'Advanced'
+                      ? 'Актив'
                       : state.marketingLevel === 'premium'
-                        ? 'Premium'
-                        : 'Expert'
+                        ? 'Стандарт'
+                        : 'Эксперт'
                 }
-                onLevelChange={level =>
-                  handleParamChange('marketingLevel', level.toLowerCase())
-                }
+                onLevelChange={level => {
+                  const levelMap: Record<string, string> = {
+                    'Эконом': 'base',
+                    'Актив': 'advanced',
+                    'Стандарт': 'premium',
+                    'Эксперт': 'expert',
+                  };
+                  handleParamChange('marketingLevel', levelMap[level] || 'base');
+                }}
               />
             </div>
 
