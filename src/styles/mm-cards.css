@@ -46,6 +46,7 @@
   white-space: normal;
   overflow: visible;
   color: var(--text, #111);
+  pointer-events: none;
 }
 
 /* Premium — градиентный текст */
@@ -88,6 +89,10 @@
 .mm-title.metal:hover {
   background-position: 2% 0%;
   filter: saturate(108%) contrast(104%);
+}
+
+.mm-card-tooltip {
+  z-index: 2;
 }
 
 .mm-price {

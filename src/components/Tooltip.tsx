@@ -83,7 +83,12 @@ const Tooltip: React.FC<TooltipProps> = ({
                   ✕
                 </button>
               </div>
-              <p className="text-gray-700 leading-relaxed">{content}</p>
+              <p 
+                className="text-gray-700 leading-relaxed"
+                style={{ whiteSpace: 'pre-line' }}
+              >
+                {content}
+              </p>
             </div>
           </div>
         )}
@@ -124,7 +129,7 @@ const Tooltip: React.FC<TooltipProps> = ({
               minWidth: '200px'
             }}
           >
-            <span style={{ color: '#FFFFFF' }}>{content}</span>
+            <span style={{ color: '#FFFFFF', whiteSpace: 'pre-line' }}>{content}</span>
             {/* Arrow */}
             <div 
               className={`tooltip-arrow absolute w-2 h-2 transform rotate-45 ${

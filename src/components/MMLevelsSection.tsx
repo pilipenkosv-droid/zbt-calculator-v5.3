@@ -197,7 +197,7 @@ const MMLevelsSection: React.FC<MMLevelsSectionProps> = ({ selected, onLevelChan
                 selected === level.id ? 'rounded-b-none' : ''
               }`}
             >
-              <div className="absolute top-4 right-4">
+              <div className="mm-card-tooltip absolute top-4 right-4">
                 <Tooltip content={levelTooltips[level.id]} position="left">
                   <button
                     type="button"
