@@ -1,0 +1,513 @@
+diff --git a/src/App.tsx b/src/App.tsx
+index 0f66e06..6bfedcb 100644
+--- a/src/App.tsx
++++ b/src/App.tsx
+@@ -127,7 +127,9 @@ const App: React.FC = () => {
+                       ? 'Актив'
+                       : state.marketingLevel === 'premium'
+                         ? 'Стандарт'
+-                        : 'Эксперт'
++                        : state.marketingLevel === 'expert'
++                          ? 'Эксперт'
++                          : 'Про'
+                 }
+                 onLevelChange={level => {
+                   const levelMap: Record<string, string> = {
+@@ -135,6 +137,7 @@ const App: React.FC = () => {
+                     'Актив': 'advanced',
+                     'Стандарт': 'premium',
+                     'Эксперт': 'expert',
++                    'Про': 'pro',
+                   };
+                   handleParamChange('marketingLevel', levelMap[level] || 'base');
+                 }}
+diff --git a/src/components/MMLevelsSection.tsx b/src/components/MMLevelsSection.tsx
+index 5adfa94..861e85b 100644
+--- a/src/components/MMLevelsSection.tsx
++++ b/src/components/MMLevelsSection.tsx
+@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
+ import { formatPrice } from '../utils/formatCurrency';
+ import Tooltip from './Tooltip';
+ import InfoIcon from './InfoIcon';
++import { PRO_MM_LEVEL_ENABLED } from '../config/experiments';
+ import {
+   DocumentIcon,
+   QuestionIcon,
+@@ -19,14 +20,14 @@ import {
+   WrenchIcon,
+ } from './MMIcons';
+ 
+-export type MMLevelId = 'base' | 'advanced' | 'premium' | 'expert';
++export type MMLevelId = 'base' | 'advanced' | 'premium' | 'expert' | 'pro';
+ 
+ interface MMLevelsSectionProps {
+   selected: MMLevelId;
+   onLevelChange: (level: MMLevelId) => void;
+ }
+ 
+-const levels = [
++const baseLevels = [
+   {
+     id: 'base' as MMLevelId,
+     name: 'Эконом',
+@@ -73,6 +74,22 @@ const levels = [
+   },
+ ];
+ 
++if (PRO_MM_LEVEL_ENABLED) {
++  baseLevels.push({
++    id: 'pro' as MMLevelId,
++    name: 'Про',
++    price: 249900,
++    features: [
++      { icon: StarIcon, text: 'Технический блок №1 — описание возможностей Про' },
++      { icon: PresentationIcon, text: 'Технический блок №2 — стратегии и контроль качества' },
++      { icon: RocketIcon, text: 'Технический блок №3 — ускоренные эксперименты' },
++      { icon: BuildingIcon, text: 'Технический блок №4 — поддержка сложных сетей' },
++    ],
++  });
++}
++
++const levels = baseLevels;
++
+ const levelTooltips: Record<MMLevelId, string> = {
+   base: [
+     'Улучшаем показатели:',
+@@ -103,6 +120,15 @@ const levelTooltips: Record<MMLevelId, string> = {
+     '- Масштабирование: кастомные интеграции и поддержка сложных процессов.',
+     '- Максимальный эффект: ускоренный апсейл, удержание и возврат по всем сегментам.',
+   ].join('\n\n'),
++  pro: PRO_MM_LEVEL_ENABLED
++    ? [
++        'Уровень Про (технический драфт):',
++        '- Блок А: комплексное сопровождение роста сети.',
++        '- Блок B: продвинутая автоматизация и эксперименты.',
++        '- Блок C: кастомные интеграции и выделенная команда.',
++        '- Блок D: управление эффектом и прогнозированием.',
++      ].join('\n\n')
++    : '',
+ };
+ 
+ const MMLevelsSection: React.FC<MMLevelsSectionProps> = ({ selected, onLevelChange }) => {
+@@ -112,6 +138,7 @@ const MMLevelsSection: React.FC<MMLevelsSectionProps> = ({ selected, onLevelChan
+     advanced: null,
+     premium: null,
+     expert: null,
++    pro: null,
+   });
+ 
+   // Автоматическая прокрутка к выбранной карточке на мобильных устройствах
+@@ -174,7 +201,7 @@ const MMLevelsSection: React.FC<MMLevelsSectionProps> = ({ selected, onLevelChan
+   }, [selected]);
+ 
+   return (
+-    <div ref={gridRef} className="mm-grid px-4 py-6">
++    <div ref={gridRef} className="mm-grid mm-grid--scroll px-4 py-6">
+           {levels.map((level) => (
+             <div
+               key={level.id}
+@@ -194,6 +221,8 @@ const MMLevelsSection: React.FC<MMLevelsSectionProps> = ({ selected, onLevelChan
+               className={`glass mm-card relative ${selected === level.id ? 'selected' : ''} ${
+                 level.id === 'advanced' ? 'advanced' : ''
+               } ${level.id === 'premium' ? 'premium' : ''} ${level.id === 'expert' ? 'expert' : ''} ${
++                level.id === 'pro' ? 'expert' : ''
++              } ${
+                 selected === level.id ? 'rounded-b-none' : ''
+               }`}
+             >
+diff --git a/src/components/StickyCalculation.tsx b/src/components/StickyCalculation.tsx
+index c955ec8..c8414db 100644
+--- a/src/components/StickyCalculation.tsx
++++ b/src/components/StickyCalculation.tsx
+@@ -28,8 +28,16 @@ const StickyCalculation: React.FC<StickyCalculationProps> = ({
+ 
+   const discountRub = priceBreakdown.beforeDiscount - priceBreakdown.total;
+ 
++  const LEVEL_NAME_MAP: Record<string, string> = {
++    base: 'Эконом',
++    advanced: 'Актив',
++    premium: 'Стандарт',
++    expert: 'Эксперт',
++    pro: 'Про',
++  };
++
+   const formatLevelName = (level: string) => {
+-    return level.charAt(0).toUpperCase() + level.slice(1);
++    return LEVEL_NAME_MAP[level] || level;
+   };
+ 
+   const hasDiscount = rawDiscountPercent > 0;
+diff --git a/src/components/SupportLevelsWithDetails.tsx b/src/components/SupportLevelsWithDetails.tsx
+index 15118fc..44b1b0d 100644
+--- a/src/components/SupportLevelsWithDetails.tsx
++++ b/src/components/SupportLevelsWithDetails.tsx
+@@ -5,7 +5,7 @@ import MMLevelsSection, { MMLevelId } from './MMLevelsSection';
+ import Tooltip from './Tooltip';
+ import InfoIcon from './InfoIcon';
+ 
+-type SupportLevelId = 'Эконом' | 'Актив' | 'Стандарт' | 'Эксперт';
++type SupportLevelId = 'Эконом' | 'Актив' | 'Стандарт' | 'Эксперт' | 'Про';
+ 
+ type SupportLevelsWithDetailsProps = {
+   defaultLevel?: SupportLevelId;
+@@ -18,6 +18,7 @@ const levelNameToId: Record<SupportLevelId, MMLevelId> = {
+   'Актив': 'advanced',
+   'Стандарт': 'premium',
+   'Эксперт': 'expert',
++  'Про': 'pro',
+ };
+ 
+ // Маппинг английских id на русские названия
+@@ -26,6 +27,7 @@ const levelIdToName: Record<MMLevelId, SupportLevelId> = {
+   'advanced': 'Актив',
+   'premium': 'Стандарт',
+   'expert': 'Эксперт',
++  'pro': 'Про',
+ };
+ 
+ export const SupportLevelsWithDetails: React.FC<SupportLevelsWithDetailsProps> = ({
+diff --git a/src/lib/levelDetails.ts b/src/lib/levelDetails.ts
+index 12e1567..e5b38e2 100644
+--- a/src/lib/levelDetails.ts
++++ b/src/lib/levelDetails.ts
+@@ -293,6 +293,70 @@ export const LEVEL_DETAILS: Record<string, LevelDetails> = {
+       },
+     },
+   },
++
++  pro: {
++    scenarios: {
++      id: 'scenarios',
++      title: 'Сценарии',
++      content: {
++        total: 'до 90 сценариев (драфт)',
++        byCategory: ['Рост сети', 'Эксперименты', 'Коммуникации'],
++        description: 'Технический черновик: гибкое сопровождение сети, финальный текст позже.',
++        features: [
++          'Тех. пункт: сценарии под сеть',
++          'Тех. пункт: быстрые эксперименты',
++          'Тех. пункт: контроль качества',
++        ],
++      },
++    },
++    reporting: {
++      id: 'reporting',
++      title: 'Отчётность и встречи',
++      content: {
++        description: 'Технический текст: еженедельные синки и квартальные сессии.',
++        features: [
++          'Тех. пункт: расширенные отчёты',
++          'Тех. пункт: общий роадмап',
++          'Тех. пункт: воркшопы по гипотезам',
++        ],
++      },
++    },
++    overtime: {
++      id: 'overtime',
++      title: 'Овертайм',
++      content: {
++        description: 'Технический текст: доп. услуги по запросу.',
++        features: [
++          'Тех. пункт: кастомные интеграции',
++          'Тех. пункт: исследовательские слоты',
++        ],
++      },
++    },
++    experiments: {
++      id: 'experiments',
++      title: 'Эксперименты (A/B)',
++      content: {
++        description: 'Технический текст: до 5+ параллельных тестов.',
++        features: [
++          'Тех. пункт: постановка гипотез',
++          'Тех. пункт: комбинированные каналы',
++          'Тех. пункт: контроль влияния',
++        ],
++      },
++    },
++    sla: {
++      id: 'sla',
++      title: 'Гарантии качества сервиса',
++      content: {
++        description: 'Технический текст: максимальный приоритет SLA.',
++        features: [
++          'Тех. пункт: выделенная команда 24/7',
++          'Тех. пункт: ускоренная обработка',
++          'Тех. пункт: регулярный аудит',
++        ],
++      },
++    },
++  },
+ };
+ 
+ export interface SupportLevel {
+@@ -342,6 +406,17 @@ export const supportLevels: SupportLevel[] = [
+       'Расширенная поддержка',
+     ],
+   },
++  {
++    id: 'Про',
++    title: 'Про',
++    price: '249 900 ₽/мес',
++    features: [
++      'Тех. пункт: расширенные сессии',
++      'Тех. пункт: кастомные интеграции',
++      'Тех. пункт: выделенная команда',
++      'Тех. пункт: эксперименты и масштабирование',
++    ],
++  },
+ ];
+ 
+ export const getLevelDetails = (level: string): LevelDetails | null => {
+diff --git a/src/lib/pricing.ts b/src/lib/pricing.ts
+index 7b4a599..cddfc43 100644
+--- a/src/lib/pricing.ts
++++ b/src/lib/pricing.ts
+@@ -33,6 +33,7 @@ const MARKETING_PRICES = {
+   advanced: 29900,
+   premium: 59900,
+   expert: 119900,
++  pro: 249900,
+ };
+ 
+ const IMPLEMENTATION_COSTS: Record<CalculatorState['marketingLevel'], number> = {
+@@ -40,6 +41,7 @@ const IMPLEMENTATION_COSTS: Record<CalculatorState['marketingLevel'], number> =
+   advanced: 129900,
+   premium: 199900,
+   expert: 269900,
++  pro: 349900,
+ };
+ 
+ // Дополнительные номера WhatsApp
+diff --git a/src/platforms/mobile/MobileApp.tsx b/src/platforms/mobile/MobileApp.tsx
+index 936252f..1644600 100644
+--- a/src/platforms/mobile/MobileApp.tsx
++++ b/src/platforms/mobile/MobileApp.tsx
+@@ -135,7 +135,9 @@ const MobileApp: React.FC<MobileAppProps> = ({ detection }) => {
+                       ? 'Актив'
+                       : state.marketingLevel === 'premium'
+                         ? 'Стандарт'
+-                        : 'Эксперт'
++                        : state.marketingLevel === 'expert'
++                          ? 'Эксперт'
++                          : 'Про'
+                 }
+                 onLevelChange={level => {
+                   const levelMap: Record<string, string> = {
+@@ -143,6 +145,7 @@ const MobileApp: React.FC<MobileAppProps> = ({ detection }) => {
+                     'Актив': 'advanced',
+                     'Стандарт': 'premium',
+                     'Эксперт': 'expert',
++                    'Про': 'pro',
+                   };
+                   handleParamChange('marketingLevel', levelMap[level] || 'base');
+                 }}
+diff --git a/src/shared/lib/levelDetails.ts b/src/shared/lib/levelDetails.ts
+index 12e1567..e5b38e2 100644
+--- a/src/shared/lib/levelDetails.ts
++++ b/src/shared/lib/levelDetails.ts
+@@ -293,6 +293,70 @@ export const LEVEL_DETAILS: Record<string, LevelDetails> = {
+       },
+     },
+   },
++
++  pro: {
++    scenarios: {
++      id: 'scenarios',
++      title: 'Сценарии',
++      content: {
++        total: 'до 90 сценариев (драфт)',
++        byCategory: ['Рост сети', 'Эксперименты', 'Коммуникации'],
++        description: 'Технический черновик: гибкое сопровождение сети, финальный текст позже.',
++        features: [
++          'Тех. пункт: сценарии под сеть',
++          'Тех. пункт: быстрые эксперименты',
++          'Тех. пункт: контроль качества',
++        ],
++      },
++    },
++    reporting: {
++      id: 'reporting',
++      title: 'Отчётность и встречи',
++      content: {
++        description: 'Технический текст: еженедельные синки и квартальные сессии.',
++        features: [
++          'Тех. пункт: расширенные отчёты',
++          'Тех. пункт: общий роадмап',
++          'Тех. пункт: воркшопы по гипотезам',
++        ],
++      },
++    },
++    overtime: {
++      id: 'overtime',
++      title: 'Овертайм',
++      content: {
++        description: 'Технический текст: доп. услуги по запросу.',
++        features: [
++          'Тех. пункт: кастомные интеграции',
++          'Тех. пункт: исследовательские слоты',
++        ],
++      },
++    },
++    experiments: {
++      id: 'experiments',
++      title: 'Эксперименты (A/B)',
++      content: {
++        description: 'Технический текст: до 5+ параллельных тестов.',
++        features: [
++          'Тех. пункт: постановка гипотез',
++          'Тех. пункт: комбинированные каналы',
++          'Тех. пункт: контроль влияния',
++        ],
++      },
++    },
++    sla: {
++      id: 'sla',
++      title: 'Гарантии качества сервиса',
++      content: {
++        description: 'Технический текст: максимальный приоритет SLA.',
++        features: [
++          'Тех. пункт: выделенная команда 24/7',
++          'Тех. пункт: ускоренная обработка',
++          'Тех. пункт: регулярный аудит',
++        ],
++      },
++    },
++  },
+ };
+ 
+ export interface SupportLevel {
+@@ -342,6 +406,17 @@ export const supportLevels: SupportLevel[] = [
+       'Расширенная поддержка',
+     ],
+   },
++  {
++    id: 'Про',
++    title: 'Про',
++    price: '249 900 ₽/мес',
++    features: [
++      'Тех. пункт: расширенные сессии',
++      'Тех. пункт: кастомные интеграции',
++      'Тех. пункт: выделенная команда',
++      'Тех. пункт: эксперименты и масштабирование',
++    ],
++  },
+ ];
+ 
+ export const getLevelDetails = (level: string): LevelDetails | null => {
+diff --git a/src/shared/lib/pricing.ts b/src/shared/lib/pricing.ts
+index 7b4a599..cddfc43 100644
+--- a/src/shared/lib/pricing.ts
++++ b/src/shared/lib/pricing.ts
+@@ -33,6 +33,7 @@ const MARKETING_PRICES = {
+   advanced: 29900,
+   premium: 59900,
+   expert: 119900,
++  pro: 249900,
+ };
+ 
+ const IMPLEMENTATION_COSTS: Record<CalculatorState['marketingLevel'], number> = {
+@@ -40,6 +41,7 @@ const IMPLEMENTATION_COSTS: Record<CalculatorState['marketingLevel'], number> =
+   advanced: 129900,
+   premium: 199900,
+   expert: 269900,
++  pro: 349900,
+ };
+ 
+ // Дополнительные номера WhatsApp
+diff --git a/src/shared/types/calculator.ts b/src/shared/types/calculator.ts
+index 6c0df6f..4eb2017 100644
+--- a/src/shared/types/calculator.ts
++++ b/src/shared/types/calculator.ts
+@@ -3,7 +3,7 @@ export interface CalculatorState {
+   patientBase: number; // 1000-100000
+   branches: number; // 1+
+   whatsappNumbers: number; // 0+
+-  marketingLevel: 'base' | 'advanced' | 'premium' | 'expert';
++  marketingLevel: 'base' | 'advanced' | 'premium' | 'expert' | 'pro';
+   techSupport: 'weekdays' | 'daily';
+ }
+ 
+diff --git a/src/shared/utils/validation.ts b/src/shared/utils/validation.ts
+index 6be6876..770d68d 100644
+--- a/src/shared/utils/validation.ts
++++ b/src/shared/utils/validation.ts
+@@ -35,7 +35,7 @@ export function normalizeCalculatorState(state: CalculatorState): CalculatorStat
+   }
+   
+   // mmLevel ∈ {'base','advanced','premium','expert'}
+-  if (!['base', 'advanced', 'premium', 'expert'].includes(normalized.marketingLevel)) {
++  if (!['base', 'advanced', 'premium', 'expert', 'pro'].includes(normalized.marketingLevel)) {
+     normalized.marketingLevel = 'base';
+   }
+   
+diff --git a/src/styles/mm-cards.css b/src/styles/mm-cards.css
+index f065331..7813a3b 100644
+--- a/src/styles/mm-cards.css
++++ b/src/styles/mm-cards.css
+@@ -5,6 +5,39 @@
+   gap: 20px;
+ }
+ 
++.mm-grid--scroll {
++  display: flex !important;
++  flex-wrap: nowrap !important;
++  gap: 20px !important;
++  overflow-x: auto !important;
++  overflow-y: hidden !important;
++  padding: 0 0 16px 0;
++  scroll-snap-type: x proximity;
++  scrollbar-width: thin;
++  scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
++}
++
++.mm-grid--scroll::-webkit-scrollbar {
++  height: 8px;
++}
++
++.mm-grid--scroll::-webkit-scrollbar-track {
++  background: rgba(255, 255, 255, 0.08);
++  border-radius: 999px;
++}
++
++.mm-grid--scroll::-webkit-scrollbar-thumb {
++  background: rgba(255, 122, 26, 0.6);
++  border-radius: 999px;
++}
++
++.mm-grid--scroll .mm-card {
++  flex: 0 0 min(280px, calc((100% - 60px) / 4));
++  min-width: min(280px, calc((100% - 60px) / 4));
++  max-width: min(280px, calc((100% - 60px) / 4));
++  scroll-snap-align: start;
++}
++
+ /* Карточка — glassmorphism */
+ .mm-card {
+   min-height: 380px;
+diff --git a/src/types/index.ts b/src/types/index.ts
+index 6c0df6f..4eb2017 100644
+--- a/src/types/index.ts
++++ b/src/types/index.ts
+@@ -3,7 +3,7 @@ export interface CalculatorState {
+   patientBase: number; // 1000-100000
+   branches: number; // 1+
+   whatsappNumbers: number; // 0+
+-  marketingLevel: 'base' | 'advanced' | 'premium' | 'expert';
++  marketingLevel: 'base' | 'advanced' | 'premium' | 'expert' | 'pro';
+   techSupport: 'weekdays' | 'daily';
+ }
+ 
+diff --git a/src/utils/validation.ts b/src/utils/validation.ts
+index 6be6876..770d68d 100644
+--- a/src/utils/validation.ts
++++ b/src/utils/validation.ts
+@@ -35,7 +35,7 @@ export function normalizeCalculatorState(state: CalculatorState): CalculatorStat
+   }
+   
+   // mmLevel ∈ {'base','advanced','premium','expert'}
+-  if (!['base', 'advanced', 'premium', 'expert'].includes(normalized.marketingLevel)) {
++  if (!['base', 'advanced', 'premium', 'expert', 'pro'].includes(normalized.marketingLevel)) {
+     normalized.marketingLevel = 'base';
+   }
+   

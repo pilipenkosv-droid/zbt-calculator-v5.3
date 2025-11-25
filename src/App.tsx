@@ -122,22 +122,16 @@ const App: React.FC = () => {
               <SupportLevelsWithDetails
                 defaultLevel={
                   state.marketingLevel === 'base'
-                    ? 'Эконом'
+                    ? 'Base'
                     : state.marketingLevel === 'advanced'
-                      ? 'Актив'
+                      ? 'Advanced'
                       : state.marketingLevel === 'premium'
-                        ? 'Стандарт'
-                        : 'Эксперт'
+                        ? 'Premium'
+                        : 'Expert'
                 }
-                onLevelChange={level => {
-                  const levelMap: Record<string, string> = {
-                    'Эконом': 'base',
-                    'Актив': 'advanced',
-                    'Стандарт': 'premium',
-                    'Эксперт': 'expert',
-                  };
-                  handleParamChange('marketingLevel', levelMap[level] || 'base');
-                }}
+                onLevelChange={level =>
+                  handleParamChange('marketingLevel', level.toLowerCase())
+                }
               />
 
               {/* Остальные параметры */}
@@ -168,7 +162,7 @@ const App: React.FC = () => {
                 <h3 className="text-2xl font-bold mb-4">Модуль в подарок</h3>
                 <p className="text-white/80 mb-4">
                   Выберите один модуль бесплатно (NPS, Reputation, Cloud). Срок:
-                  3 месяца для Актив/Стандарт/Эксперт.
+                  3 месяца для Advanced/Premium/Expert.
                 </p>
                 <select
                   value={selectedGiftModule}
@@ -210,7 +204,7 @@ const App: React.FC = () => {
                   {
                     question: 'Можно протестировать?',
                     answer:
-                      'Да. Демо‑доступ и Telegram‑бот Zabota.Reputation на 3 месяца — в подарок на тарифах Актив/Стандарт/Эксперт.',
+                      'Да. Демо‑доступ и Telegram‑бот Zabota.Reputation на 3 месяца — в подарок на тарифах Advanced/Premium/Expert.',
                   },
                 ].map((faq, index) => (
                   <div key={index} className="glass-card">
@@ -253,7 +247,7 @@ const App: React.FC = () => {
               </h2>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="glass-card p-6">
-                  <h3 className="text-xl font-bold mb-4">Эконом</h3>
+                  <h3 className="text-xl font-bold mb-4">Base</h3>
                   <ul className="space-y-2 text-sm text-white/80">
                     <li>• Базовые сценарии коммуникаций</li>
                     <li>• Помощь по запросу</li>
@@ -261,7 +255,7 @@ const App: React.FC = () => {
                   </ul>
                 </div>
                 <div className="glass-card p-6">
-                  <h3 className="text-xl font-bold mb-4">Актив</h3>
+                  <h3 className="text-xl font-bold mb-4">Advanced</h3>
                   <ul className="space-y-2 text-sm text-white/80">
                     <li>• Расширенный набор сценариев</li>
                     <li>• Персональные рекомендации</li>
@@ -270,7 +264,7 @@ const App: React.FC = () => {
                   </ul>
                 </div>
                 <div className="glass-card p-6">
-                  <h3 className="text-xl font-bold mb-4">Стандарт</h3>
+                  <h3 className="text-xl font-bold mb-4">Premium</h3>
                   <ul className="space-y-2 text-sm text-white/80">
                     <li>• Максимум сценариев</li>
                     <li>• Регулярный аудит</li>

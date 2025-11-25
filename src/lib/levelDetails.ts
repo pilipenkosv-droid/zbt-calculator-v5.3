@@ -25,7 +25,7 @@ export const LEVEL_DETAILS: Record<string, LevelDetails> = {
       content: {
         total: 'до 12 активных сценариев',
         byCategory: ['Сервисные', 'Обратная связь/NPS', 'Удержание/возврат', 'Лояльность', 'Персональные акции'],
-        description: 'Без ограничений по типам и количеству',
+        description: 'Без ограничений по типам',
         features: [
           'Сервисные — до 4',
           'Обратная связь/NPS — до 2',
@@ -91,7 +91,7 @@ export const LEVEL_DETAILS: Record<string, LevelDetails> = {
       content: {
         total: 'до 24 активных сценариев (+быстрый запуск по ТЗ клиники)',
         byCategory: ['Сервисные', 'Обратная связь/NPS', 'Удержание/возврат', 'Лояльность', 'Персональные акции'],
-        description: 'Без ограничений по типам и количеству',
+        description: 'Без ограничений по типам',
         features: [
           'Сервисные — до 6',
           'Обратная связь/NPS — до 4',
@@ -158,7 +158,7 @@ export const LEVEL_DETAILS: Record<string, LevelDetails> = {
       content: {
         total: 'до 40 активных сценариев (регулярный аудит под цели роста)',
         byCategory: ['Сервисные', 'Обратная связь/NPS', 'Удержание/возврат', 'Лояльность', 'Персональные акции'],
-        description: 'Без ограничений по типам и количеству',
+        description: 'Без ограничений по типам',
         features: [
           'Сервисные — до 10',
           'Обратная связь/NPS — до 6',
@@ -228,7 +228,7 @@ export const LEVEL_DETAILS: Record<string, LevelDetails> = {
       content: {
         total: 'до 80+ активных сценариев (+быстрый запуск по ТЗ клиники) (регулярный аудит под цели роста)',
         byCategory: ['Сервисные', 'Обратная связь/NPS', 'Удержание/возврат', 'Лояльность', 'Персональные акции'],
-        description: 'Без ограничений по типам и количеству',
+        description: 'Без ограничений по типам',
         features: [
           'Сервисные — до 16',
           'Обратная связь/NPS — до 10',
@@ -304,14 +304,14 @@ export interface SupportLevel {
 
 export const supportLevels: SupportLevel[] = [
   {
-    id: 'Эконом',
-    title: 'Эконом',
+    id: 'Base',
+    title: 'Base',
     price: '9 900 ₽/мес',
     features: ['Базовые сценарии', 'Помощь по запросу', 'Ежемесячный отчет'],
   },
   {
-    id: 'Актив',
-    title: 'Актив',
+    id: 'Advanced',
+    title: 'Advanced',
     price: '29 900 ₽/мес',
     features: [
       'Расширенные сценарии',
@@ -321,8 +321,8 @@ export const supportLevels: SupportLevel[] = [
     ],
   },
   {
-    id: 'Стандарт',
-    title: 'Стандарт',
+    id: 'Premium',
+    title: 'Premium',
     price: '59 900 ₽/мес',
     features: [
       'Максимум сценариев',
@@ -332,8 +332,8 @@ export const supportLevels: SupportLevel[] = [
     ],
   },
   {
-    id: 'Эксперт',
-    title: 'Эксперт',
+    id: 'Expert',
+    title: 'Expert',
     price: '119 900 ₽/мес',
     features: [
       'Стратегические сессии',

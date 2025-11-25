@@ -72,7 +72,7 @@ export const LevelDetailsContent: React.FC<LevelDetailsContentProps> = ({
                 {section.content.total && (
                   <div className="mb-3 flex items-center gap-2">
                     <span className="text-xs font-medium text-slate-500">
-                      На сопровождении:
+                      Всего:
                     </span>
                     <span className="rounded-full bg-slate-200 px-2 py-1 text-xs font-semibold text-slate-700">
                       {section.content.total}

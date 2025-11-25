@@ -130,22 +130,16 @@ const MobileApp: React.FC<MobileAppProps> = ({ detection }) => {
               <SupportLevelsWithDetails
                 defaultLevel={
                   state.marketingLevel === 'base'
-                    ? 'Эконом'
+                    ? 'Base'
                     : state.marketingLevel === 'advanced'
-                      ? 'Актив'
+                      ? 'Advanced'
                       : state.marketingLevel === 'premium'
-                        ? 'Стандарт'
-                        : 'Эксперт'
+                        ? 'Premium'
+                        : 'Expert'
                 }
-                onLevelChange={level => {
-                  const levelMap: Record<string, string> = {
-                    'Эконом': 'base',
-                    'Актив': 'advanced',
-                    'Стандарт': 'premium',
-                    'Эксперт': 'expert',
-                  };
-                  handleParamChange('marketingLevel', levelMap[level] || 'base');
-                }}
+                onLevelChange={level =>
+                  handleParamChange('marketingLevel', level.toLowerCase())
+                }
               />
             </div>
 
@@ -160,27 +154,27 @@ const MobileApp: React.FC<MobileAppProps> = ({ detection }) => {
         </section>
 
         {/* Интеграции */}
-        <div id="integrations" className="section">
+        <div id="integrations">
           <MobileIntegrations />
         </div>
 
         {/* Кейсы */}
-        <div id="cases" className="section">
+        <div id="cases">
           <MobileCases />
         </div>
 
         {/* Клиенты */}
-        <div id="clients" className="section">
+        <div id="clients">
           <ClientsSection />
         </div>
 
         {/* FAQ */}
-        <div id="faq" className="section">
+        <div id="faq">
           <MobileFAQ />
         </div>
 
         {/* Демо и контакты */}
-        <div id="contacts" className="section">
+        <div id="contacts">
           <MobileDemo
             onSubmit={payload => {
               console.log('Demo form submitted:', payload);

@@ -48,7 +48,7 @@
   color: var(--text, #111);
 }
 
-/* Стандарт — градиентный текст */
+/* Premium — градиентный текст */
 .mm-title.gradient-premium {
   position: relative;
   color: #ff6a00;
@@ -70,7 +70,7 @@
   will-change: transform;
 }
 
-/* Эксперт — «металлический» текст */
+/* Expert — «металлический» текст */
 .mm-title.metal {
   background:
     linear-gradient(90deg, #6f747a 0%, #c0c4c9 20%, #eef0f3 38%, #b5bac0 55%, #f5f7fa 72%, #9aa0a6 100%),

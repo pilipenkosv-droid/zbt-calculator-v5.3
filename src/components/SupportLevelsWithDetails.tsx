@@ -5,50 +5,26 @@ import MMLevelsSection, { MMLevelId } from './MMLevelsSection';
 import Tooltip from './Tooltip';
 import InfoIcon from './InfoIcon';
 
-type SupportLevelId = 'Эконом' | 'Актив' | 'Стандарт' | 'Эксперт';
+type SupportLevelId = 'Base' | 'Advanced' | 'Premium' | 'Expert';
 
 type SupportLevelsWithDetailsProps = {
   defaultLevel?: SupportLevelId;
   onLevelChange?: (level: SupportLevelId) => void;
 };
 
-// Маппинг русских названий на английские id
-const levelNameToId: Record<SupportLevelId, MMLevelId> = {
-  'Эконом': 'base',
-  'Актив': 'advanced',
-  'Стандарт': 'premium',
-  'Эксперт': 'expert',
-};
-
-// Маппинг английских id на русские названия
-const levelIdToName: Record<MMLevelId, SupportLevelId> = {
-  'base': 'Эконом',
-  'advanced': 'Актив',
-  'premium': 'Стандарт',
-  'expert': 'Эксперт',
-};
 
 export const SupportLevelsWithDetails: React.FC<SupportLevelsWithDetailsProps> = ({
-  defaultLevel = 'Актив',
+  defaultLevel = 'Advanced',
   onLevelChange,
 }) => {
   const [selected, setSelected] = useState<SupportLevelId>(defaultLevel);
   const [open, setOpen] = useState<boolean>(false);
 
-  // Синхронизация selected с defaultLevel при изменении пропса
-  useEffect(() => {
-    if (defaultLevel) {
-      setSelected(defaultLevel);
-    }
-  }, [defaultLevel]);
-
   useEffect(() => {
     onLevelChange?.(selected);
   }, [selected, onLevelChange]);
 
-  // Преобразуем русское название в английский id для getLevelDetails
-  const levelId = levelNameToId[selected];
-  const levelData = useMemo(() => getLevelDetails(levelId), [levelId]);
+  const levelData = useMemo(() => getLevelDetails(selected), [selected]);
   const panelTargetHeight = 600; // Фиксированная высота панели
 
   return (
@@ -71,9 +47,9 @@ export const SupportLevelsWithDetails: React.FC<SupportLevelsWithDetailsProps> =
         <div className="px-0">
           {/* Грид карточек — без дополнительной обёртки для выбранной */}
           <MMLevelsSection
-            selected={levelNameToId[selected]}
+            selected={selected.toLowerCase() as MMLevelId}
             onLevelChange={(lvl) => {
-              setSelected(levelIdToName[lvl]);
+              setSelected(lvl.charAt(0).toUpperCase() + lvl.slice(1) as SupportLevelId);
               setOpen(true);
               setTimeout(() => document.getElementById('details-dock')?.scrollTo({ top: 0, behavior: 'smooth' }), 0);
             }}

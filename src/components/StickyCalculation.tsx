@@ -22,9 +22,7 @@ const StickyCalculation: React.FC<StickyCalculationProps> = ({
   const priceBreakdown = calculatePrice(state);
   const rawDiscountPercent = priceBreakdown.periodDiscount + priceBreakdown.networkDiscount;
   const totalDiscountPercent = Math.min(25, rawDiscountPercent);
-  const discountPercentDisplay = Number.isInteger(totalDiscountPercent)
-    ? `${totalDiscountPercent}`
-    : totalDiscountPercent.toFixed(1);
+  const discountPercent = Math.round(totalDiscountPercent);
 
   const discountRub = priceBreakdown.beforeDiscount - priceBreakdown.total;
 
@@ -54,8 +52,8 @@ const StickyCalculation: React.FC<StickyCalculationProps> = ({
         </div>
         
         {/* Скидка в мягком зеленом или сером если нет скидки */}
-        <div className={`mb-2 text-[23px] font-semibold ${hasDiscount ? 'discount-text-green' : 'text-gray-500'}`}>
-          С учетом скидки –{discountPercentDisplay}%
+        <div className={`mb-2 text-[23px] font-semibold ${discountPercent > 0 ? 'discount-text-green' : 'text-gray-500'}`}>
+          С учетом скидки –{discountPercent}%
         </div>
         
         <div className="flex flex-wrap items-center gap-2 text-[20px] text-slate-700">
@@ -137,7 +135,7 @@ const StickyCalculation: React.FC<StickyCalculationProps> = ({
             breakdown: priceBreakdown,
             monthly: priceBreakdown.monthlyPerBranch,
             total: priceBreakdown.total,
-            discountPercent: totalDiscountPercent
+            discountPercent: discountPercent
           };
 
           onRequestQuote(fullPayload);

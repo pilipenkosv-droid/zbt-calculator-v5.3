@@ -39,11 +39,7 @@ const MobileStickyPrice: React.FC<MobileStickyPriceProps> = ({ state, onRequestQ
   
   // Общая скидка в процентах (с учетом капа 25%)
   const rawDiscountPercent = pricing.periodDiscount + pricing.networkDiscount;
-  const effectiveDiscountPercent = Math.min(25, rawDiscountPercent);
-  const discountPercentValue = Math.min(25, rawDiscountPercent);
-  const discountPercentDisplay = Number.isInteger(discountPercentValue)
-    ? `${discountPercentValue}`
-    : discountPercentValue.toFixed(1);
+  const discountPercent = Math.round(Math.min(25, rawDiscountPercent));
   const hasDiscount = rawDiscountPercent > 0;
 
   const handleRequestQuote = () => {
@@ -161,7 +157,7 @@ const MobileStickyPrice: React.FC<MobileStickyPriceProps> = ({ state, onRequestQ
             {/* Скидка */}
             {hasDiscount && (
               <div className="mobile-sticky-price__discount">
-                Экономия {discountPercentDisplay}%
+                Экономия {discountPercent}%
               </div>
             )}
           </div>
@@ -270,7 +266,7 @@ const MobileStickyPrice: React.FC<MobileStickyPriceProps> = ({ state, onRequestQ
                   <div className="mobile-sticky-price__detail-item">
                     <span>Общая скидка</span>
                     <span className="mobile-sticky-price__discount-badge">
-                      {discountPercentDisplay}%
+                      {discountPercent}%
                     </span>
                   </div>
                   {pricing.periodDiscount > 0 && (
